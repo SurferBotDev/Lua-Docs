@@ -4,7 +4,7 @@
 * [Tile](#tile)
 * [InventoryItem](#inventoryitem)
 * [GamePacket](#gamepacket)
-
+* [ItemInfo](#iteminfo)
 
 ## WorldObject
 | Type | Name | Description|
@@ -62,7 +62,14 @@
 | Number | `int_y` |  |
 
 
-
+## ItemInfo
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| String | `name` | Item name |
+| Number | `id` | Item ID |
+| Number | `rarity` | Item rarity |
+| Number | `growtime` | Item growtime |
+| Number | `breakhits` | Item breakhits |
 
 
 
