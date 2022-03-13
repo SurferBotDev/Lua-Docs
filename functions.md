@@ -1,4 +1,5 @@
 # Functions
+* [GetBot](#getbot)
 * [sendPacket](#sendpacket)
 * [sendPacketRaw](#sendpacketraw)
 * [findPath](#findpath)
@@ -10,6 +11,18 @@
 * [getTiles](#gettiles)
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
+
+
+## GetBot
+`GetBot(string botname)`
+
+Return bots from list
+
+Example:
+```lua
+bot = GetBot("growid")
+bot:SendPacket("action|respawn", 2)
+```
 
 
 ## sendPacket
@@ -35,12 +48,6 @@ packet = {}
 packet.type = 10 
 packet.int_data = 48 -- Clothing ID (Jeans)
 sendPacketRaw(packet)
-```
-
-Example:
-```lua
--- Logs "Hello!" to Growtopias console
-log("Hello!")
 ```
 
 ## findPath
