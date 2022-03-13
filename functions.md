@@ -1,5 +1,5 @@
 # Functions
-* [GetBot](#getbot)
+* [getBot](#getbot)
 * [sendPacket](#sendpacket)
 * [SendPacketRaw](#sendpacketraw)
 * [findPath](#findpath)
@@ -20,14 +20,14 @@
 * [setPos](#setpos)
 * [Say](#say)
 
-## GetBot
-`GetBot(string botname)`
+## getBot
+`getBot(string botname)`
 
 Return bots from list
 
 Example:
 ```lua
-bot = GetBot("growid")
+bot = getBot("growid")
 bot:SendPacket("action|respawn", 2)
 ```
 
@@ -128,7 +128,7 @@ Example:
 ```lua
 -- Logs top left corners foreground block id
 tile = getTile(0, 0)
-log(tile.fg)
+log(tile.header.fg)
 ```
 
 ## getTiles
@@ -140,7 +140,7 @@ Example:
 ```lua
 -- Logs current worlds all foreground block id's
 for _,tile in pairs(getTiles()) do
-log(tile.fg)
+log(tile.header.fg)
 end
 ```
 
