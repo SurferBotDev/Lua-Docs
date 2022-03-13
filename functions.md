@@ -1,7 +1,7 @@
 # Functions
 * [GetBot](#getbot)
 * [sendPacket](#sendpacket)
-* [sendPacketRaw](#sendpacketraw)
+* [SendPacketRaw](#sendpacketraw)
 * [findPath](#findpath)
 * [getLocal](#getlocal)
 * [getInventory](#getinventory)
@@ -11,6 +11,7 @@
 * [getTiles](#gettiles)
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
+* [isSeed](#issolid)
 
 
 ## GetBot
@@ -159,6 +160,20 @@ if isSolid(0, 0) then
 log("Tile 0, 0 is solid")
 else
 log("Tile 0, 0 is not solid")
+end
+```
+
+## isSeed
+`isSeed(int x, int y)`
+
+Returns true if seed and false if its not
+
+Example:
+```lua
+if isSeed(0, 0) then
+log("Tile 0, 0 is Seed")
+else
+log("Tile 0, 0 is not Seed")
 end
 ```
 
