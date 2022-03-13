@@ -11,8 +11,14 @@
 * [getTiles](#gettiles)
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
-* [isSeed](#issolid)
-
+* [isSeed](#isseed)
+* [placeTile](#placetile)
+* [hitTile](#hittile)
+* [wrenchTile](#wrenchtile)
+* [Warp](#warp)
+* [Move](#move)
+* [setPos](#setpos)
+* [Say](#say)
 
 ## GetBot
 `GetBot(string botname)`
@@ -178,3 +184,79 @@ end
 ```
 
 
+## hitTile
+`hitTile(int x, int y)`
+
+Send Punch Packet To X,Y
+
+Example:
+```lua
+---Punch To 0,0
+hitTile(0,0)
+
+```
+
+## wrenchTile
+`wrenchTile(int x, int y)`
+
+Send Wrench Packet To x,y
+
+Example:
+```lua
+---Wrench To 0,0
+
+wrenchTile(0,0)
+
+```
+
+## placeTile
+`placeTile(0,0)`
+
+Place Block To x,y
+
+Example:
+```lua
+---Place Block To 0,0
+placeTile(0,0)
+
+```
+
+## Warp
+`Warp(string x)`
+
+Warp To x
+
+Example:
+```lua
+warp("BUYGHC")
+
+```
+
+## Move
+`Move(string MOVE,int speed)`
+
+Example:
+```lua
+-- Speed Default Value 1, Max Value 4
+Move("RIGHT",1)
+Move("LEFT",1)
+Move("UP",1)
+Move("DOWN",1)
+```
+
+## setPos
+`setPos(int x,int y)`
+
+Example:
+```lua
+--- Sets bot position
+setPos(0,0)
+```
+## Say
+`Say(string text)`
+
+Example:
+```lua
+-- Send chat message
+Say("Hello")
+```
