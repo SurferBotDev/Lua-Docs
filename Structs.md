@@ -29,11 +29,11 @@
  ## Tile
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `fg` | Foreground block's ID |
-| Number | `bg` | Background block's ID |
+| Number | `header.fg` | Foreground block's ID |
+| Number | `header.bg` | Background block's ID |
 | [Vector2](#vector2) | `pos` |Tile's position |
-| Number | `flags1` | Tile's flags |
-| Number | `flags2` | Tile's flags |
+| Number | `header.flags1` | Tile's flags |
+| Number | `header.flags2` | Tile's flags |
 
  ## InventoryItem
 | Type | Name | Description|
