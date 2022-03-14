@@ -12,6 +12,7 @@
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
 * [isSeed](#isseed)
+* [CanHarvest](#canharvest)
 * [placeTile](#placetile)
 * [hitTile](#hittile)
 * [wrenchTile](#wrenchtile)
@@ -172,7 +173,7 @@ end
 ## isSeed
 `isSeed(int x, int y)`
 
-Returns true if seed and false if its not
+Returns true if tile is seed , false if its not
 
 Example:
 ```lua
@@ -180,6 +181,19 @@ if isSeed(0, 0) then
 log("Tile 0, 0 is Seed")
 else
 log("Tile 0, 0 is not Seed")
+end
+```
+
+## canHarvest
+`canHarvest(int x, int y)`
+Returns true if tile is harvestable , false if  not
+
+Example:
+```lua
+if canHarvest(0, 0) then
+log("Tile 0, 0 is harvestable")
+else
+log("Tile 0, 0 is not harvestable")
 end
 ```
 
