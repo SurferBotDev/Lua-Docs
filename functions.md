@@ -29,7 +29,7 @@ Return bots from list
 Example:
 ```lua
 bot = getBot("growid")
-bot:SendPacket("action|respawn", 2)
+bot:sendPacket("action|respawn", 2)
 ```
 
 
