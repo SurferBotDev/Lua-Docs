@@ -1,10 +1,17 @@
 # Structs
+* [Vector2](#vector2)
 * [WorldObject](#worldobject)
 * [NetAvatar](#netavatar)
 * [Tile](#tile)
 * [InventoryItem](#inventoryitem)
 * [GamePacket](#gamepacket)
 * [ItemInfo](#iteminfo)
+
+## Vector2
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| Number | `x` | Position x |
+| Number | `y` | Position y |
 
 ## WorldObject
 | Type | Name | Description|
