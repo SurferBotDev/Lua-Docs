@@ -12,7 +12,7 @@
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
 * [isSeed](#isseed)
-* [CanHarvest](#canharvest)
+* [canHarvest](#canharvest)
 * [placeTile](#placetile)
 * [hitTile](#hittile)
 * [wrenchTile](#wrenchtile)
