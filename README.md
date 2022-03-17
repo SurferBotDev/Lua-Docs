@@ -2,4 +2,4 @@
 Growtopia Bot Application
 
 
-Discord Link : https://discord.gg/X3bX95zV9n
+Discord Link : https://discord.gg/CkhFxnwDNX
