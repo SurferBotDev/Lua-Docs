@@ -224,7 +224,7 @@ wrenchTile(0,0)
 ```
 
 ## placeTile
-`placeTile(0,0,blockid)`
+`placeTile(int x,int y,int blockid)`
 
 Place Block To x,y
 
