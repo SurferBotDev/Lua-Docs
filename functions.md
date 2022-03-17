@@ -20,6 +20,7 @@
 * [Move](#move)
 * [setPos](#setpos)
 * [Say](#say)
+* [RunThread](#runthread)
 
 ## getBot
 `getBot(string botname)`
@@ -273,4 +274,22 @@ Example:
 ```lua
 -- Send chat message
 Say("Hello")
+```
+
+## RunThread
+`RunThread(function() 
+//code here
+end)`
+
+Example:
+```lua
+RunThread(function()
+while true do
+log("New Thread")
+end
+end)
+
+while true do
+log("Normal Thread")
+end
 ```
