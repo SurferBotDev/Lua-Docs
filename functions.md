@@ -21,6 +21,8 @@
 * [setPos](#setpos)
 * [Say](#say)
 * [RunThread](#runthread)
+* [GetAllBot](#getallbot)
+* [Connect](#connect)
 
 ## getBot
 `getBot(string botname)`
@@ -292,4 +294,20 @@ end)
 while true do
 log("Normal Thread")
 end
+```
+## GetAllBot
+
+Example:
+```lua
+for k,v in pairs(GetAllBot) do 
+v:Say("hi")
+end
+```
+
+## Connect
+`Connect(string growid,string password)`
+
+Example:
+```lua
+Connect("mygrowid","mypassword")
 ```
