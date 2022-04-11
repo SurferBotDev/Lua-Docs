@@ -305,9 +305,9 @@ end
 ```
 
 ## Connect
-`Connect(string growid,string password)`
+`Connect(string growid,string password,bool VdsSupport)`
 
 Example:
 ```lua
-Connect("mygrowid","mypassword")
+Connect("mygrowid","mypassword",false)
 ```
