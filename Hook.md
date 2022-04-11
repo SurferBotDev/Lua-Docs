@@ -2,6 +2,7 @@
 * [AddHook](#addhook)
 
 ## AddHook
+`AddHook(function)`
 
 Example For Varlist:
 ```lua
