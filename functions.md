@@ -16,13 +16,18 @@
 * [placeTile](#placetile)
 * [hitTile](#hittile)
 * [wrenchTile](#wrenchtile)
-* [Warp](#warp)
-* [Move](#move)
+* [warp](#warp)
+* [move](#move)
 * [setPos](#setpos)
-* [Say](#say)
-* [RunThread](#runthread)
-* [GetAllBot](#getallbot)
-* [Connect](#connect)
+* [say](#say)
+* [runThread](#runthread)
+* [getAllBot](#getallbot)
+* [connect](#connect)
+* [useDoor](#usedoor)
+* [isInside](#isinside)
+* [collectObject](#collectobject)
+* [inWorld](#inworld)
+* [itemExist](#itemexist)
 
 ## getBot
 `getBot(string botname)`
@@ -238,8 +243,8 @@ placeTile(0,0,2)
 
 ```
 
-## Warp
-`Warp(string x)`
+## warp
+`warp(string x)`
 
 Warp To x
 
@@ -250,15 +255,15 @@ warp("BUYGHC")
 ```
 
 ## Move
-`Move(string MOVE,int speed)`
+`move(enum MOVE,int speed)`
 
 Example:
 ```lua
 -- Speed Default Value 1, Max Value 4
-Move("RIGHT",1)
-Move("LEFT",1)
-Move("UP",1)
-Move("DOWN",1)
+move(RIGHT,1)
+move(LEFT,1)
+move(UP,1)
+move(DOWN,1)
 ```
 
 ## setPos
@@ -269,23 +274,23 @@ Example:
 --- Sets bot position
 setPos(0,0)
 ```
-## Say
-`Say(string text)`
+## say
+`say(string text)`
 
 Example:
 ```lua
 -- Send chat message
-Say("Hello")
+say("Hello")
 ```
 
-## RunThread
-`RunThread(function() 
+## runThread
+`runThread(function() 
 //code here
 end)`
 
 Example:
 ```lua
-RunThread(function()
+runThread(function()
 while true do
 log("New Thread")
 end
@@ -295,19 +300,73 @@ while true do
 log("Normal Thread")
 end
 ```
-## GetAllBot
+## getAllBot
 
 Example:
 ```lua
-for k,v in pairs(GetAllBot) do 
+for k,v in pairs(getAllBot) do 
 v:Say("hi")
 end
 ```
 
-## Connect
-`Connect(string growid,string password,bool VdsSupport)`
+## connect
+`connect(string growid,string password,bool VdsSupport)`
 
 Example:
 ```lua
-Connect("mygrowid","mypassword",false)
+connect("mygrowid","mypassword",false)
 ```
+
+
+## useDoor
+`useDoor(int x,int y)`
+
+Example:
+```lua
+useDoor(0,0)
+```
+
+## isInside
+`isInside(int x,int y,int rad)`
+
+Example:
+```lua
+if isInside(0, 0,5) then
+log("x 0, y 0 is in inside")
+else
+log("x 0, y 0 is not inside")
+end
+```
+
+## collectObject
+`collectObject(int uid)`
+
+Example:
+```lua
+-- Collecting Object With UID
+collectObject(0)
+```
+## inWorld
+`inWorld()`
+
+Example:
+```lua
+if inWorld() then
+log("in world")
+else
+log("not in world")
+end
+```
+
+## itemExist
+`itemExist(int itemid)`
+
+Example:
+```lua
+if itemExist(2) then
+log("Dirt Exist In Inventory")
+else
+log("Dirt Not Exist In Inventory")
+end
+```
+
