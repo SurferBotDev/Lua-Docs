@@ -6,6 +6,7 @@
 * [InventoryItem](#inventoryitem)
 * [GamePacket](#gamepacket)
 * [ItemInfo](#iteminfo)
+* [VariantList](#variantlist)
 
 ## Vector2
 | Type | Name | Description|
@@ -68,7 +69,6 @@
 | Number | `int_x` |  |
 | Number | `int_y` |  |
 
-
 ## ItemInfo
 | Type | Name | Description|
 |:-----|:----:|:-----------|
@@ -78,7 +78,15 @@
 | Number | `growtime` | Item growtime |
 | Number | `breakhits` | Item breakhits |
 
-
+## VariantList
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| String | `get(0)` | Variant function name |
+| String | `get(1)` | Param 1 |
+| String | `get(2)` | Param 2 |
+| String | `get(3)` | Param 3 |
+| String | `get(4)` | Param 4 |
+| String | `get(5)` | Param 5 |
 
 
 Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
