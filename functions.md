@@ -490,7 +490,7 @@ enum Bot_Status
 Example:
 ```lua
     if enetStatus() == Connected then
-      log("Success")
+      log("Connected")
     elseif getBotStatus() == Disconnected then
       log("Disconnected")
     elseif getBotStatus() == ShadowBan then
