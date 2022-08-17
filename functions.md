@@ -485,11 +485,11 @@ enum Bot_Status
 ```
 
 
-## enetStatus
-`enetStatus()`
+## getEnetStatus
+`getEnetStatus()`
 Example:
 ```lua
-    if enetStatus() == Connected then
+    if getEnetStatus() == Connected then
       log("Connected")
     elseif getBotStatus() == Disconnected then
       log("Disconnected")
