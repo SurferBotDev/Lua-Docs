@@ -28,6 +28,12 @@
 * [collectObject](#collectobject)
 * [inWorld](#inworld)
 * [itemExist](#itemexist)
+* [getItemCount](#getitemcount)
+* [getSeedTime](#getseedtime)
+* [inWorld](#inworld)
+* [autoCollect](#autocollect)
+* [getBotStatus](#getbotstatus)
+* [enetStatus](#enetstatus)
 
 ## getBot
 `getBot(string botname)`
@@ -74,13 +80,19 @@ Finds path to selected x,y
 Example:
 ```lua
 -- Finds path to top left corner of the world
-findPath(0, 0)
+if findPath(0, 0) then
+log("Path Found Successfully")
+else
+log("Failed to Find Path")
+end
+if
 ```
 
 ## getLocal
 `getLocal()`
 
-Returns local [NetAvatar](#Structs.md#netavatar) struct
+Returns table of  [NetAvatar](Structs.md#netavatar)
+
 
 Example:
 ```lua
@@ -137,7 +149,7 @@ Example:
 ```lua
 -- Logs top left corners foreground block id
 tile = getTile(0, 0)
-log(tile.header.fg)
+log(tile.fg)
 ```
 
 ## getTiles
@@ -149,7 +161,7 @@ Example:
 ```lua
 -- Logs current worlds all foreground block id's
 for _,tile in pairs(getTiles()) do
-log(tile.header.fg)
+log(tile.fg)
 end
 ```
 
@@ -204,7 +216,6 @@ else
 log("Tile 0, 0 is not harvestable")
 end
 ```
-
 
 ## hitTile
 `hitTile(int x, int y)`
@@ -264,6 +275,8 @@ move(RIGHT,1)
 move(LEFT,1)
 move(UP,1)
 move(DOWN,1)
+
+
 ```
 
 ## setPos
@@ -305,7 +318,7 @@ end
 Example:
 ```lua
 for k,v in pairs(getAllBot) do 
-v:Say("hi")
+v:say("hi")
 end
 ```
 
@@ -370,3 +383,126 @@ log("Dirt Not Exist In Inventory")
 end
 ```
 
+## getItemCount
+`getItemCount(int itemid)`
+
+Example:
+```lua
+if getItemCount(2)>100 then
+log("the amount of dirt is higher than 100")
+else
+log("the amount of dirt is less than 100")
+end
+```
+
+## getSeedTime
+`getSeedTime(int x, int y)`
+
+Return Seed time as Miliseconds
+
+if return as -1 tile its not seed
+
+if return as 0 seed is ready.
+
+Example:
+```lua
+if getSeedTime(0, 0) == 0 then
+log("Tile 0, 0 is harvestable")
+else
+log("Tile 0, 0 is not harvestable")
+end
+```
+```lua
+seedtime=bot:getSeedTime(1,1) 
+SeedID=bot:getTile(1,1).fg
+growtime=bot:getItemInfo(SeedID).growTime
+log(getTimeString(growtime-seedtime))
+--output Example   Seeds Ready In '7 days, 15 hours, 27 mins, 25 secs'
+
+
+```
+```lua
+if getSeedTime(0, 0) == -1 then
+log("Tile 0, 0 is Seed")
+else
+log("Tile 0, 0 is not Seed")
+end
+```
+
+## inWorld
+`inWorld()`
+
+Example:
+```lua
+if inWorld() then
+log("in world")
+else
+log("not in world")
+end
+```
+
+## autoCollect
+`autoCollect(int collectrange,bool autocollect)`
+Example:
+```lua
+-- Disable/Enable AutoCollect.
+autoCollect(10,true) -- Auto Collect Enabled With 10 Range
+autoCollect(10,false) -- Auto Collect Disabled.
+```
+
+
+## getBotStatus
+`getBotStatus()`
+Example:
+```lua
+ if getBotStatus() == Success then
+      log("Success")
+    elseif getBotStatus() == OnSendToServer then
+      log("OnSendToServer")
+    elseif getBotStatus() == Suspended then
+      log("Suspended")
+    elseif getBotStatus() == Disconnected then
+      log("Disconnected")
+    end
+```
+```c++
+-- Enum Information
+enum Bot_Status
+{
+    Disconnected,
+    Connected,
+    Banned,
+    Suspended,
+    Wrong_Password,
+    Update_Required,
+    Maintenance,
+    AAP,
+    LogonATTEMPTS,
+    OnSendToServer,
+    Captcha,
+    Success
+};
+```
+
+
+## enetStatus
+`enetStatus()`
+Example:
+```lua
+    if enetStatus() == Connected then
+      log("Success")
+    elseif getBotStatus() == Disconnected then
+      log("Disconnected")
+    elseif getBotStatus() == ShadowBan then
+      log("ShadowBan")
+    end
+```
+```c++
+-- Enum Information
+enum Enet_Status
+{
+    Disconnected,
+    Connected,
+    ShadowBan
+};
+```
