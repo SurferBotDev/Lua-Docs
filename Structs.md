@@ -76,8 +76,8 @@
 | String | `name` | Item name |
 | Number | `id` | Item ID |
 | Number | `rarity` | Item rarity |
-| Number | `growtime` | Item growtime |
-| Number | `breakhits` | Item breakhits |
+| Number | `growTime` | Item growtime |
+| Number | `breakHits` | Item breakhits |
 
 ## VariantList
 | Type | Name | Description|
