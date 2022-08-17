@@ -37,11 +37,12 @@
  ## Tile
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `header.fg` | Foreground block's ID |
-| Number | `header.bg` | Background block's ID |
-| [Vector2](#vector2) | `pos` |Tile's position |
-| Number | `header.flags1` | Tile's flags |
-| Number | `header.flags2` | Tile's flags |
+| Number | `fg` | Foreground block's ID |
+| Number | `bg` | Background block's ID |
+| Number | `x`  | Position x |
+| Number | `y`  | Position y |
+| Number | `flags1` | Tile's flags 1 |
+| Number | `flags2` | Tile's flags 2 |
 
  ## InventoryItem
 | Type | Name | Description|
@@ -75,8 +76,8 @@
 | String | `name` | Item name |
 | Number | `id` | Item ID |
 | Number | `rarity` | Item rarity |
-| Number | `growtime` | Item growtime |
-| Number | `breakhits` | Item breakhits |
+| Number | `growTime` | Item growtime |
+| Number | `breakHits` | Item breakhits |
 
 ## VariantList
 | Type | Name | Description|
