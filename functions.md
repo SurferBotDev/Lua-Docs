@@ -491,9 +491,9 @@ Example:
 ```lua
     if getEnetStatus() == Connected then
       log("Connected")
-    elseif getBotStatus() == Disconnected then
+    elseif getEnetStatus() == Disconnected then
       log("Disconnected")
-    elseif getBotStatus() == ShadowBan then
+    elseif getEnetStatus() == ShadowBan then
       log("ShadowBan")
     end
 ```
