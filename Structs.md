@@ -7,6 +7,7 @@
 * [GamePacket](#gamepacket)
 * [ItemInfo](#iteminfo)
 * [VariantList](#variantlist)
+* [httpRequestInfo](#httprequestinfo)
 
 ## Vector2
 | Type | Name | Description|
@@ -32,7 +33,7 @@
 | [Vector2](#vector2) | `size` | Player's size |
 | Number | `netid` | Player's netID |
 | Number | `userid` | Player's userID |
-| Bool | `Mod` | Is Mods |
+| Boolean | `Mod` | Is Mods |
 
  ## Tile
 | Type | Name | Description|
@@ -88,6 +89,15 @@
 | String | `get(3)` | Param 3 |
 | String | `get(4)` | Param 4 |
 | String | `get(5)` | Param 5 |
+
+## httpRequestInfo
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| String | `URL` |  Request URL |
+| String | `userAgent` | User Agent |
+| String | `postData` | Post Data |
+| Boolean | `json` | Json Request |
+| Enum | `method` | Request Method [POST,GET,DELETE] |
 
 
 Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
