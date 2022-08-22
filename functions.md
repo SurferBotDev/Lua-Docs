@@ -32,8 +32,9 @@
 * [getSeedTime](#getseedtime)
 * [inWorld](#inworld)
 * [autoCollect](#autocollect)
+* [getCurrentWorld](#getcurrentworld)
 * [getBotStatus](#getbotstatus)
-* [enetStatus](#enetstatus)
+* [getEnetStatus](#getenetstatus)
 
 ## getBot
 `getBot(string botname)`
@@ -429,13 +430,13 @@ log("Tile 0, 0 is not Seed")
 end
 ```
 
-## inWorld
-`inWorld()`
+## getCurrentWorld
+`getCurrentWorld()`
 
 Example:
 ```lua
 if inWorld() then
-log("in world")
+log("Current World Name is :",getCurrentWorld())
 else
 log("not in world")
 end
@@ -505,4 +506,57 @@ enum Enet_Status
     Connected,
     ShadowBan
 };
+```
+
+
+## httpReq
+`httpReq(httpRequestInfo data)`
+Returns table of  [httpResponseInfo](Structs.md#httpresponseinfo)
+
+
+httpRequestInfo struct : [httpRequestInfo](Structs.md#httprequestinfo) 
+
+Example Get Request:
+```lua
+RequestINFO={}
+RequestINFO.url="https://example.com/"
+x = httpReq(RequestINFO)
+if x.success then
+log("Response Body : ",x.body)
+log("Response Http Status Code : ",x.httpCode)
+else
+log("Request Failed Error Msg : ",x.failInfo)
+end
+```
+Example Post Request:
+```lua
+RequestINFO={}
+RequestINFO.url="https://httpbin.org/post"
+RequestINFO.method=POST
+RequestINFO.postData="name=heysurfer&surname=gay"
+x = httpReq(RequestINFO)
+if x.success then
+log("Response Body : ",x.body)
+log("Response Http Status Code : ",x.httpCode)
+else
+log("Request Failed Error Msg : ",x.failInfo)
+end
+```
+Example Discord Webhook Request:
+```lua
+function sendWebhook(text,WebHook)
+RequestINFO={}
+RequestINFO.url=WebHook
+RequestINFO.method=POST
+RequestINFO.postData="content="..text
+x = httpReq(RequestINFO)
+if x.success then
+log("Response Body : ",x.body)
+log("Response Http Status Code : ",x.httpCode)
+else
+log("Request Failed Error Msg : ",x.failInfo)
+end
+end
+
+sendWebhook("webhook test","webhook url")
 ```
