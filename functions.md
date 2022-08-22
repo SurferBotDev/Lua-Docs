@@ -35,6 +35,7 @@
 * [getCurrentWorld](#getcurrentworld)
 * [getBotStatus](#getbotstatus)
 * [getEnetStatus](#getenetstatus)
+* [httpReq](#httpreq)
 
 ## getBot
 `getBot(string botname)`
