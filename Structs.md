@@ -8,6 +8,7 @@
 * [ItemInfo](#iteminfo)
 * [VariantList](#variantlist)
 * [httpRequestInfo](#httprequestinfo)
+* [httpResponseInfo](#httpresponseinfo)
 
 ## Vector2
 | Type | Name | Description|
@@ -93,11 +94,18 @@
 ## httpRequestInfo
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| String | `URL` |  Request URL |
+| String | `url` |  Request URL |
 | String | `userAgent` | User Agent |
 | String | `postData` | Post Data |
 | Boolean | `json` | Json Request |
 | Enum | `method` | Request Method [POST,GET,DELETE] |
 
+## httpResponseInfo
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| String | `body` |  Response Body |
+| int | `httpCode` | Response Http Code |
+| Boolean | `success` | checks the request is successful/fail |
+| String | `failInfo` | Curl Error Message |
 
 Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
