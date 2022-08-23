@@ -7,6 +7,7 @@
 * [GamePacket](#gamepacket)
 * [ItemInfo](#iteminfo)
 * [VariantList](#variantlist)
+* [world](#world)
 * [httpRequestInfo](#httprequestinfo)
 * [httpResponseInfo](#httpresponseinfo)
 
@@ -90,6 +91,17 @@
 | String | `get(3)` | Param 3 |
 | String | `get(4)` | Param 4 |
 | String | `get(5)` | Param 5 |
+
+
+## world
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| String | `name` |  World Name |
+| int | `width` | World Width |
+| int | `height` | World Height |
+| int | `timer` | world timer (minute) |
+| table | `access` | World Access List (uid) |
+| [Vector2](#vector2) | `maindoor` | World Main Door pos ( white door) |
 
 ## httpRequestInfo
 | Type | Name | Description|
