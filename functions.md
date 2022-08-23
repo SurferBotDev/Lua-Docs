@@ -31,6 +31,7 @@
 * [getItemCount](#getitemcount)
 * [getSeedTime](#getseedtime)
 * [inWorld](#inworld)
+* [getWorld](#getworld)
 * [autoCollect](#autocollect)
 * [getCurrentWorld](#getcurrentworld)
 * [getBotStatus](#getbotstatus)
@@ -368,6 +369,25 @@ Example:
 ```lua
 if inWorld() then
 log("in world")
+else
+log("not in world")
+end
+```
+
+## getWorld
+`getWorld()`
+Returns [World](Structs.md#world)
+
+Example:
+```lua
+if inWorld() then
+x = getWorld()
+log("Current World Name is :",x.name)
+if x.timer == 0 then
+log("this world no have timer")
+else
+log("this world have timer",x.timer," minutes")
+end
 else
 log("not in world")
 end
