@@ -37,6 +37,8 @@
 * [getBotStatus](#getbotstatus)
 * [getEnetStatus](#getenetstatus)
 * [httpReq](#httpreq)
+* [hwid](#hwid)
+* [msgBox](#msgbox)
 
 ## getBot
 `getBot(string botname)`
@@ -581,3 +583,23 @@ end
 
 sendWebhook("webhook test","webhook url")
 ```
+
+## hwid
+`hwid()`
+ return Hardware ID
+ 
+ Example:
+```lua
+log("Your HWID :",hwid())
+```
+Example auth system:
+
+
+![eg](https://cdn.upload.systems/uploads/T3l9ZWzG.gif)
+
+## msgBox
+`msgBox(string HeaderText,string BodyText)`
+```lua
+msgBox("Error","xxxx")
+```
+![ss](https://cdn.upload.systems/uploads/Iiu3HDcC.png)
