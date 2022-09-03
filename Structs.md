@@ -36,6 +36,7 @@
 | Number | `netid` | Player's netID |
 | Number | `userid` | Player's userID |
 | Boolean | `Mod` | Is Mods |
+| Number | `gems` | Gems Amount (for local player) |
 
  ## Tile
 | Type | Name | Description|
