@@ -8,9 +8,9 @@ Example For Varlist:
 ```lua
 bot = getBot("growid")
 function OnVarlist(varlist)
-if varlist.get(0)=="OnConsoleMessage"
+if varlist[0]=="OnConsoleMessage"
 then
-log(varlist.get(1))
+log(varlist[1])
 end
 end
 
