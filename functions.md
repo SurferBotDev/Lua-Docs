@@ -362,7 +362,11 @@ end
 Example:
 ```lua
 -- Collecting Object With UID
-collectObject(0)
+for _,object in pairs(getObjects()) do
+collectObject(object.uid)
+end
+
+
 ```
 ## inWorld
 `inWorld()`
