@@ -437,11 +437,11 @@ log("Tile 0, 0 is not harvestable")
 end
 ```
 ```lua
-seedtime=bot:getSeedTime(1,1) 
-SeedID=bot:getTile(1,1).fg
+seedtime=bot:getSeedTime(0,0) 
+SeedID=bot:getTile(0,0).fg
 growtime=bot:getItemInfo(SeedID).growTime
-log(getTimeString(growtime-seedtime))
---output Example   Seeds Ready In '7 days, 15 hours, 27 mins, 25 secs'
+log("Seeds Ready In ",getTimeString(growtime-seedtime))
+--output Seeds Ready In '7 days, 15 hours, 27 mins, 25 secs'
 
 
 ```
