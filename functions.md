@@ -20,9 +20,7 @@
 * [move](#move)
 * [setPos](#setpos)
 * [say](#say)
-* [runThread](#runthread)
 * [getAllBot](#getallbot)
-* [connect](#connect)
 * [useDoor](#usedoor)
 * [isInside](#isinside)
 * [collectObject](#collectobject)
@@ -36,6 +34,11 @@
 * [getCurrentWorld](#getcurrentworld)
 * [getBotStatus](#getbotstatus)
 * [getEnetStatus](#getenetstatus)
+* [reConnect](#reconnect)
+* [connect](#connect)
+* [remove](#remove)
+* [getMs](#getms)
+* [runThread](#runthread)
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
@@ -301,23 +304,6 @@ Example:
 say("Hello")
 ```
 
-## runThread
-`runThread(function() 
-//code here
-end)`
-
-Example:
-```lua
-runThread(function()
-while true do
-log("New Thread")
-end
-end)
-
-while true do
-log("Normal Thread")
-end
-```
 ## getAllBot
 
 Example:
@@ -326,15 +312,6 @@ for k,v in pairs(getAllBot) do
 v:say("hi")
 end
 ```
-
-## connect
-`connect(string growid,string password,bool VdsSupport)`
-
-Example:
-```lua
-connect("mygrowid","mypassword",false)
-```
-
 
 ## useDoor
 `useDoor(int x,int y)`
@@ -535,6 +512,81 @@ enum Enet_Status
 };
 ```
 
+## reConnect
+`reConnect()`
+
+reConnect the bot
+
+```lua
+getBot("id").reConnect()
+```
+
+## disconnect
+`disconnect()`
+
+Disconnect the bot
+
+
+```lua
+getBot("id").disconnect()
+```
+
+## remove
+`remove()`
+
+Remove the bot from list ( QUIT )
+
+```lua
+getBot("id").remove()
+```
+## getMs
+`getMs()`
+
+Return bots MS ( Ping ) 
+
+
+```lua
+getBot("id").getMs()
+```
+
+## connect
+`connect(string growid,string password,table Botnet/Socks5 Information)`
+
+Example:
+```lua
+connect("mygrowid","mypassword") -- Without Socks5/Botnet
+
+Proxy = {
+HostName="ipaddress:port",
+Username="MyUsername",
+Password="MyPassword",
+Type=SOCKS5--SOCKS5/BOTNET
+}
+
+connect("mygrowid","mypassword",Proxy) -- With Socks5
+
+```
+
+## runThread
+`runThread(function() 
+//code here
+end)`
+
+Example:
+```lua
+runThread(function()
+while true do
+log("New Thread")
+Sleep(1)
+end
+end)
+
+while true do
+log("Normal Thread")
+Sleep(1)
+end
+```
+
 
 ## httpReq
 `httpReq(httpRequestInfo data)`
@@ -587,6 +639,7 @@ end
 
 sendWebhook("webhook test","webhook url")
 ```
+
 
 ## hwid
 `hwid()`
