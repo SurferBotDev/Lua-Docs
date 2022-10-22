@@ -9,6 +9,7 @@
 * [getObjects](#getobjects)
 * [getTile](#gettile)
 * [getTiles](#gettiles)
+* [getFlag](#getflag)
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
 * [isSeed](#isseed)
@@ -171,6 +172,27 @@ Example:
 for _,tile in pairs(getTiles()) do
 log(tile.fg)
 end
+```
+
+## getFlag
+`getFlag()`
+
+Returns enum of [getFlag](Structs.md#flagtype)
+
+Example:
+```lua
+if getFlag(0, 0) == flagType.WATER then
+log("Tile 0, 0 is WATER")
+end
+
+if getFlag(0, 0) == flagType.LOCKED then
+log("Tile 0, 0 is Locked")
+end
+
+if getFlag(0, 0) == flagType.FIRE then
+log("Tile 0, 0 is on FIRE")
+end
+
 ```
 
 ## getItemInfo

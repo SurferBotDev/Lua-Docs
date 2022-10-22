@@ -10,6 +10,7 @@
 * [world](#world)
 * [httpRequestInfo](#httprequestinfo)
 * [httpResponseInfo](#httpresponseinfo)
+* [flagType](#flagtype)
 
 ## Vector2
 | Type | Name | Description|
@@ -45,6 +46,7 @@
 | Number | `bg` | Background block's ID |
 | Number | `x`  | Position x |
 | Number | `y`  | Position y |
+| flagType | `flags` | Tile's flags  |
 | Number | `flags1` | Tile's flags 1 |
 | Number | `flags2` | Tile's flags 2 |
 
@@ -120,5 +122,23 @@
 | int | `httpCode` | Response Http Code |
 | Boolean | `success` | checks the request is successful/fail |
 | String | `failInfo` | Curl Error Message |
+
+
+## flagType
+| Name |
+|:-----|
+| PUBLIC |
+| LOCKED | 
+| NONE | 
+| WATER |
+| SEED | 
+| RED | 
+| PUBLIC | 
+| MAX | 
+| GREEN | 
+| GLUE | 
+| FLIPPED |
+| FIRE | 
+| BLUE |
 
 Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
