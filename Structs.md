@@ -10,6 +10,7 @@
 * [world](#world)
 * [httpRequestInfo](#httprequestinfo)
 * [httpResponseInfo](#httpresponseinfo)
+* [flagType](#flagtype)
 
 ## Vector2
 | Type | Name | Description|
@@ -120,5 +121,23 @@
 | int | `httpCode` | Response Http Code |
 | Boolean | `success` | checks the request is successful/fail |
 | String | `failInfo` | Curl Error Message |
+
+
+## flagType
+| Name |
+|:-----|
+| PUBLIC |
+| LOCKED | 
+| NONE | 
+| WATER |
+| SEED | 
+| RED | 
+| PUBLIC | 
+| MAX | 
+| GREEN | 
+| GLUE | 
+| FLIPPED |
+| FIRE | 
+| BLUE |
 
 Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
