@@ -9,7 +9,8 @@
 * [getObjects](#getobjects)
 * [getTile](#gettile)
 * [getTiles](#gettiles)
-* [getFlag](#getflag)
+* [checkFlag](#checkflag)
+* [hasAccessToTile](#hasaccesstotile)
 * [getItemInfo](#getiteminfo)
 * [isSolid](#issolid)
 * [isSeed](#isseed)
@@ -174,26 +175,54 @@ log(tile.fg)
 end
 ```
 
-## getFlag
-`getFlag()`
-
-Returns enum of [getFlag](Structs.md#flagtype)
+## checkFlag
+`checkFlag(int x,int y,enum Flag)`
 
 Example:
 ```lua
-if getFlag(0, 0) == flagType.WATER then
+if checkFlag(0, 0,flagType.WATER) ==  then
 log("Tile 0, 0 is WATER")
 end
 
-if getFlag(0, 0) == flagType.LOCKED then
+if checkFlag(0, 0,flagType.LOCKED) then
 log("Tile 0, 0 is Locked")
 end
 
-if getFlag(0, 0) == flagType.FIRE then
+if checkFlag(0, 0,flagType.PUBLIC) ==  then
+log("Tile 0, 0 is Public Area.")
+end
+
+if checkFlag(0, 0,flagType.FIRE) then
 log("Tile 0, 0 is on FIRE")
 end
 
+if checkFlag(0, 0,flagType.WATER) and checkFlag(0, 0,flagType.PUBLIC) then
+log("Tile 0, 0 is Water And Public")
+end
+
+if checkFlag(0, 0,flagType.LOCKED) and hasAccessToTile(0, 0) then
+log("Tile 0, 0 is Locked but bot have access.")
+end
+
 ```
+
+
+## hasAccessToTile
+`hasAccessToTile(int x,int y)`
+
+Return true if Access To x,y , false if it's not
+
+
+Example:
+```lua
+if hasAccessToTile(0, 0) then
+log("Bot Has Access To 0 0 Tile.")
+else
+log("Bot Does Not Have Access to the 0 0 Tile.")
+end
+
+```
+
 
 ## getItemInfo
 `getItemInfo(int itemid)`
@@ -450,9 +479,9 @@ log("Seeds Ready In ",getTimeString(growtime-seedtime))
 ```
 ```lua
 if getSeedTime(0, 0) == -1 then
-log("Tile 0, 0 is Seed")
-else
 log("Tile 0, 0 is not Seed")
+else
+log("Tile 0, 0 is Seed")
 end
 ```
 
