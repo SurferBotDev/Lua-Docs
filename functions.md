@@ -54,6 +54,8 @@ Example:
 ```lua
 bot = getBot("growid")
 bot:sendPacket("action|respawn", 2)
+bot:move(RIGHT,1)
+log("GrowID ",bot:getLocal().name)
 ```
 
 
@@ -180,7 +182,7 @@ end
 
 Example:
 ```lua
-if checkFlag(0, 0,flagType.WATER) ==  then
+if checkFlag(0, 0,flagType.WATER) then
 log("Tile 0, 0 is WATER")
 end
 
@@ -188,7 +190,7 @@ if checkFlag(0, 0,flagType.LOCKED) then
 log("Tile 0, 0 is Locked")
 end
 
-if checkFlag(0, 0,flagType.PUBLIC) ==  then
+if checkFlag(0, 0,flagType.PUBLIC) then
 log("Tile 0, 0 is Public Area.")
 end
 
@@ -329,7 +331,7 @@ warp("BUYGHC")
 
 Example:
 ```lua
--- Speed Default Value 1, Max Value 4
+-- Speed Default Value 1, Max Value 10
 move(RIGHT,1)
 move(LEFT,1)
 move(UP,1)
@@ -343,7 +345,7 @@ move(DOWN,1)
 
 Example:
 ```lua
---- Sets bot position
+--- Set bot position to x 0 y 0
 setPos(0,0)
 ```
 ## say
@@ -502,8 +504,8 @@ end
 Example:
 ```lua
 -- Disable/Enable AutoCollect.
-autoCollect(10,true) -- Auto Collect Enabled With 10 Range
-autoCollect(10,false) -- Auto Collect Disabled.
+autoCollect(10,true) -- Enable Auto Collect With 10 Range.
+autoCollect(10,false) -- Disable Auto Collect.
 ```
 
 
@@ -536,7 +538,9 @@ enum Bot_Status
     LogonATTEMPTS,
     OnSendToServer,
     Captcha,
-    Success
+    Success,
+    SERVER_OVERLOADED,
+    BypassTutorial
 };
 ```
 
