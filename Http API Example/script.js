@@ -10,20 +10,23 @@ function isJsonString(str) {
   }
 }
 
-function RequestAPI(path, data) {
-  const response = $.ajax({
-    url: `http://${ServerUrl}:4545/${path}`,
-    type: "POST",
-    async: false,
-    data: data,
+async function requestAPI(path, data) {
+
+    const formData = new FormData();
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }
+
+    const response = await fetch(`http://${ServerUrl}:4545/${path}`, {
+    method: "POST",
     headers: {
-      password: serverPassword,
+      "password": serverPassword,
     },
+    body: formData
   });
-  if (isJsonString(response.responseText))
-    return JSON.parse(response.responseText);
-  else
-    return response.responseText;
+
+  const responseText = await response.text();
+  return isJsonString(responseText) ? JSON.parse(responseText) : responseText;
 }
 
 const BotStatus = [
@@ -44,28 +47,36 @@ const BotStatus = [
 ];
 
 async function updateList() {
-  const response = RequestAPI("runScript", {
-    script:
-      'for k,v in pairs(getAllBot) do \nping = v:getMs()\nworld = v:getCurrentWorld()\nstatus = v:getBotStatus()\ngrowid = v:getLocal().name\nprint(growid.."|"..status.."|"..world.."|"..ping)\nend',
+  const response1 = await requestAPI("runScript", {
+    script: `
+      for k, v in pairs(getAllBot) do
+        ping = v:getMs()
+        world = v:getCurrentWorld()
+        status = v:getBotStatus()
+        growid = v:getLocal().name
+        print(growid .. "|" .. status .. "|" .. world .. "|" .. ping)
+      end
+    `
   });
 
-  await new Promise((resolve) => setTimeout(resolve, 100));
+await new Promise(resolve => setTimeout(resolve, 100));
 
-  const output = RequestAPI("getOutput", {
-    scriptID: response.scriptID,
-  }).split("\n");
+const response2 = await requestAPI("getOutput", {
+    scriptID: response1.scriptID
+ });
 
-  const parsedData = output.map((item) => {
+const output = response2.split("\n");
+const parsedData = output.map(item => {
     const [growID, status, world, ping] = item.split("|");
     if (growID === "") {
       return null;
     }
     return { growID, status, world, ping };
-  }).filter((item) => item !== null);
+}).filter(item => item !== null);
 
-  const table = document.getElementById("myTable");
-  const tbody = table.querySelector("tbody");
-  tbody.innerHTML = "";
+const table = document.getElementById("myTable");
+const tbody = table.querySelector("tbody");
+tbody.innerHTML = "";
 
 parsedData.forEach((data, i) => {
   const row = document.createElement("tr");
