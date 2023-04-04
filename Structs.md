@@ -38,6 +38,7 @@
 | Number | `userid` | Player's userID |
 | Boolean | `Mod` | Is Mods |
 | Number | `gems` | Gems Amount (for local player) |
+| Boolean | `guest` | Is guest |
 
  ## Tile
 | Type | Name | Description|
