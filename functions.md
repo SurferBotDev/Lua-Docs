@@ -38,6 +38,7 @@
 * [getEnetStatus](#getenetstatus)
 * [reConnect](#reconnect)
 * [connect](#connect)
+* [addGuest](#addguest)
 * [remove](#remove)
 * [getMs](#getms)
 * [runThread](#runthread)
@@ -619,6 +620,25 @@ Type=SOCKS5--SOCKS5/BOTNET
 }
 
 connect("mygrowid","mypassword",Proxy) -- With Socks5
+
+```
+
+
+## addGuest
+`addGuest(table Botnet/Socks5 Information)`
+
+Example:
+```lua
+addGuest() -- Without Socks5/Botnet
+
+Proxy = {
+HostName="ipaddress:port",
+Username="MyUsername",
+Password="MyPassword",
+Type=SOCKS5--SOCKS5/BOTNET
+}
+
+addGuest(Proxy) -- With Socks5
 
 ```
 
