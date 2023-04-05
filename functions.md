@@ -574,7 +574,7 @@ enum Enet_Status
 reConnect the bot
 
 ```lua
-getBot("id").reConnect()
+getBot("id"):reConnect()
 ```
 
 ## disconnect
@@ -584,7 +584,7 @@ Disconnect the bot
 
 
 ```lua
-getBot("id").disconnect()
+getBot("id"):disconnect()
 ```
 
 ## remove
@@ -593,7 +593,7 @@ getBot("id").disconnect()
 Remove the bot from list ( QUIT )
 
 ```lua
-getBot("id").remove()
+getBot("id"):remove()
 ```
 ## getMs
 `getMs()`
@@ -602,7 +602,7 @@ Return bots MS ( Ping )
 
 
 ```lua
-getBot("id").getMs()
+getBot("id"):getMs()
 ```
 
 ## connect
