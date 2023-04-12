@@ -52,8 +52,7 @@
 | Number | `x`  | Position x |
 | Number | `y`  | Position y |
 | flagType | `flags` | Tile's flags  |
-| Number | `flags1` | Tile's flags 1 |
-| Number | `flags2` | Tile's flags 2 |
+
 
  ## InventoryItem
 | Type | Name | Description|
