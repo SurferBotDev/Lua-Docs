@@ -41,18 +41,15 @@
 * [addGuest](#addguest)
 * [remove](#remove)
 * [getMs](#getms)
+* [runThread](#runthread)
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
-* [jsonDecode](#jsoneecode)
-* [jsonEncode](#jsonencode)
-* [scan](#scan)
-
 
 ## getBot
 `getBot(string botname)`
 
-Return bot from list
+Return bots from list
 
 Example:
 ```lua
@@ -330,7 +327,7 @@ warp("BUYGHC")
 
 ```
 
-## move
+## Move
 `move(enum MOVE,int speed)`
 
 Example:
@@ -503,40 +500,8 @@ log("not in world")
 end
 ```
 
-## isEquipped
-`isEquipped(item ID)`
-
-Example:
-```lua
-local targetItemID = 2204;
-if isEquipped(targetItemID) then
-log(getItemInfo(targetItemID).name," is equiped")
-else
-log(getItemInfo(targetItemID).name," is not equiped")
-end
-```
-
-## getSignal 
-`getSignal()`
-
-Example:
-```lua
-local currentSignal = getSignal()
-
-if not isEquipped(2204) -- check geiger is isEquipped
-  log("Geiger is not Equipped");
-elseif currentSignal == GREEN then
-  log("Geiger Signal Color : ","GREEN");
-elseif currentSignal == YELLOW then
-  log("Geiger Signal Color : ","YELLOW");
-else
-  log("Geiger Signal Color : ","RED");
-end
-```
-
 ## autoCollect
 `autoCollect(int collectrange,bool autocollect)`
-
 Example:
 ```lua
 -- Disable/Enable AutoCollect.
@@ -547,7 +512,6 @@ autoCollect(10,false) -- Disable Auto Collect.
 
 ## getBotStatus
 `getBotStatus()`
-
 Example:
 ```lua
  if getBotStatus() == Success then
@@ -584,7 +548,6 @@ enum Bot_Status
 
 ## getEnetStatus
 `getEnetStatus()`
-
 Example:
 ```lua
     if getEnetStatus() == Connected then
@@ -635,7 +598,7 @@ getBot("id"):remove()
 ## getMs
 `getMs()`
 
-Return bot MS ( Ping ) 
+Return bots MS ( Ping ) 
 
 
 ```lua
@@ -662,10 +625,12 @@ connect("mygrowid","mypassword",Proxy) -- With Socks5
 
 
 ## addGuest
-`addGuest(string GrowID,table Botnet/Socks5 Information)`
+`addGuest(table Botnet/Socks5 Information)`
 
 Example:
 ```lua
+addGuest() -- Without Socks5/Botnet
+
 Proxy = {
 HostName="ipaddress:port",
 Username="MyUsername",
@@ -674,22 +639,32 @@ Type=SOCKS5--SOCKS5/BOTNET
 }
 
 addGuest(Proxy) -- With Socks5
-addGuest("GrowID",Proxy) -- With Socks5 and with custom growID
 
 ```
 
+## runThread
+`runThread(function() 
+//code here
+end)`
+
+Example:
 ```lua
-addGuest()
-addGuest("GrowID") -- with custom GrowID
+runThread(function()
+while true do
+log("New Thread")
+Sleep(1)
+end
+end)
+
+while true do
+log("Normal Thread")
+Sleep(1)
+end
 ```
-
-
-
 
 
 ## httpReq
 `httpReq(httpRequestInfo data)`
-
 Returns table of  [httpResponseInfo](Structs.md#httpresponseinfo)
 
 
@@ -760,34 +735,3 @@ Example auth system:
 msgBox("Error","xxxx")
 ```
 ![ss](https://cdn.upload.systems/uploads/Iiu3HDcC.png)
-
-## jsonDecode
-`jsonDecode(string json)`
-```lua
-local data = '{"name":"John","age":30,"city":"New York"}'
-local json=jsonDecode(data)
-log("Name :",json.name) --> "Name : John"
-log("Age :",json.age) --> "Age : 30"
-log("City :",json.city) --> "City : New York"
-```
-
-## jsonEncode
-`jsonEncode(table data)`
-```lua
-local data ={
-name = "john",
-age = 30,
-city = "New York"
-}
-print(jsonEncode(data)) -->{"age":30,"city":"New York","name":"john"}
-```
-
-## scan
-`scan(string data)`
-```lua
-local data = "spawn|avatar\nnetID|2\nuserID|id"
-local parser = scan(data)
-log("Spawn : ",parser:get("spawn"))
-log("netID : ",parser:get("netID"))
-log("userID : ",parser:get("userID"))
-```

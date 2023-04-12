@@ -11,7 +11,6 @@
 * [httpRequestInfo](#httprequestinfo)
 * [httpResponseInfo](#httpresponseinfo)
 * [flagType](#flagtype)
-* [hookType](#hooktype)
 
 ## Vector2
 | Type | Name | Description|
@@ -34,15 +33,12 @@
 | String | `name` | Player's name |
 | String | `country` | Player's flag id |
 | [Vector2](#vector2) | `pos`  | Player's position |
+| [Vector2](#vector2) | `size` | Player's size |
 | Number | `netid` | Player's netID |
 | Number | `userid` | Player's userID |
-| Number | `buildRange` | Player's buildRange |
-| Number | `punchRange` | Player's punchRange |
-| Boolean | `Mod` | Is Mod |
-| Number | `gems` | Gems Amount |
+| Boolean | `Mod` | Is Mods |
+| Number | `gems` | Gems Amount (for local player) |
 | Boolean | `guest` | Is guest |
-| Number | `guest` | Inventory slot count |
-
 
  ## Tile
 | Type | Name | Description|
@@ -52,8 +48,6 @@
 | Number | `x`  | Position x |
 | Number | `y`  | Position y |
 | flagType | `flags` | Tile's flags  |
-| Number | `flags1` | Tile's flags 1 |
-| Number | `flags2` | Tile's flags 2 |
 
  ## InventoryItem
 | Type | Name | Description|
@@ -93,12 +87,12 @@
 ## VariantList
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| String | `[0]` | Variant function name |
-| String | `[1]` | Param 1 |
-| String | `[2]` | Param 2 |
-| String | `[3]` | Param 3 |
-| String | `[4]` | Param 4 |
-| String | `[5]` | Param 5 |
+| String | `get(0)` | Variant function name |
+| String | `get(1)` | Param 1 |
+| String | `get(2)` | Param 2 |
+| String | `get(3)` | Param 3 |
+| String | `get(4)` | Param 4 |
+| String | `get(5)` | Param 5 |
 
 
 ## world
@@ -145,14 +139,5 @@
 | FLIPPED |
 | FIRE | 
 | BLUE |
-
-
-## hookType
-| Name |
-|:-----|
-| varlist |
-| moderatorJoined | 
-| gamePacket | 
-
 
 Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
