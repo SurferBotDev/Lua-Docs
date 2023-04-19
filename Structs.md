@@ -41,7 +41,7 @@
 | Boolean | `Mod` | Is Mod |
 | Number | `gems` | Gems Amount |
 | Boolean | `guest` | Is guest |
-| Number | `guest` | Inventory slot count |
+| Number | `slot` | Inventory slot count (backpack) |
 
 
  ## Tile
