@@ -44,7 +44,7 @@
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
-* [jsonDecode](#jsoneecode)
+* [jsonDecode](#jsondecode)
 * [jsonEncode](#jsonencode)
 * [scan](#scan)
 
@@ -523,14 +523,14 @@ Example:
 ```lua
 local currentSignal = getSignal()
 
-if not isEquipped(2204) -- check geiger is isEquipped
-  log("Geiger is not Equipped");
+if not isEquipped(2204) then-- check geiger is isEquipped
+  log("Geiger is not Equipped")
 elseif currentSignal == GREEN then
-  log("Geiger Signal Color : ","GREEN");
+  log("Geiger Signal Color : ","GREEN")
 elseif currentSignal == YELLOW then
-  log("Geiger Signal Color : ","YELLOW");
+  log("Geiger Signal Color : ","YELLOW")
 else
-  log("Geiger Signal Color : ","RED");
+  log("Geiger Signal Color : ","RED")
 end
 ```
 
