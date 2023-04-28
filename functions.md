@@ -52,6 +52,14 @@
 ## getBot
 `getBot(string botname)`
 
+`getBot(int IndexID)`
+
+`getBot() -> Selected bot`
+
+
+https://user-images.githubusercontent.com/58826689/235254325-1ea20c15-f9c3-4965-8929-0ff25a6dda4e.mp4
+
+
 Return bot from list
 
 Example:
@@ -158,6 +166,10 @@ end
 
 ## getTile
 `getTile(int x, int y)`
+
+
+https://user-images.githubusercontent.com/58826689/235254798-594f43d7-4956-43d4-826b-c9e1d917b7cf.mp4
+
 
 Returns world [Tile](Structs.md#tile) in selected position
 
