@@ -41,6 +41,7 @@
 * [addGuest](#addguest)
 * [remove](#remove)
 * [getMs](#getms)
+* [setBool](#setbool)
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
@@ -653,6 +654,30 @@ Return bot MS ( Ping )
 ```lua
 getBot("id"):getMs()
 ```
+
+## setBool
+`setBool()`
+
+enable/disable feature for bot
+
+Feature List : 
+```
+autoCollect
+skipTutorial
+autoReconnect
+autoAccess
+adminDetector -- if a admin joins the world bot will leave the world
+modLeave  -- if a moderator or guardian joins the world bot will leave the world
+modUnaccess
+modDisconnect -- disconnect and disable auto - reconnect
+```
+Example : 
+```lua
+setBool("autocollect",false) --Disable AutoCollect
+setBool("autocollect",true) --Enable AutoCollect
+setBool("skipTutorial",false) --Disable skipTutorial
+```
+
 
 ## connect
 `connect(string growid,string password,table Botnet/Socks5 Information)`
