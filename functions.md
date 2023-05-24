@@ -590,7 +590,9 @@ enum Bot_Status
     Captcha,
     Success,
     SERVER_OVERLOADED,
-    BypassTutorial
+    BypassTutorial,
+    Unable_to_create_new_account,
+    InvalidEmail
 };
 ```
 
@@ -670,12 +672,15 @@ adminDetector -- if a admin joins the world bot will leave the world
 modLeave  -- if a moderator or guardian joins the world bot will leave the world
 modUnaccess
 modDisconnect -- disconnect and disable auto - reconnect
+ignoreGem -- (autoCollect)
 ```
 Example : 
 ```lua
 setBool("autocollect",false) --Disable AutoCollect
 setBool("autocollect",true) --Enable AutoCollect
 setBool("skipTutorial",false) --Disable skipTutorial
+setBool("ignoreGem",false) --Disable ignoreGem on autoCollect
+
 ```
 
 
