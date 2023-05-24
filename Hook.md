@@ -4,6 +4,8 @@
 ## addHook
 `addHook(function,hookType) `
 
+The AddHook function has been updated: It is now necessary to add a loop to the code for the hook to continue.
+
 [hookType](Structs.md#hookType)
 
 Example For Varlist:
@@ -16,6 +18,10 @@ function onVarlist(varlist)
 end
 
 bot:addHook(onVarlist,varlist)
+while true do
+sleep(1)
+end
+
 ```
 
 Example For gamePacket:
@@ -31,6 +37,9 @@ function onPacket(packet)
 end
 
 bot:addHook(onPacket,gamePacket)
+while true do
+sleep(1)
+end
 ```
 
 
@@ -46,6 +55,9 @@ function modDetector(guardian)
 end
 
 bot:addHook(modDetector,moderatorJoined)
+while true do
+sleep(1)
+end
 ```
 
 ## RemoveHook
