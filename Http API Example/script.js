@@ -45,7 +45,10 @@ const BotStatus = [
   "SERVER OVERLOADED",
   "Bypass Tutorial",
 ];
-
+async function cleanMemory() {
+await requestAPI("clearCache", {
+});
+}
 async function updateList() {
   const response1 = await requestAPI("runScript", {
     script: `
@@ -104,3 +107,4 @@ function warp(botName) {
 
 updateList();
 setInterval(updateList, 1000);
+setInterval(cleanMemory, 10000);
