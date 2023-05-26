@@ -44,6 +44,7 @@
 | Number | `slot` | Inventory slot count (backpack) |
 | Number | `level` | Player's level |
 | Boolean | `supporter` |  Is Supporter |
+| String | `guestInfo` |  guestInfo (session information) |
 
 
  ## Tile
