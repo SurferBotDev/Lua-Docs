@@ -39,6 +39,7 @@
 * [reConnect](#reconnect)
 * [connect](#connect)
 * [addGuest](#addguest)
+* [loginGuest](#loginguest)
 * [remove](#remove)
 * [getMs](#getms)
 * [setBool](#setbool)
@@ -709,24 +710,38 @@ connect("mygrowid","mypassword",Proxy) -- With Socks5
 Example:
 ```lua
 Proxy = {
-HostName="ipaddress:port",
+HostName="127.0.0.1:5555",
 Username="MyUsername",
 Password="MyPassword",
-Type=SOCKS5--SOCKS5/BOTNET
+Type=SOCKS5 --SOCKS5/BOTNET
 }
 
-addGuest(Proxy) -- With Socks5
-addGuest("GrowID",Proxy) -- With Socks5 and with custom growID
+addGuest("") -- with a random GrowID
+addGuest("GrowID") -- with a custom GrowID, without SOCKS5
+addGuest("",Proxy) -- with SOCKS5 and a random GrowID
+addGuest("GrowID",Proxy) -- with SOCKS5 and a custom GrowID
 
 ```
 
+## loginGuest
+`loginGuest(string GrowID,table Botnet/Socks5 Information,string guestInfo (session Information) )`
+
+Example:
 ```lua
-addGuest()
-addGuest("GrowID") -- with custom GrowID
+Proxy = {
+HostName="127.0.0.1:5555",
+Username="MyUsername",
+Password="MyPassword",
+Type=SOCKS5 --SOCKS5/BOTNET
+}
+-- You can obtain the guestInfo from getLocal().guestInfo
+
+loginGuest("", guestInfo) -- with a random GrowID
+loginGuest("GrowID", guestInfo) -- with a custom GrowID, without SOCKS5
+loginGuest("", Proxy, guestInfo) -- with SOCKS5 and a random GrowID
+loginGuest("GrowID", Proxy, guestInfo) -- with SOCKS5 and a custom GrowID
+
 ```
-
-
-
 
 
 ## httpReq
