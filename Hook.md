@@ -17,6 +17,7 @@ function onVarlist(varlist)
     end
 end
 
+bot:addHook(onVarlist,varlist)
 
 Safe(function()
   -- The Safe Function is required to ensure a safe thread
@@ -43,6 +44,7 @@ function onPacket(packet)
     end
 end
 
+bot:addHook(onPacket,gamePacket)
 
 Safe(function()
   -- The Safe Function is required to ensure a safe thread
