@@ -17,10 +17,17 @@ function onVarlist(varlist)
     end
 end
 
-bot:addHook(onVarlist,varlist)
-while true do
-sleep(1)
-end
+
+Safe(function()
+  -- The Safe Function is required to ensure a safe thread
+  while true do
+    -- We need an infinite loop to continue the hook
+    -- ..code
+    sleep(1)
+    safeUnlock()
+    -- We need to unlock the thread to allow another thread to access the hook function
+  end
+end)
 
 ```
 
@@ -36,10 +43,17 @@ function onPacket(packet)
     end
 end
 
-bot:addHook(onPacket,gamePacket)
-while true do
-sleep(1)
-end
+
+Safe(function()
+  -- The Safe Function is required to ensure a safe thread
+  while true do
+    -- We need an infinite loop to continue the hook
+    -- ..code
+    sleep(1)
+    safeUnlock()
+    -- We need to unlock the thread to allow another thread to access the hook function
+  end
+end)
 ```
 
 
@@ -55,9 +69,17 @@ function modDetector(guardian)
 end
 
 bot:addHook(modDetector,moderatorJoined)
-while true do
-sleep(1)
-end
+
+Safe(function()
+  -- The Safe Function is required to ensure a safe thread
+  while true do
+    -- We need an infinite loop to continue the hook
+    -- ..code
+    sleep(1)
+    safeUnlock()
+    -- We need to unlock the thread to allow another thread to access the hook function
+  end
+end)
 ```
 
 ## RemoveHook
