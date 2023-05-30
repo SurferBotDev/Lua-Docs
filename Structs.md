@@ -42,6 +42,9 @@
 | Number | `gems` | Gems Amount |
 | Boolean | `guest` | Is guest |
 | Number | `slot` | Inventory slot count (backpack) |
+| Number | `level` | Player's level |
+| Boolean | `supporter` |  Is Supporter |
+| String | `guestInfo` |  guestInfo (session information) |
 
 
  ## Tile
@@ -117,7 +120,8 @@
 | String | `userAgent` | User Agent |
 | String | `postData` | Post Data |
 | Boolean | `json` | Json Request |
-| Enum | `method` | Request Method [POST,GET,DELETE] |
+| Enum | `method` | Request Method [POST,GET,DELETE,PUT,HEAD,PATCH] |
+| String | `proxy` | Proxy Information eg(http://user:password@proxy:port)|
 
 ## httpResponseInfo
 | Type | Name | Description|
@@ -137,7 +141,7 @@
 | WATER |
 | SEED | 
 | RED | 
-| PUBLIC | 
+| OPEN | 
 | MAX | 
 | GREEN | 
 | GLUE | 
@@ -152,6 +156,3 @@
 | varlist |
 | moderatorJoined | 
 | gamePacket | 
-
-
-Credit [Arky](https://github.com/arky-arky/teohook-scripting-wrapper)
