@@ -379,7 +379,7 @@ say("Hello")
 
 Example:
 ```lua
-for k,v in pairs(getAllBot) do 
+for k,v in pairs(getAllBot()) do 
 v:say("hi")
 end
 ```
