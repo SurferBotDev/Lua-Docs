@@ -46,9 +46,10 @@
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
-* [jsonDecode](#jsondecode)
-* [jsonEncode](#jsonencode)
 * [scan](#scan)
+* [readFile](#readfile)
+* [moveFile](#movefile)
+* [writeFile](#writefile)
 
 
 ## getBot
@@ -813,31 +814,14 @@ Example auth system:
 
 ## msgBox
 `msgBox(string HeaderText,string BodyText)`
+
+Displays a message box with the specified header text and body text.
+
 ```lua
 msgBox("Error","xxxx")
 ```
 ![ss](https://cdn.upload.systems/uploads/Iiu3HDcC.png)
 
-## jsonDecode
-`jsonDecode(string json)`
-```lua
-local data = '{"name":"John","age":30,"city":"New York"}'
-local json=jsonDecode(data)
-log("Name :",json.name) --> "Name : John"
-log("Age :",json.age) --> "Age : 30"
-log("City :",json.city) --> "City : New York"
-```
-
-## jsonEncode
-`jsonEncode(table data)`
-```lua
-local data ={
-name = "john",
-age = 30,
-city = "New York"
-}
-print(jsonEncode(data)) -->{"age":30,"city":"New York","name":"john"}
-```
 
 ## scan
 `scan(string data)`
@@ -847,4 +831,29 @@ local parser = scan(data)
 log("Spawn : ",parser:get("spawn"))
 log("netID : ",parser:get("netID"))
 log("userID : ",parser:get("userID"))
+```
+## readFile
+`readFile(path)`
+
+Reads the contents of a file specified by the path parameter and returns the content as a string.
+```lua
+local content = readFile("myfile.txt")
+print(content) -- Output: Contents of the file
+```
+## moveFile
+
+`moveFile(src, dest)`
+
+Moves the file specified by the src parameter to the destination specified by the dest parameter. If the file is successfully moved, it returns true; otherwise, if the source file doesn't exist, it returns false.
+```lua
+local success = moveFile("oldfile.txt", "newfile.txt")
+print(success) -- Output: true if the file was successfully moved, false otherwise
+```
+## writeFile
+`writeFile(src, text)`
+
+Writes the provided text to the file specified by the src parameter. If the write operation is successful, it returns true.
+```lua
+local success = writeFile("myfile.txt", "Hello, world!")
+print(success) -- Output: true if the write operation was successful, false otherwise
 ```
