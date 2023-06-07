@@ -52,7 +52,7 @@ await requestAPI("clearCache", {
 async function updateList() {
   const response1 = await requestAPI("runScript", {
     script: `
-      for k, v in pairs(getAllBot) do
+      for k, v in pairs(getAllBot()) do
         ping = v:getMs()
         world = v:getCurrentWorld()
         status = v:getBotStatus()
