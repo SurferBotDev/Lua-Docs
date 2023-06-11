@@ -40,9 +40,14 @@
 * [connect](#connect)
 * [addGuest](#addguest)
 * [loginGuest](#loginguest)
+* [updateProxy](#updateproxy)
+* [updateBot](#updatebot)
+
 * [remove](#remove)
 * [getMs](#getms)
 * [setBool](#setbool)
+* [removeWorld](#removeworld)
+* [addWorld](#addworld)
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
@@ -181,6 +186,23 @@ Example:
 -- Logs top left corners foreground block id
 tile = getTile(0, 0)
 log(tile.fg)
+```
+```lua
+tile = getTile(0, 0)
+if tile.extra.extraType == Provider then
+	if tile.extra.ready then
+		log("The Provider is Ready To Collect")
+	else
+		log("The Provider is not Ready To Collect")
+  end
+elseif tile.extra.extraType == Vending then
+	if tile.extra.each then
+		log(tile.extra.price, " World Locks Each")
+	else
+		log(tile.extra.price, " per World Lock")
+	end
+end
+
 ```
 
 ## getTiles
@@ -666,6 +688,7 @@ enable/disable feature for bot
 
 Feature List : 
 ```
+rotation
 autoCollect
 skipTutorial
 autoReconnect
@@ -682,9 +705,27 @@ setBool("autocollect",false) --Disable AutoCollect
 setBool("autocollect",true) --Enable AutoCollect
 setBool("skipTutorial",false) --Disable skipTutorial
 setBool("ignoreGem",false) --Disable ignoreGem on autoCollect
+setBool("rotation",true) --Enable rotation
 
 ```
 
+## addWorld
+`addWorld(int blockID,string worldname)`
+
+Example:
+```lua
+--4584 = Pepper Tree
+addWorld(4584,"worldName") 
+addWorld(4584,"worldName|doorID")
+```
+
+## removeWorld
+`addWorld(string worldname)`
+
+Example:
+```lua
+addWorld("worldName")
+```
 
 ## connect
 `connect(string growid,string password,table Botnet/Socks5 Information)`
@@ -744,6 +785,27 @@ loginGuest("GrowID", Proxy, guestInfo) -- with SOCKS5 and a custom GrowID
 
 ```
 
+## updateBot
+`updateBot(string GrowID,string Password )`
+
+Example:
+```lua
+updateBot("newGrowID", "newPassword") 
+```
+
+## updateProxy
+`updateProxy(table Botnet/Socks5)`
+
+Example:
+```lua
+newProxy = {
+HostName="127.0.0.1:5555",
+Username="MyUsername",
+Password="MyPassword",
+Type=SOCKS5 --SOCKS5/BOTNET
+}
+updateProxy(newProxy)
+```
 
 ## httpReq
 `httpReq(httpRequestInfo data)`

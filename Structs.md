@@ -12,21 +12,22 @@
 * [httpResponseInfo](#httpresponseinfo)
 * [flagType](#flagtype)
 * [hookType](#hooktype)
+* [tileExtra](#tileextra)
 
 ## Vector2
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `x` | Position x |
-| Number | `y` | Position y |
+| Number | `x` | X position |
+| Number | `y` | Y position |
 
 ## WorldObject
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `id` | Object's item ID |
-| Number | `uid` | Object's index |
-| [Vector2](#vector2) | `pos` | Object's position |
-| Number | `count` | Object's item count |
-| Number | `flags` | Object's flags |
+| Number | `id` | Item ID of the object |
+| Number | `uid` | Index of the object |
+| [Vector2](#vector2) | `pos` | Position of the object |
+| Number | `count` | Item count of the object |
+| Number | `flags` | Flags of the object |
  
  ## NetAvatar
 | Type | Name | Description|
@@ -38,29 +39,30 @@
 | Number | `userid` | Player's userID |
 | Number | `buildRange` | Player's buildRange |
 | Number | `punchRange` | Player's punchRange |
-| Boolean | `Mod` | Is Mod |
+| Boolean | `Mod` | Indicates whether the player is a mod |
 | Number | `gems` | Gems Amount |
-| Boolean | `guest` | Is guest |
+| Boolean | `guest` | Indicates whether the player is a guest |
 | Number | `slot` | Inventory slot count (backpack) |
 | Number | `level` | Player's level |
-| Boolean | `supporter` |  Is Supporter |
+| Boolean | `supporter` |  Indicates whether the player is a supporter |
 | String | `guestInfo` |  guestInfo (session information) |
 
 
  ## Tile
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `fg` | Foreground block's ID |
-| Number | `bg` | Background block's ID |
-| Number | `x`  | Position x |
-| Number | `y`  | Position y |
-| flagType | `flags` | Tile's flags  |
+| Number | `fg` | Foreground ID of the Tile |
+| Number | `bg` | Background ID of the Tile |
+| Number | `x`  | x position of the Tile |
+| Number | `y`  | y position of the Tile |
+| [flagType](#flagtype) | `flags` | Flags of the Tile  |
+| [tile Extra](#tileextra) | `extra` | Extra Information of the Tile  |
 
 
  ## InventoryItem
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `id` | Item's ID |
+| Number | `id` | Item ID |
 | Number | `count` | Item count |
 
 
@@ -102,16 +104,15 @@
 | String | `[4]` | Param 4 |
 | String | `[5]` | Param 5 |
 
-
 ## world
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | String | `name` |  World Name |
 | int | `width` | World Width |
 | int | `height` | World Height |
-| int | `timer` | world timer (minute) |
-| table | `access` | World Access List (uid) |
-| [Vector2](#vector2) | `maindoor` | World Main Door pos ( white door) |
+| int | `timer` | World timer (in minutes) |
+| table [int] | `access` | World access list (uid) |
+| [Vector2](#vector2) | `maindoor` | Main door position of the world (white door)|
 
 ## httpRequestInfo
 | Type | Name | Description|
@@ -121,16 +122,15 @@
 | String | `postData` | Post Data |
 | Boolean | `json` | Json Request |
 | Enum | `method` | Request Method [POST,GET,DELETE,PUT,HEAD,PATCH] |
-| String | `proxy` | Proxy Information eg(http://user:password@proxy:port)|
+| String | `proxy` | Proxy information (e.g., http://user:password@proxy:port) |
 
 ## httpResponseInfo
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | String | `body` |  Response Body |
-| int | `httpCode` | Response Http Code |
-| Boolean | `success` | checks the request is successful/fail |
-| String | `failInfo` | Curl Error Message |
-
+| int | `httpCode` | Response HTTP code |
+| Boolean | `success` | Indicates whether the request was successful or failed|
+| String | `failInfo` | CURL error message |
 
 ## flagType
 | Name |
@@ -156,3 +156,68 @@
 | varlist |
 | moderatorJoined | 
 | gamePacket | 
+
+# tileExtra
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| String | `extraType` |  Extra Type ; e.g.,VipEntrance,Vending |
+
+## VipEntrance
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| table [int] | `accessList` |  Access List |
+| Boolean | `public` | Indicates if the VIP entrance is public |
+
+## Vending
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| int | `itemID` | ItemID On The Vending Machine |
+| int | `price` | Price On The Vending Machine |
+| Boolean | `each` | Indicates whether the item is sold per unit or each|
+
+## WorldLock
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| table [int] | `accessList` |  Access List |
+| Boolean | `public` | Indicates if the World Lock is public |
+| int | `timer` | Timer value for the lock in miniutes |
+
+## Lock
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| table [int] | `accessList` |  Access List |
+| Boolean | `public` | Indicates if the Lock is public |
+
+## Provider
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| Boolean | `ready` |  Indicates if the provider is ready to be Collect|
+| int | `time` | Growth time; e.g., check -> (provider time > growth = readyToHarvest) |
+| int | `currentTime` | Current time when the Provider object is created |
+
+## Seed
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| Boolean | `ready` |  Indicates if the provider is ready to be harvest|
+| int | `time` | Growth time; e.g., check -> (seed time > growth = readyToHarvest ) |
+| int | `count` | fruit count; only visual, not the actual amount |
+| int | `currentTime` | Current time when the Seed object is created |
+
+## GeigerCharger
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| Boolean | `ready` |  Indicates if the Charger is ready to be Collect|
+| int | `time` | Growth time; e.g., check -> (charger time > 3600 = readyToHarvest ) |
+| int | `currentTime` | Current time when the GeigerCharger object is created |
+
+
+## Sign
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| string | `label` | Label of the Sign |
+
+## Door
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| string | `label` | Label of the door |
+
