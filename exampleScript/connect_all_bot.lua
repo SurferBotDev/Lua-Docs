@@ -1,4 +1,4 @@
-for k, bot in pairs(getAllBot) do
+for k, bot in pairs(getAllBot()) do
     if bot:getEnetStatus() == Disconnected then
         bot:reConnect()
         sleep(200)

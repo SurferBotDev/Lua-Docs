@@ -29,3 +29,8 @@ function modDetector(guardian)
 end
 
 bot:addHook(modDetector, moderatorJoined)
+while true do
+    -- We need an infinite loop to continue the hook
+    -- ..code
+    sleep(1)
+  end
