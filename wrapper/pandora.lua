@@ -2,7 +2,7 @@
 -- Download the Lua script to the same folder as the SurferBot , and then add the line dofile("pandora.lua") as the first line
 local mainGetBot = getBot
 
-local function getStatusAsString(bot)
+function getStatusAsString(bot)
     local status = ""
     local botStatus = bot:getBotStatus()
     if botStatus == Disconnected then
@@ -37,7 +37,7 @@ local function getStatusAsString(bot)
     return status
 end
 
-local function getBot(id)
+function getBot(id)
     local bot
     if id == nil then
         bot = mainGetBot()
@@ -47,7 +47,8 @@ local function getBot(id)
         bot = mainGetBot(id)
     end
 
-    local botInfo = {}
+
+    botInfo = {}
     botInfo.name = bot:getLocal().name
     botInfo.world = bot:getWorld().name
     botInfo.status = getStatusAsString(bot)
