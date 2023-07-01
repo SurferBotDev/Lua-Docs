@@ -169,15 +169,15 @@ function getBot(id)
     end
 
     botInfo.punch = function(x, y)
-        return bot:hitTile(x, y)
+        return bot:hitTile(bot:getLocal().pos.x + x, bot:getLocal().pos.y + y)
     end
 
     botInfo.place = function(id, x, y)
-        return bot:placeTile(x, y, id)
+        return bot:placeTile(bot:getLocal().posx + x, bot:getLocal().posy + y, id)
     end
 
     botInfo.wrench = function(x, y)
-        return bot:wrenchTile(x, y)
+        return bot:wrenchTile(bot:getLocal().posx + x, bot:getLocal().posy + y)
     end
 
     botInfo.drop = function(id, count)
