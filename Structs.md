@@ -47,6 +47,7 @@
 | Boolean | `supporter` |  Indicates whether the player is a supporter |
 | String | `guestInfo` |  guestInfo (session information) |
 | Table | `proxy` |  proxy information { hostname, username, password } |
+| String | `mac` |  mac information  |
 
 
  ## Tile

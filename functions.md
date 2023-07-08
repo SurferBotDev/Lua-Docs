@@ -41,8 +41,8 @@
 * [addGuest](#addguest)
 * [loginGuest](#loginguest)
 * [updateProxy](#updateproxy)
+* [setMac](#setmac)
 * [updateBot](#updatebot)
-
 * [remove](#remove)
 * [getMs](#getms)
 * [setBool](#setbool)
@@ -562,6 +562,8 @@ local currentSignal = getSignal()
 
 if not isEquipped(2204) then-- check geiger is isEquipped
   log("Geiger is not Equipped")
+elseif currentSignal == RAPIDGREEN then
+  log("Geiger Signal Color : ","RAPID GREEN")
 elseif currentSignal == GREEN then
   log("Geiger Signal Color : ","GREEN")
 elseif currentSignal == YELLOW then
@@ -805,6 +807,15 @@ Password="MyPassword",
 Type=SOCKS5 --SOCKS5/BOTNET
 }
 updateProxy(newProxy)
+```
+
+## setMac
+`setMac(string newMac)`
+
+Example:
+```lua
+bot = getBot()
+bot:setMac("42:d4:a6:0b:5f:c3")
 ```
 
 ## httpReq
