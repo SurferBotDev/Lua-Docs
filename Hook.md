@@ -8,6 +8,23 @@ The AddHook function has been updated: It is now necessary to add a loop to the 
 
 [hookType](Structs.md#hookType)
 
+
+Example For GameMessage:
+```lua
+bot = getBot()
+function onMessage(text)
+    log("gameMessage: ",text)
+end
+
+bot:addHook(onMessage,gameMessage)
+
+while true do
+    -- We need an infinite loop to continue the hook
+    -- ..code
+    sleep(1)
+  end
+```
+
 Example For Varlist:
 ```lua
 bot = getBot()
