@@ -48,6 +48,10 @@
 * [setBool](#setbool)
 * [removeWorld](#removeworld)
 * [addWorld](#addworld)
+* [createUbi](#createubi)
+* [getIndex](#getindex)
+* [getID](#getid)
+
 * [httpReq](#httpreq)
 * [hwid](#hwid)
 * [msgBox](#msgbox)
@@ -60,7 +64,7 @@
 ## getBot
 `getBot(string botname)`
 
-`getBot(int IndexID)`
+`getBot(int botID)`
 
 `getBot() -> Selected bot`
 
@@ -274,8 +278,17 @@ Returns [ItemInfo](Structs.md#iteminfo) of selected Item ID
 
 Example:
 ```lua
--- Logs Item ID 2's name (Dirt)
-log(getItemInfo(2).name)
+local ItemInfo = getItemInfo(2) --dirt
+
+log("name: ", ItemInfo.name)
+log("id: ", ItemInfo.id)
+log("rarity: ", ItemInfo.rarity)
+log("growTime: ", ItemInfo.growTime)
+log("breakHits: ", ItemInfo.breakHits)
+log("dropChance: ", ItemInfo.dropChance)
+log("itemCategory: ", ItemInfo.itemCategory)
+log("dropable: ", ItemInfo.dropable)
+log("trashable: ", ItemInfo.trashable)
 ```
 
 ## isSolid
@@ -568,8 +581,10 @@ elseif currentSignal == GREEN then
   log("Geiger Signal Color : ","GREEN")
 elseif currentSignal == YELLOW then
   log("Geiger Signal Color : ","YELLOW")
-else
+elseif currentSignal == RED then
   log("Geiger Signal Color : ","RED")
+else
+  log("Geiger Signal Color : ","NULL")
 end
 ```
 
@@ -618,7 +633,8 @@ enum Bot_Status
     SERVER_OVERLOADED,
     BypassTutorial,
     Unable_to_create_new_account,
-    InvalidEmail
+    InvalidEmail,
+    guestCaptcha
 };
 ```
 
@@ -708,33 +724,15 @@ setBool("autocollect",true) --Enable AutoCollect
 setBool("skipTutorial",false) --Disable skipTutorial
 setBool("ignoreGem",false) --Disable ignoreGem on autoCollect
 setBool("rotation",true) --Enable rotation
-
 ```
 
-## addWorld
-`addWorld(int blockID,string worldname)`
-
-Example:
-```lua
---4584 = Pepper Tree
-addWorld(4584,"worldName") 
-addWorld(4584,"worldName|doorID")
-```
-
-## removeWorld
-`removeWorld(string worldname)`
-
-Example:
-```lua
-removeWorld("worldName")
-```
 
 ## connect
 `connect(string growid,string password,table Botnet/Socks5 Information)`
 
 Example:
 ```lua
-connect("mygrowid","mypassword") -- Without Socks5/Botnet
+local botID = connect("mygrowid","mypassword") -- Without Socks5/Botnet
 
 Proxy = {
 HostName="ipaddress:port",
@@ -744,6 +742,9 @@ Type=SOCKS5--SOCKS5/BOTNET
 }
 
 connect("mygrowid","mypassword",Proxy) -- With Socks5
+
+
+connect("surferbot@gmail.com","surfer@",Proxy) -- Ubisoft Connect Account
 
 ```
 
@@ -760,7 +761,7 @@ Password="MyPassword",
 Type=SOCKS5 --SOCKS5/BOTNET
 }
 
-addGuest("") -- with a random GrowID
+local botID = addGuest("") -- with a random GrowID
 addGuest("GrowID") -- with a custom GrowID, without SOCKS5
 addGuest("",Proxy) -- with SOCKS5 and a random GrowID
 addGuest("GrowID",Proxy) -- with SOCKS5 and a custom GrowID
@@ -780,7 +781,7 @@ Type=SOCKS5 --SOCKS5/BOTNET
 }
 -- You can obtain the guestInfo from getLocal().guestInfo
 
-loginGuest("", guestInfo) -- with a random GrowID
+local botID = loginGuest("", guestInfo) -- with a random GrowID
 loginGuest("GrowID", guestInfo) -- with a custom GrowID, without SOCKS5
 loginGuest("", Proxy, guestInfo) -- with SOCKS5 and a random GrowID
 loginGuest("GrowID", Proxy, guestInfo) -- with SOCKS5 and a custom GrowID
@@ -816,6 +817,71 @@ Example:
 ```lua
 bot = getBot()
 bot:setMac("42:d4:a6:0b:5f:c3")
+```
+
+
+## addWorld
+`addWorld(int blockID,string worldname)`
+
+Example:
+```lua
+--4584 = Pepper Tree
+addWorld(4584,"worldName")
+addWorld(4584,"worldName|doorID")
+```
+
+## removeWorld
+`removeWorld(string worldname)`
+
+Example:
+```lua
+removeWorld("worldName")
+```
+
+## createUbi
+`createUbi(mail,username,password,proxy)`
+
+Example:
+```lua
+local mail= "surferbot@gmail.com"
+local username= "surferbot"
+local password = "surferBOT123@"
+local proxy =   "socks5://username:password@ip:port"
+
+local sucess,message = createUbi(mail,username,password,proxy)
+log("Success: ",sucess,"\nMessage: ",message)
+
+if sucess then 
+  addBot(mail,password)
+end
+```
+
+
+## getIndex
+`getIndex()`
+
+The getIndex() function returns the index of the bot in the bot list. (I don't recommend using getAllBot to get the index, as it can lead to high memory and CPU usage when you have many bots.)
+Example:
+```lua
+connect("mygrowid0", "mypassword")
+connect("mygrowid1", "mypassword")
+connect("mygrowid2", "mypassword")
+log("Index: ", getBot("mygrowid0"):getIndex()) --> Output: 0
+log("Index: ", getBot("mygrowid1"):getIndex()) --> Output: 1
+log("Index: ", getBot("mygrowid2"):getIndex()) --> Output: 2
+```
+
+
+## getID
+`getID()`
+
+The getID() function returns the ID of the bot.
+
+Example:
+```lua
+connect("mygrowid0", "mypassword")
+botID = getBot("mygrowid0"):getID()
+log("growID: ",getBot(botID):getLocal().name)
 ```
 
 ## httpReq

@@ -44,6 +44,7 @@ const BotStatus = [
   "Success",
   "SERVER OVERLOADED",
   "Bypass Tutorial",
+  "Guest Captcha"
 ];
 async function cleanMemory() {
 await requestAPI("clearCache", {

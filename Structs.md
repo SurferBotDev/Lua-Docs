@@ -48,6 +48,7 @@
 | String | `guestInfo` |  guestInfo (session information) |
 | Table | `proxy` |  proxy information { hostname, username, password } |
 | String | `mac` |  mac information  |
+| String | `ubiMail` |  ubi Mail  |
 
 
  ## Tile
@@ -88,13 +89,18 @@
 | Number | `int_y` |  |
 
 ## ItemInfo
-| Type | Name | Description|
-|:-----|:----:|:-----------|
-| String | `name` | Item name |
-| Number | `id` | Item ID |
-| Number | `rarity` | Item rarity |
-| Number | `growTime` | Item growtime |
-| Number | `breakHits` | Item breakhits |
+
+| Type    | Name          | Description     |
+|:-------:|:-------------:|:---------------:|
+| String  | `name`        | Item name       |
+| Number  | `id`          | Item ID         |
+| Number  | `rarity`      | Item rarity     |
+| Number  | `growTime`    | Item grow time  |
+| Number  | `breakHits`   | Item break hits |
+| Number  | `dropChance`  | Item Drop chance|
+| Number  | `itemCategory`| Item category   |
+| Bool  | `untradeable `  | Item untradeable|
+
 
 ## VariantList
 | Type | Name | Description|
@@ -158,6 +164,7 @@
 | varlist |
 | moderatorJoined | 
 | gamePacket | 
+| gameMessage | 
 
 # tileExtra
 | Type | Name | Description|
