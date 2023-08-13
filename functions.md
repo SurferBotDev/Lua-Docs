@@ -279,7 +279,6 @@ Returns [ItemInfo](Structs.md#iteminfo) of selected Item ID
 Example:
 ```lua
 local ItemInfo = getItemInfo(2) --dirt
-
 log("name: ", ItemInfo.name)
 log("id: ", ItemInfo.id)
 log("rarity: ", ItemInfo.rarity)
