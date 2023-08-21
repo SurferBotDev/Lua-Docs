@@ -49,6 +49,9 @@
 | Table | `proxy` |  proxy information { hostname, username, password } |
 | String | `mac` |  mac information  |
 | String | `ubiMail` |  ubi Mail  |
+| String | `captchaURL` |  captcha URL  |
+| [captchaStatus](#captchastatus) | `captchaStatus` |  captcha Solver Status    |
+| String | `captchaError` |  Error description   |
 
 
  ## Tile
@@ -157,7 +160,6 @@
 | FIRE | 
 | BLUE |
 
-
 ## hookType
 | Name |
 |:-----|
@@ -165,6 +167,15 @@
 | moderatorJoined | 
 | gamePacket | 
 | gameMessage | 
+
+## captchaStatus
+| Name |
+|:-----|
+| NoAction |
+| WaitingAnswerFromAPI | 
+| Successful | 
+| Failed | 
+
 
 # tileExtra
 | Type | Name | Description|
