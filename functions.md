@@ -1,60 +1,104 @@
 # Functions
-* [getBot](#getbot)
-* [sendPacket](#sendpacket)
-* [SendPacketRaw](#sendpacketraw)
-* [findPath](#findpath)
-* [getLocal](#getlocal)
-* [getInventory](#getinventory)
-* [getPlayers](#getplayers)
-* [getObjects](#getobjects)
-* [getTile](#gettile)
-* [getTiles](#gettiles)
-* [checkFlag](#checkflag)
-* [hasAccessToTile](#hasaccesstotile)
-* [getItemInfo](#getiteminfo)
-* [isSolid](#issolid)
-* [isSeed](#isseed)
-* [canHarvest](#canharvest)
-* [placeTile](#placetile)
-* [hitTile](#hittile)
-* [wrenchTile](#wrenchtile)
-* [warp](#warp)
-* [move](#move)
-* [setPos](#setpos)
-* [say](#say)
-* [getAllBot](#getallbot)
-* [useDoor](#usedoor)
-* [isInside](#isinside)
-* [collectObject](#collectobject)
-* [inWorld](#inworld)
-* [itemExist](#itemexist)
-* [getItemCount](#getitemcount)
-* [getSeedTime](#getseedtime)
-* [inWorld](#inworld)
-* [getWorld](#getworld)
-* [autoCollect](#autocollect)
-* [getCurrentWorld](#getcurrentworld)
-* [getBotStatus](#getbotstatus)
-* [getEnetStatus](#getenetstatus)
-* [reConnect](#reconnect)
-* [connect](#connect)
-* [addGuest](#addguest)
-* [loginGuest](#loginguest)
-* [updateProxy](#updateproxy)
-* [setMac](#setmac)
-* [updateBot](#updatebot)
-* [remove](#remove)
-* [getMs](#getms)
-* [setBool](#setbool)
-* [removeWorld](#removeworld)
-* [addWorld](#addworld)
-* [createUbi](#createubi)
-* [getIndex](#getindex)
-* [getID](#getid)
+* [getBot](#getbot): Function used to retrieve a specific bot by name or bot ID.
 
-* [httpReq](#httpreq)
-* [hwid](#hwid)
-* [msgBox](#msgbox)
+* [sendPacket](#sendpacket): Function used to send a packet to the server with a specific packet type.
+
+* [sendPacketRaw](#sendpacketraw): Function used to send a GamePacket to the server.
+
+* [findPath](#findpath): Function to find a path to a selected x, y position.
+
+* [getLocal](#getlocal): Function to retrieve information about the bot.
+
+* [getInventory](#getinventory): Function to retrieve a list of items in the bot's inventory.
+
+* [getPlayers](#getplayers): Function to retrieve a list of players in the current world.
+
+* [getObjects](#getobjects): Function to retrieve a list of objects (items) in the current world.
+
+* [getTile](#gettile): Function to retrieve information about a tile in the world.
+
+* [getTiles](#gettiles): Function to retrieve a table of tiles in the current world.
+
+* [checkFlag](#checkflag): Function to check if a specific tile at the given coordinates has a certain flag type.
+
+* [hasAccessToTile](#hasaccesstotile): Function to check if the bot has access to a specific tile.
+
+* [getItemInfo](#getiteminfo): Function to retrieve information about a specific item using its item ID.
+
+* [isSolid](#issolid): Function to check if a specific tile is solid.
+
+* [isSeed](#isseed): Function to check if a specific tile is a seed.
+
+* [canHarvest](#canharvest): Function to check if a specific tile is harvestable.
+
+* [hitTile](#hittile): Function to punch at a specific tile.
+
+* [wrenchTile](#wrenchtile): Function to wrench at a specific tile.
+
+* [placeTile](#placetile): Function to place a block at a specific tile.
+
+* [warp](#warp): Function to warp to a specific world.
+
+* [move](#move): Function to move the bot in a specified direction.
+
+* [setPos](#setpos): Function to set the bot's position to specific coordinates.
+
+* [say](#say): Function to send a chat message.
+
+* [getAllBot](#getallbot): Function to retrieve a list of all bots.
+
+* [useDoor](#usedoor): Function to use a door at specific coordinates.
+
+* [isInside](#isinside): Function to check if the bot is inside a certain area.
+
+* [collectObject](#collectobject): Function to collect an object in the world by UID.
+
+* [inWorld](#inworld): Function to check if the bot is currently in a world.
+
+* [getWorld](#getworld): Function to retrieve information about the current world.
+
+* [itemExist](#itemexist): Function to check if a specific item exists in the bot's inventory.
+
+* [getItemCount](#getitemcount): Function to retrieve the count of a specific item in the bot's inventory.
+
+* [getSeedTime](#getseedtime): Function to retrieve the seed time for a specific tile.
+
+* [getCurrentWorld](#getcurrentworld): Function to retrieve the name of the current world.
+
+* [isEquipped](#isequipped): Function to check if an item with a specified item ID is equipped by the bot.
+
+* [getSignal](#getsignal): Function to retrieve the current signal color of the Geiger counter.
+
+* [autoCollect](#autocollect): Function to enable or disable the AutoCollect feature with a specified collection range and an optional ignore list.
+
+* [getBotStatus](#getbotstatus): Function to retrieve the status of the bot.
+
+* [getEnetStatus](#getenetstatus): Function to retrieve the ENet (Networking Library) status.
+
+* [reConnect](#reconnect): Function to reconnect the bot.
+
+* [disconnect](#disconnect): Function to disconnect the bot.
+
+* [remove](#remove): Function to remove the bot from the SurferBot.
+
+* [getMs](#getms): Function to retrieve the bot's ping (MS).
+* [setBool](#setbool): Function to enable or disable a feature for the bot
+* [connect](#connect): Function to connect a bot to server with optional SOCKS5 proxy settings
+* [addGuest](#addguest):Function to add a guest bot with optional SOCKS5 proxy settings
+* [loginGuest](#loginguest):Function to log in a guest bot with optional SOCKS5 proxy settings
+* [updateGuest](#updateguest): Function to update the MAC and RID of bot
+* [updateBot](#updatebot): Function to update the GrowID and Password of a bot account
+* [updateProxy](#updateproxy): Function to update the SOCKS5 proxy settings for bot
+* [setMac](#setmac): Function to set the MAC address for the bot
+* [rotation_removeWorld](#rotation_removeworld): Function to Remove a World From the Rotation List.
+* [rotation_addWorld](#rotation_addworld): Function to Add a World to the Rotation List.
+* [geiger_setWorld](#geiger_setworld): Function to set Seach World for the bot
+* [createUbi](#createubi): Function to create a UbiSoft account.
+* [getIndex](#getindex): Function that returns the index of the bot in the bot list.
+* [getID](#getid): Function to retrieve the ID of the bot
+* [httpReq](#httpreq): Function to send an HTTP request and receive an HTTP response
+* [hwid](#hwid): Function to retrieve hardware ID
+* [msgBox](#msgbox): Displays a message box with the specified header text and body text
 * [scan](#scan)
 * [readFile](#readfile)
 * [moveFile](#movefile)
@@ -64,15 +108,13 @@
 ## getBot
 `getBot(string botname)`
 
-`getBot(int botID)`
+`getBot(number botID)`
 
 `getBot() -> Selected bot`
 
-
 https://user-images.githubusercontent.com/58826689/235254325-1ea20c15-f9c3-4965-8929-0ff25a6dda4e.mp4
 
-
-Return bot from list
+Function to retrieve a specific bot by name or bot ID
 
 Example:
 ```lua
@@ -84,20 +126,21 @@ log("GrowID ",bot:getLocal().name)
 
 
 ## sendPacket
-`sendPacket( string packet, int type)`
+`sendPacket( string packet, number type)`
 
-Sends text packet with selected type to client .
+Function to send a packet with a specified packet type to the server.
 
 Example:
 ```lua
--- Sends respawn packet to server
+-- Sends a respawn packet to the server
 sendPacket("action|respawn", 2)
 ```
 
 ## sendPacketRaw
-`sendPacketRaw( GamePacket packet)`
+`sendRawPacket( GamePacket packet)`
 
-Sends [GamePacket](Structs.md#gamepacket) to server.
+Function to send a [GamePacket](Structs.md#gamepacket) to the server.
+
 
 Example:
 ```lua
@@ -109,30 +152,27 @@ sendPacketRaw(packet)
 ```
 
 ## findPath
-`findPath(int x, int y)`
+`findPath(number x, number y)`
 
-Finds path to selected x,y
+Function to find a path to a selected x, y position.
 
 Example:
 ```lua
--- Finds path to top left corner of the world
+-- Find a path to the top left corner of the world
 if findPath(0, 0) then
-log("Path Found Successfully")
+    log("Path found successfully.")
 else
-log("Failed to Find Path")
+    log("Failed to find a path.")
 end
-if
 ```
 
 ## getLocal
 `getLocal()`
 
-Returns table of  [NetAvatar](Structs.md#netavatar)
-
+Function to retrieve information about the  bot. Returns a table of [NetAvatar](Structs.md#netavatar)
 
 Example:
 ```lua
--- Logs local players name
 me = getLocal()
 log(me.name)
 ```
@@ -140,11 +180,11 @@ log(me.name)
 ## getInventory
 `getInventory()`
 
-Returns table of [InventoryItems](Structs.md#inventoryitem)
+Function to retrieve a list of items in the bot's inventory. Returns a table of [InventoryItems](Structs.md#inventoryitem)
 
 Example:
 ```lua
--- Logs all item ids in your inventory
+-- Logs all item IDs in your inventory
 for _,cur in pairs(getInventory()) do
 log(cur.id)
 end
@@ -153,11 +193,11 @@ end
 ## getPlayers
 `getPlayers()`
 
-Returns table of [NetAvatars](Structs.md#netavatar)
+Function to retrieve a list of players in the current world. Returns a table of [NetAvatars](Structs.md#netavatar)
 
 Example:
 ```lua
--- Logs current worlds players names
+-- Logs current world's player names
 for _,player in pairs(getPlayers()) do
 log(player.name)
 end
@@ -166,115 +206,130 @@ end
 ## getObjects
 `getObjects()`
 
-Returns table of [WorldObjects](Structs.md#worldobject)
+Function to retrieve a list of objects(items) in the current world. Returns a table of [WorldObjects](Structs.md#worldobject)
 
 Example:
 ```lua
--- Logs current worlds objects item id's
+-- Logs current world's object item IDs
 for _,object in pairs(getObjects()) do
 log(object.id)
 end
 ```
 
 ## getTile
-`getTile(int x, int y)`
+`getTile(number x, number y)`
 
 
 https://user-images.githubusercontent.com/58826689/235254798-594f43d7-4956-43d4-826b-c9e1d917b7cf.mp4
 
 
-Returns world [Tile](Structs.md#tile) in selected position
+Function to retrieve information about a tile in the world.
 
 Example:
 ```lua
--- Logs top left corners foreground block id
-tile = getTile(0, 0)
-log(tile.fg)
-```
-```lua
-tile = getTile(0, 0)
-if tile.extra.extraType == Provider then
-	if tile.extra.ready then
-		log("The Provider is Ready To Collect")
-	else
-		log("The Provider is not Ready To Collect")
-  end
-elseif tile.extra.extraType == Vending then
-	if tile.extra.each then
-		log(tile.extra.price, " World Locks Each")
-	else
-		log(tile.extra.price, " per World Lock")
-	end
-end
+-- Retrieve information about the top left corner's foreground block
+local tile = getTile(0, 0)
+log("Foreground Block ID:", tile.fg)
 
+-- Check if the tile has extra information
+if tile.extra then
+    if tile.extra.extraType == Provider then
+        if tile.extra.ready then
+            log("The Provider is Ready To Collect")
+        else
+            log("The Provider is not Ready To Collect")
+        end
+    elseif tile.extra.extraType == Vending then
+        if tile.extra.each then
+            log(tile.extra.price, " World Locks Each")
+        else
+            log(tile.extra.price, " per World Lock")
+        end
+    end
+else
+    log("No extra information available for this tile")
+end
 ```
 
 ## getTiles
 `getTiles()`
 
-Returns table of [Tiles](Structs.md#tile)
+Function to retrieve a table of [Tiles](Structs.md#tile) in the current world.
 
 Example:
 ```lua
--- Logs current worlds all foreground block id's
-for _,tile in pairs(getTiles()) do
-log(tile.fg)
+local tiles = getTiles()
+for _, tile in ipairs(tiles) do
+    log("Foreground Block ID:", tile.fg)
+    log("Background Block ID:", tile.bg)
+    log("X Position:", tile.x)
+    log("Y Position:", tile.y)
 end
 ```
 
 ## checkFlag
-`checkFlag(int x,int y,enum Flag)`
+`checkFlag(number x,number y,enum Flag)`
+
+Function to check if a specific tile at the given coordinates has a certain flag type.
 
 Example:
 ```lua
-if checkFlag(0, 0,flagType.WATER) then
-log("Tile 0, 0 is WATER")
+-- Check if Tile 0, 0 is WATER
+if checkFlag(0, 0, flagType.WATER) then
+    log("Tile 0, 0 is WATER")
 end
 
-if checkFlag(0, 0,flagType.LOCKED) then
-log("Tile 0, 0 is Locked")
+-- Check if Tile 0, 0 is LOCKED
+if checkFlag(0, 0, flagType.LOCKED) then
+    log("Tile 0, 0 is Locked")
 end
 
-if checkFlag(0, 0,flagType.PUBLIC) then
-log("Tile 0, 0 is Public Area.")
+-- Check if Tile 0, 0 is PUBLIC
+if checkFlag(0, 0, flagType.PUBLIC) then
+    log("Tile 0, 0 is Public Area")
 end
 
-if checkFlag(0, 0,flagType.FIRE) then
-log("Tile 0, 0 is on FIRE")
+-- Check if Tile 0, 0 is on FIRE
+if checkFlag(0, 0, flagType.FIRE) then
+    log("Tile 0, 0 is on FIRE")
 end
 
-if checkFlag(0, 0,flagType.WATER) and checkFlag(0, 0,flagType.PUBLIC) then
-log("Tile 0, 0 is Water And Public")
+-- Check if Tile 0, 0 is both WATER and PUBLIC
+if checkFlag(0, 0, flagType.WATER) and checkFlag(0, 0, flagType.PUBLIC) then
+    log("Tile 0, 0 is Water and Public")
 end
 
-if checkFlag(0, 0,flagType.LOCKED) and hasAccessToTile(0, 0) then
-log("Tile 0, 0 is Locked but bot have access.")
+-- Check if Tile 0, 0 is LOCKED but the bot has access
+if checkFlag(0, 0, flagType.LOCKED) and hasAccessToTile(0, 0) then
+    log("Tile 0, 0 is Locked, but the bot has access")
 end
 
 ```
 
 
 ## hasAccessToTile
-`hasAccessToTile(int x,int y)`
+`hasAccessToTile(number x,number y)`
 
-Return true if Access To x,y , false if it's not
-
+Function to check if the bot has access to a specific tile.
 
 Example:
 ```lua
 if hasAccessToTile(0, 0) then
-log("Bot Has Access To 0 0 Tile.")
+    log("Bot Has Access To 0 0 Tile.")
 else
-log("Bot Does Not Have Access to the 0 0 Tile.")
+    log("Bot Does Not Have Access to the 0 0 Tile.")
 end
 
 ```
 
 
 ## getItemInfo
-`getItemInfo(int itemid)`
+`getItemInfo(number itemid)`
 
-Returns [ItemInfo](Structs.md#iteminfo) of selected Item ID
+
+Function to retrieve information about a specific item using its item ID
+Returns [ItemInfo](Structs.md#iteminfo)
+
 
 Example:
 ```lua
@@ -290,136 +345,139 @@ log("untradeable: ", ItemInfo.untradeable)
 ```
 
 ## isSolid
-`isSolid(int x, int y)`
+`isSolid(number x, number y)`
 
-Returns true if block is solid and false if its not
+Function to check if a specific tile is solid.
 
 Example:
 ```lua
 if isSolid(0, 0) then
-log("Tile 0, 0 is solid")
+    log("Tile 0, 0 is solid")
 else
-log("Tile 0, 0 is not solid")
+    log("Tile 0, 0 is not solid")
 end
 ```
 
 ## isSeed
-`isSeed(int x, int y)`
+`isSeed(number x, number y)`
 
-Returns true if tile is seed , false if its not
+Function to check if a specific tile is a seed.
 
 Example:
 ```lua
 if isSeed(0, 0) then
-log("Tile 0, 0 is Seed")
+    log("Tile 0, 0 is a seed")
 else
-log("Tile 0, 0 is not Seed")
+    log("Tile 0, 0 is not a seed")
 end
 ```
 
 ## canHarvest
-`canHarvest(int x, int y)`
-Returns true if tile is harvestable , false if  not
+`canHarvest(number x, number y)`
+
+Function to check if a specific tile is harvestable.
 
 Example:
 ```lua
 if canHarvest(0, 0) then
-log("Tile 0, 0 is harvestable")
+    log("Tile 0, 0 is harvestable")
 else
-log("Tile 0, 0 is not harvestable")
+    log("Tile 0, 0 is not harvestable")
 end
 ```
 
 ## hitTile
-`hitTile(int x, int y)`
+`hitTile(number x, number y)`
 
-Send Punch Packet To X,Y
+Function to punch at a specific tile.
 
 Example:
 ```lua
----Punch To 0,0
-hitTile(0,0)
-
+-- Punch to 0, 0
+hitTile(0, 0)
 ```
 
 ## wrenchTile
-`wrenchTile(int x, int y)`
+`wrenchTile(number x, number y)`
 
-Send Wrench Packet To x,y
+Function to wrench at a specific tile.
 
 Example:
 ```lua
----Wrench To 0,0
-
-wrenchTile(0,0)
-
+-- Wrench to 0, 0
+wrenchTile(0, 0)
 ```
 
 ## placeTile
-`placeTile(int x,int y,int blockid)`
+`placeTile(number x,number y,number blockid)`
 
-Place Block To x,y
+Function to place a block at a specific tile.
 
 Example:
 ```lua
----Place Dirt To 0,0
-placeTile(0,0,2)
-
+-- Place Dirt at 0, 0
+placeTile(0, 0, 2)
 ```
 
 ## warp
-`warp(string x)`
+`warp(string name)`
 
-Warp To x
+Function to warp to a  specific world
 
 Example:
 ```lua
 warp("BUYGHC")
-
 ```
 
 ## move
-`move(enum MOVE,int speed)`
+`move(enum MOVE,number speed)`
+
+Function to move the bot in a specified direction.
+
+speed (number): The speed of movement (default value is 1, max value is 10).
+
 
 Example:
 ```lua
--- Speed Default Value 1, Max Value 10
 move(RIGHT,1)
 move(LEFT,1)
 move(UP,1)
 move(DOWN,1)
-
-
 ```
 
 ## setPos
-`setPos(int x,int y)`
+`setPos(number x,number y)`
+
+Function to set the bot's position to specific coordinates.
 
 Example:
 ```lua
---- Set bot position to x 0 y 0
-setPos(0,0)
+-- Set bot position to x 0, y 0
+setPos(0, 0)
 ```
 ## say
 `say(string text)`
 
+Function to send a chat message.
+
 Example:
 ```lua
--- Send chat message
 say("Hello")
 ```
 
 ## getAllBot
 
+Function to retrieve a list of all bots.
+
 Example:
 ```lua
 for k,v in pairs(getAllBot()) do 
-v:say("hi")
+  v:say("hi")
 end
 ```
 
 ## useDoor
-`useDoor(int x,int y)`
+`useDoor(number x,number y)`
 
 Example:
 ```lua
@@ -427,145 +485,165 @@ useDoor(0,0)
 ```
 
 ## isInside
-`isInside(int x,int y,int rad)`
+`isInside(number x,number y,number rad)`
 
 Example:
 ```lua
-if isInside(0, 0,5) then
-log("x 0, y 0 is in inside")
+if isInside(0, 0, 5) then
+    log("x 0, y 0 is inside")
 else
-log("x 0, y 0 is not inside")
+    log("x 0, y 0 is not inside")
 end
 ```
 
 ## collectObject
-`collectObject(int uid)`
+`collectObject(number uid)`
+
+Function to collect an object in the world by uid
 
 Example:
 ```lua
--- Collecting Object With UID
-for _,object in pairs(getObjects()) do
-collectObject(object.uid)
+-- Collecting Objects with UID
+for _, object in pairs(getObjects()) do
+    collectObject(object.uid)
 end
-
-
 ```
 ## inWorld
 `inWorld()`
 
+Function to check if the bot is currently in a world.
+
 Example:
 ```lua
-if inWorld() then
-log("in world")
-else
-log("not in world")
-end
+log(inWorld() and "Bot is in the world" or "Bot is not in the world")
 ```
 
 ## getWorld
 `getWorld()`
-Returns [World](Structs.md#world)
+
+Function to retrieve information about the current world. Returns a [World](Structs.md#world) object.
 
 Example:
 ```lua
 if inWorld() then
-x = getWorld()
-log("Current World Name is :",x.name)
-if x.timer == 0 then
-log("this world no have timer")
+    local world = getWorld()
+    log("Current World Name is:", world.name)
+    
+    if world.timer == 0 then
+        log("This world has no timer")
+    else
+        log("This world has a timer:", world.timer, "minutes")
+    end
 else
-log("this world have timer",x.timer," minutes")
+    log("Not in a world")
 end
-else
-log("not in world")
+```
+
+Example NPC: 
+```lua
+local bot = getBot()
+local world = bot:getWorld()
+for id, npc in pairs(world.npcs) do
+	log("NPC ID:", id, " Type:", npc.type, " Event:", npc.event)
+	log("Start X:", npc.startX, " Y:", npc.startY)
+	log("Destination X:", npc.destX, " Y:", npc.destY)
 end
 ```
 
 ## itemExist
-`itemExist(int itemid)`
+`itemExist(number itemid)`
+
+Function to check if a specific item exists in the bot's inventory.
 
 Example:
 ```lua
 if itemExist(2) then
-log("Dirt Exist In Inventory")
+    log("Dirt Exists in Inventory")
 else
-log("Dirt Not Exist In Inventory")
+    log("Dirt Does Not Exist in Inventory")
 end
 ```
 
 ## getItemCount
-`getItemCount(int itemid)`
+`getItemCount(number itemid)`
+
+Function to retrieve the count of a specific item in the bot's inventory
 
 Example:
 ```lua
-if getItemCount(2)>100 then
-log("the amount of dirt is higher than 100")
+if getItemCount(2) > 100 then
+    log("The amount of dirt is higher than 100")
 else
-log("the amount of dirt is less than 100")
+    log("The amount of dirt is less than 100")
 end
 ```
 
 ## getSeedTime
-`getSeedTime(int x, int y)`
+`getSeedTime(number x, number y)`
 
-Return Seed time as Miliseconds
+Function to retrieve the seed time in milliseconds for a specific tile.
 
-if return as -1 tile its not seed
+### Return Value
 
-if return as 0 seed is ready.
+- If the function returns -1, the tile is not a seed.
+- If the function returns 0, the seed is ready for harvest.
 
 Example:
 ```lua
 if getSeedTime(0, 0) == 0 then
-log("Tile 0, 0 is harvestable")
+    log("Tile 0, 0 is harvestable")
 else
-log("Tile 0, 0 is not harvestable")
+    log("Tile 0, 0 is not harvestable")
 end
 ```
 ```lua
-seedtime=bot:getSeedTime(0,0) 
-SeedID=bot:getTile(0,0).fg
-growtime=bot:getItemInfo(SeedID).growTime
-log("Seeds Ready In ",getTimeString(growtime-seedtime))
---output Seeds Ready In '7 days, 15 hours, 27 mins, 25 secs'
-
-
+local seedtime = bot:getSeedTime(0, 0) 
+local SeedID = bot:getTile(0, 0).fg
+local growtime = bot:getItemInfo(SeedID).growTime
+log("Seeds Ready In", getTimeString(growtime - seedtime))
+-- Output: Seeds Ready In '7 days, 15 hours, 27 mins, 25 secs'
 ```
 ```lua
 if getSeedTime(0, 0) == -1 then
-log("Tile 0, 0 is not Seed")
+    log("Tile 0, 0 is not a seed")
 else
-log("Tile 0, 0 is Seed")
+    log("Tile 0, 0 is a seed")
 end
 ```
 
 ## getCurrentWorld
 `getCurrentWorld()`
 
+Function to retrieve the name of the current world.
+
 Example:
 ```lua
 if inWorld() then
-log("Current World Name is :",getCurrentWorld())
+    log("Current World Name is:", getCurrentWorld())
 else
-log("not in world")
+    log("Not in a world")
 end
 ```
 
 ## isEquipped
-`isEquipped(item ID)`
+`isEquipped(number item_ID)`
+
+Function to check if an item with the specified item ID is equipped by the bot.
 
 Example:
 ```lua
 local targetItemID = 2204;
 if isEquipped(targetItemID) then
-log(getItemInfo(targetItemID).name," is equiped")
+    log(getItemInfo(targetItemID).name, "is equipped")
 else
-log(getItemInfo(targetItemID).name," is not equiped")
+    log(getItemInfo(targetItemID).name, "is not equipped")
 end
 ```
 
 ## getSignal 
 `getSignal()`
+
+Function to retrieve the current signal color of the Geiger counter
 
 Example:
 ```lua
@@ -587,30 +665,38 @@ end
 ```
 
 ## autoCollect
-`autoCollect(int collectrange,bool autocollect)`
+`autoCollect(number collectrange,bool autocollect,table ignoreList)`
+
+Function to enable or disable the AutoCollect feature with a specified collection range and an optional ignore list.
 
 Example:
 ```lua
 -- Disable/Enable AutoCollect.
-autoCollect(10,true) -- Enable Auto Collect With 10 Range.
-autoCollect(10,false) -- Disable Auto Collect.
+autoCollect1(0, true) -- Enable Auto Collect With 10 Range.
+autoCollect(10, false) -- Disable Auto Collect.
+
+-- Enable Auto Collect with a range of 10 blocks and provide an ignore list.
+local ignoreList = {1, 2, 3, 5, 6}
+autoCollect(10, true, ignoreList)
 ```
 
 
 ## getBotStatus
 `getBotStatus()`
 
+Function to retrieve the status of the bot
+
 Example:
 ```lua
- if getBotStatus() == Success then
-      log("Success")
-    elseif getBotStatus() == OnSendToServer then
-      log("OnSendToServer")
-    elseif getBotStatus() == Suspended then
-      log("Suspended")
-    elseif getBotStatus() == Disconnected then
-      log("Disconnected")
-    end
+if getBotStatus() == Success then
+    log("Success")
+elseif getBotStatus() == OnSendToServer then
+    log("OnSendToServer")
+elseif getBotStatus() == Suspended then
+    log("Suspended")
+elseif getBotStatus() == Disconnected then
+    log("Disconnected")
+end
 ```
 ```c++
 -- Enum Information
@@ -632,7 +718,8 @@ enum Bot_Status
     BypassTutorial,
     Unable_to_create_new_account,
     InvalidEmail,
-    guestCaptcha
+    guestCaptcha,
+    temporaryBan
 };
 ```
 
@@ -640,15 +727,15 @@ enum Bot_Status
 ## getEnetStatus
 `getEnetStatus()`
 
+Function to retrieve the ENet (Networking Library) status
+
 Example:
 ```lua
-    if getEnetStatus() == Connected then
-      log("Connected")
-    elseif getEnetStatus() == Disconnected then
-      log("Disconnected")
-    elseif getEnetStatus() == ShadowBan then
-      log("ShadowBan")
-    end
+if getEnetStatus() == Connected then
+    log("Connected")
+elseif getEnetStatus() == Disconnected then
+    log("Disconnected")
+end
 ```
 ```c++
 -- Enum Information
@@ -656,14 +743,13 @@ enum Enet_Status
 {
     Disconnected,
     Connected,
-    ShadowBan
 };
 ```
 
 ## reConnect
 `reConnect()`
 
-reConnect the bot
+Function to reconnect the bot
 
 ```lua
 getBot("id"):reConnect()
@@ -672,8 +758,7 @@ getBot("id"):reConnect()
 ## disconnect
 `disconnect()`
 
-Disconnect the bot
-
+Function to disconnect the bot
 
 ```lua
 getBot("id"):disconnect()
@@ -682,7 +767,7 @@ getBot("id"):disconnect()
 ## remove
 `remove()`
 
-Remove the bot from list ( QUIT )
+Function to remove the bot from the SurferBot
 
 ```lua
 getBot("id"):remove()
@@ -690,7 +775,7 @@ getBot("id"):remove()
 ## getMs
 `getMs()`
 
-Return bot MS ( Ping ) 
+Function to retrieve the bot's ping (MS).
 
 
 ```lua
@@ -698,13 +783,15 @@ getBot("id"):getMs()
 ```
 
 ## setBool
-`setBool()`
+`setBool(string featureName)`
 
-enable/disable feature for bot
+Function to enable or disable a feature for the bot
+
 
 Feature List : 
 ```
 rotation
+geiger
 autoCollect
 skipTutorial
 autoReconnect
@@ -717,99 +804,139 @@ ignoreGem -- (autoCollect)
 ```
 Example : 
 ```lua
-setBool("autocollect",false) --Disable AutoCollect
-setBool("autocollect",true) --Enable AutoCollect
-setBool("skipTutorial",false) --Disable skipTutorial
-setBool("ignoreGem",false) --Disable ignoreGem on autoCollect
-setBool("rotation",true) --Enable rotation
+-- Disable AutoCollect
+setBool("autoCollect", false)
+
+-- Enable AutoCollect
+setBool("autoCollect", true)
+
+-- Disable skipTutorial
+setBool("skipTutorial", false)
+
+-- Disable ignoreGem for AutoCollect
+setBool("ignoreGem", false)
+
+-- Enable rotation
+setBool("rotation", true)
 ```
 
 
 ## connect
-`connect(string growid,string password,table Botnet/Socks5 Information)`
+`connect(string growid,string password,table Socks5 Information)`
+
+Function to connect a bot to server with optional SOCKS5 proxy settings
 
 Example:
 ```lua
-local botID = connect("mygrowid","mypassword") -- Without Socks5/Botnet
-
-Proxy = {
-HostName="ipaddress:port",
-Username="MyUsername",
-Password="MyPassword",
-Type=SOCKS5--SOCKS5/BOTNET
+-- Define the SOCKS5 proxy settings in a table
+local Proxy = {
+    HostName = "ipaddress:port",
+    Username = "MyUsername",
+    Password = "MyPassword",
+    Type = SOCKS5
 }
 
-connect("mygrowid","mypassword",Proxy) -- With Socks5
+-- Example usage of the connect function with different configurations
+local botID = connect("mygrowid", "mypassword") -- Without SOCKS5
 
+connect("mygrowid", "mypassword", Proxy) -- With SOCKS5
 
-connect("surferbot@gmail.com","surfer@",Proxy) -- Ubisoft Connect Account
-
+connect("surferbot@gmail.com", "surfer@", Proxy) -- Ubisoft Connect Account
 ```
 
 
 ## addGuest
-`addGuest(string GrowID,table Botnet/Socks5 Information)`
+`addGuest(string GrowID,table Socks5 Information)`
+
+Function to add a guest bot with optional SOCKS5 proxy settings
 
 Example:
 ```lua
-Proxy = {
-HostName="127.0.0.1:5555",
-Username="MyUsername",
-Password="MyPassword",
-Type=SOCKS5 --SOCKS5/BOTNET
+-- Define the proxy settings in a table
+local Proxy = {
+    HostName = "127.0.0.1:5555",
+    Username = "MyUsername",
+    Password = "MyPassword",
+    Type = SOCKS5
 }
 
-local botID = addGuest("") -- with a random GrowID
-addGuest("GrowID") -- with a custom GrowID, without SOCKS5
-addGuest("",Proxy) -- with SOCKS5 and a random GrowID
-addGuest("GrowID",Proxy) -- with SOCKS5 and a custom GrowID
-
+-- Example usage of the addGuest function with different configurations
+local botID1 = addGuest("") -- Using a random GrowID
+addGuest("GrowID") -- Using a custom GrowID, without SOCKS5
+addGuest("", Proxy) -- Using SOCKS5 and a random GrowID
+addGuest("GrowID", Proxy) -- Using SOCKS5 and a custom GrowID
 ```
 
 ## loginGuest
-`loginGuest(string GrowID,table Botnet/Socks5 Information,string guestInfo (session Information) )`
+`loginGuest(string GrowID,table Socks5 Information,string guestInfo )`
+
+Function to log in a guest bot with optional SOCKS5 proxy settings
 
 Example:
 ```lua
-Proxy = {
-HostName="127.0.0.1:5555",
-Username="MyUsername",
-Password="MyPassword",
-Type=SOCKS5 --SOCKS5/BOTNET
+-- Define the proxy settings in a table
+local Proxy = {
+    HostName = "127.0.0.1:5555",
+    Username = "MyUsername",
+    Password = "MyPassword",
+    Type = SOCKS5
 }
+
 -- You can obtain the guestInfo from getLocal().guestInfo
 
-local botID = loginGuest("", guestInfo) -- with a random GrowID
-loginGuest("GrowID", guestInfo) -- with a custom GrowID, without SOCKS5
-loginGuest("", Proxy, guestInfo) -- with SOCKS5 and a random GrowID
-loginGuest("GrowID", Proxy, guestInfo) -- with SOCKS5 and a custom GrowID
-
+-- Example usage of loginGuest function with different configurations
+local botID = loginGuest("", guestInfo) -- Using a random GrowID
+loginGuest("GrowID", guestInfo) -- Using a custom GrowID, without SOCKS5
+loginGuest("", Proxy, guestInfo) -- Using SOCKS5 and a random GrowID
+loginGuest("GrowID", Proxy, guestInfo) -- Using SOCKS5 and a custom GrowID
 ```
+
+## updateGuest
+`updateGuest(string guestInfo ,string GuestName)`
+
+Function to update the MAC and RID of bot
+
+Example:
+```lua
+updateGuest("mac+rid","GrowID")
+updateGuest("02:38:d7:77:9d:d3+3B948C923D122E03CE88C0342AE1ED4B")
+updateGuest("02:38:d7:77:9d:d3+3B948C923D122E03CE88C0342AE1ED4B","surferBot")
+```
+
 
 ## updateBot
 `updateBot(string GrowID,string Password )`
 
+Function to update the GrowID and Password of a bot account
+
+
 Example:
 ```lua
+-- This function will change the bot's MAC and RID to bypass suspensions, bans, etc.
 updateBot("newGrowID", "newPassword") 
 ```
 
 ## updateProxy
-`updateProxy(table Botnet/Socks5)`
+`updateProxy(table Socks5)`
+
+Function to update the SOCKS5 proxy settings for bot
 
 Example:
 ```lua
-newProxy = {
-HostName="127.0.0.1:5555",
-Username="MyUsername",
-Password="MyPassword",
-Type=SOCKS5 --SOCKS5/BOTNET
+-- Define the new proxy settings in a table
+local newProxy = {
+    HostName = "127.0.0.1:5555",
+    Username = "MyUsername",
+    Password = "MyPassword",
+    Type = SOCKS5
 }
 updateProxy(newProxy)
 ```
 
 ## setMac
 `setMac(string newMac)`
+
+Function to set the MAC address for the bot
 
 Example:
 ```lua
@@ -818,39 +945,55 @@ bot:setMac("42:d4:a6:0b:5f:c3")
 ```
 
 
-## addWorld
-`addWorld(int blockID,string worldname)`
+## rotation_addWorld
+`rotation_addWorld(number blockID,string worldname)`
 
 Example:
 ```lua
 --4584 = Pepper Tree
-addWorld(4584,"worldName")
-addWorld(4584,"worldName|doorID")
+rotation_addWorld(4584,"worldName")
+rotation_addWorld(4584,"worldName|doorID")
 ```
 
-## removeWorld
-`removeWorld(string worldname)`
+## rotation_removeWorld
+`rotation_removeWorld(string worldname)`
 
 Example:
 ```lua
-removeWorld("worldName")
+rotation_removeWorld("worldName")
 ```
+
+## geiger_setWorld
+`geiger_setWorld(string worldname)`
+
+Function to set Seach World for the bot
+
+Example:
+```lua
+geiger_setWorld("worldName")
+```
+
 
 ## createUbi
 `createUbi(mail,username,password,proxy)`
 
+Function to create a UbiSoft account.
+
 Example:
 ```lua
-local mail= "surferbot@gmail.com"
-local username= "surferbot"
+l-- Define variables
+local mail = "surferbot@gmail.com"
+local username = "surferbot"
 local password = "surferBOT123@"
-local proxy =   "socks5://username:password@ip:port"
+local proxy = "socks5://username:password@ip:port"
 
-local sucess,message = createUbi(mail,username,password,proxy)
-log("Success: ",sucess,"\nMessage: ",message)
+-- Create a UbiSoft account
+local success, message = createUbi(mail, username, password, proxy)
+log("Success:", success, "\nMessage:", message)
 
-if sucess then 
-  addBot(mail,password)
+-- If account creation was successful, add a bot
+if success then
+    addBot(mail, password)
 end
 ```
 
@@ -858,7 +1001,7 @@ end
 ## getIndex
 `getIndex()`
 
-The getIndex() function returns the index of the bot in the bot list. (I don't recommend using getAllBot to get the index, as it can lead to high memory and CPU usage when you have many bots.)
+Function that returns the index of the bot in the bot list (I don't recommend using getAllBot to get the index, as it can lead to high memory and CPU usage when you have many bots.)
 Example:
 ```lua
 connect("mygrowid0", "mypassword")
@@ -873,63 +1016,76 @@ log("Index: ", getBot("mygrowid2"):getIndex()) --> Output: 2
 ## getID
 `getID()`
 
-The getID() function returns the ID of the bot.
+Function to retrieve the ID of the bot
 
 Example:
 ```lua
+-- Connect to the Growtopia account
 connect("mygrowid0", "mypassword")
-botID = getBot("mygrowid0"):getID()
-log("growID: ",getBot(botID):getLocal().name)
+
+-- Get the bot ID
+local botID = getBot("mygrowid0"):getID()
+
+-- Retrieve and log the bot's name using the bot ID
+local bot = getBot(botID)
+log("GrowID:", bot:getLocal().name)
 ```
 
 ## httpReq
 `httpReq(httpRequestInfo data)`
 
-Returns table of  [httpResponseInfo](Structs.md#httpresponseinfo)
-
+Function to send an HTTP request and receive an HTTP response. It returns a table of [httpResponseInfo](Structs.md#httpresponseinfo).
 
 httpRequestInfo struct : [httpRequestInfo](Structs.md#httprequestinfo) 
 
 Example Get Request:
 ```lua
-RequestINFO={}
-RequestINFO.url="https://example.com/"
-x = httpReq(RequestINFO)
-if x.success then
-log("Response Body : ",x.body)
-log("Response Http Status Code : ",x.httpCode)
+-- Example Get Request
+local requestInfo = {
+    url = "https://example.com/"
+}
+local response = httpReq(requestInfo)
+
+if response.success then
+    log("Response Body:", response.body)
+    log("Response Http Status Code:", response.httpCode)
 else
-log("Request Failed Error Msg : ",x.failInfo)
+    log("Request Failed. Error Message:", response.failInfo)
 end
 ```
 Example Post Request:
 ```lua
-RequestINFO={}
-RequestINFO.url="https://httpbin.org/post"
-RequestINFO.method=POST
-RequestINFO.postData="name=heysurfer&surname=gay"
-x = httpReq(RequestINFO)
-if x.success then
-log("Response Body : ",x.body)
-log("Response Http Status Code : ",x.httpCode)
+-- Example Post Request
+local requestInfo = {
+    url = "https://httpbin.org/post",
+    method = POST,
+    postData = "name=heysurfer&surname=gay"
+}
+local response = httpReq(requestInfo)
+
+if response.success then
+    log("Response Body:", response.body)
+    log("Response Http Status Code:", response.httpCode)
 else
-log("Request Failed Error Msg : ",x.failInfo)
+    log("Request Failed. Error Message:", response.failInfo)
 end
 ```
 Example Discord Webhook Request:
 ```lua
-function sendWebhook(text,WebHook)
-RequestINFO={}
-RequestINFO.url=WebHook
-RequestINFO.method=POST
-RequestINFO.postData="content="..text
-x = httpReq(RequestINFO)
-if x.success then
-log("Response Body : ",x.body)
-log("Response Http Status Code : ",x.httpCode)
-else
-log("Request Failed Error Msg : ",x.failInfo)
-end
+function sendWebhook(text, webhookURL)
+    local requestInfo = {
+        url = webhookURL,
+        method = POST,
+        postData = "content=" .. text
+    }
+    local response = httpReq(requestInfo)
+
+    if response.success then
+        log("Response Body:", response.body)
+        log("Response Http Status Code:", response.httpCode)
+    else
+        log("Request Failed. Error Message:", response.failInfo)
+    end
 end
 
 sendWebhook("webhook test","webhook url")
@@ -952,7 +1108,7 @@ Example auth system:
 ## msgBox
 `msgBox(string HeaderText,string BodyText)`
 
-Displays a message box with the specified header text and body text.
+Displays a message box with the specified header text and body text
 
 ```lua
 msgBox("Error","xxxx")
@@ -963,11 +1119,16 @@ msgBox("Error","xxxx")
 ## scan
 `scan(string data)`
 ```lua
+-- Define the data to be scanned
 local data = "spawn|avatar\nnetID|2\nuserID|id"
+
+-- Create a parser object using the 'scan' function
 local parser = scan(data)
-log("Spawn : ",parser:get("spawn"))
-log("netID : ",parser:get("netID"))
-log("userID : ",parser:get("userID"))
+
+-- Access and log the values using the 'get' method
+log("Spawn:", parser:get("spawn"))
+log("netID:", parser:get("netID"))
+log("userID:", parser:get("userID"))
 ```
 ## readFile
 `readFile(path)`
@@ -975,7 +1136,7 @@ log("userID : ",parser:get("userID"))
 Reads the contents of a file specified by the path parameter and returns the content as a string.
 ```lua
 local content = readFile("myfile.txt")
-print(content) -- Output: Contents of the file
+log(content) -- Output: Contents of the file
 ```
 ## moveFile
 
@@ -984,7 +1145,7 @@ print(content) -- Output: Contents of the file
 Moves the file specified by the src parameter to the destination specified by the dest parameter. If the file is successfully moved, it returns true; otherwise, if the source file doesn't exist, it returns false.
 ```lua
 local success = moveFile("oldfile.txt", "newfile.txt")
-print(success) -- Output: true if the file was successfully moved, false otherwise
+log(success) -- Output: true if the file was successfully moved, false otherwise
 ```
 ## writeFile
 `writeFile(src, text)`
@@ -992,5 +1153,5 @@ print(success) -- Output: true if the file was successfully moved, false otherwi
 Writes the provided text to the file specified by the src parameter. If the write operation is successful, it returns true.
 ```lua
 local success = writeFile("myfile.txt", "Hello, world!")
-print(success) -- Output: true if the write operation was successful, false otherwise
+log(success) -- Output: true if the write operation was successful, false otherwise
 ```
