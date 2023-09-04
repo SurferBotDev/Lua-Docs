@@ -92,11 +92,12 @@
 * [setMac](#setmac): Function to set the MAC address for the bot
 * [rotation_removeWorld](#rotation_removeworld): Function to Remove a World From the Rotation List.
 * [rotation_addWorld](#rotation_addworld): Function to Add a World to the Rotation List.
-* [geiger_setWorld](#geiger_setworld): Function to set Seach World for the bot
+* [geiger_setWorld](#geiger_setworld): Function to set Search World for the bot
 * [createUbi](#createubi): Function to create a UbiSoft account.
 * [getIndex](#getindex): Function that returns the index of the bot in the bot list.
 * [getID](#getid): Function to retrieve the ID of the bot
 * [httpReq](#httpreq): Function to send an HTTP request and receive an HTTP response
+* [addProxy](#addproxy): Function to Add SOCKS5 Proxy
 * [hwid](#hwid): Function to retrieve hardware ID
 * [msgBox](#msgbox): Displays a message box with the specified header text and body text
 * [scan](#scan)
@@ -471,7 +472,7 @@ Function to retrieve a list of all bots.
 
 Example:
 ```lua
-for indexID,bot in pairs(getBots()) do 
+for index,bot in pairs(getBots()) do 
   bot:say("hi")
 end
 ```
@@ -1029,6 +1030,18 @@ local botID = getBot("mygrowid0"):getID()
 -- Retrieve and log the bot's name using the bot ID
 local bot = getBot(botID)
 log("GrowID:", bot:getLocal().name)
+```
+
+## addProxy
+`addProxy(table proxy)`
+```lua
+local Proxy = {
+    HostName = "ipaddress:port",
+    Username = "MyUsername",
+    Password = "MyPassword",
+    Type = SOCKS5
+}
+addProxy(Proxy)
 ```
 
 ## httpReq
