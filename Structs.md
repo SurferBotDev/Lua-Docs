@@ -119,11 +119,12 @@
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | String | `name` |  World Name |
-| int | `width` | World Width |
-| int | `height` | World Height |
-| int | `timer` | World timer (in minutes) |
-| table [int] | `access` | World access list (uid) |
+| Number | `width` | World Width |
+| Number | `height` | World Height |
+| Number | `timer` | World timer (in minutes) |
+| table [Number] | `access` | World access list (uid) |
 | [Vector2](#vector2) | `maindoor` | Main door position of the world (white door)|
+| [NPC](#npc) | `npcs` | List of NPC in the world (e.g., ghost, etc.) |
 
 ## httpRequestInfo
 | Type | Name | Description|
@@ -139,7 +140,7 @@
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | String | `body` |  Response Body |
-| int | `httpCode` | Response HTTP code |
+| Number | `httpCode` | Response HTTP code |
 | Boolean | `success` | Indicates whether the request was successful or failed|
 | String | `failInfo` | CURL error message |
 
@@ -176,6 +177,17 @@
 | Successful | 
 | Failed | 
 
+## Npc
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| Number | `name` |  NPC ID |
+| String | `type` | NPC Type |
+| String | `event` | NPC Event |
+| Number | `startX` | Start X of NPC |
+| Number | `startY` | Start Y of NPC |
+| Number | `destX` | Destination X of NPC |
+| Number | `destY` | Destination Y oF NPC |
+
 
 # tileExtra
 | Type | Name | Description|
@@ -185,50 +197,50 @@
 ## VipEntrance
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| table [int] | `accessList` |  Access List |
+| table [Number] | `accessList` |  Access List |
 | Boolean | `public` | Indicates if the VIP entrance is public |
 
 ## Vending
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| int | `itemID` | ItemID On The Vending Machine |
-| int | `price` | Price On The Vending Machine |
+| Number | `itemID` | ItemID On The Vending Machine |
+| Number | `price` | Price On The Vending Machine |
 | Boolean | `each` | Indicates whether the item is sold per unit or each|
 
 ## WorldLock
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| table [int] | `accessList` |  Access List |
+| table [Number] | `accessList` |  Access List |
 | Boolean | `public` | Indicates if the World Lock is public |
-| int | `timer` | Timer value for the lock in miniutes |
+| Number | `timer` | Timer value for the lock in miniutes |
 
 ## Lock
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| table [int] | `accessList` |  Access List |
+| table [Number] | `accessList` |  Access List |
 | Boolean | `public` | Indicates if the Lock is public |
 
 ## Provider
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | Boolean | `ready` |  Indicates if the provider is ready to be Collect|
-| int | `time` | Growth time; e.g., check -> (provider time > growth = readyToHarvest) |
-| int | `currentTime` | Current time when the Provider object is created |
+| Number | `time` | Growth time; e.g., check -> (provider time > growth = readyToHarvest) |
+| Number | `currentTime` | Current time when the Provider object is created |
 
 ## Seed
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | Boolean | `ready` |  Indicates if the provider is ready to be harvest|
-| int | `time` | Growth time; e.g., check -> (seed time > growth = readyToHarvest ) |
-| int | `count` | fruit count; only visual, not the actual amount |
-| int | `currentTime` | Current time when the Seed object is created |
+| Number | `time` | Growth time; e.g., check -> (seed time > growth = readyToHarvest ) |
+| Number | `count` | fruit count; only visual, not the actual amount |
+| Number | `currentTime` | Current time when the Seed object is created |
 
 ## GeigerCharger
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | Boolean | `ready` |  Indicates if the Charger is ready to be Collect|
-| int | `time` | Growth time; e.g., check -> (charger time > 3600 = readyToHarvest ) |
-| int | `currentTime` | Current time when the GeigerCharger object is created |
+| Number | `time` | Growth time; e.g., check -> (charger time > 3600 = readyToHarvest ) |
+| Number | `currentTime` | Current time when the GeigerCharger object is created |
 
 
 ## Sign
