@@ -83,6 +83,7 @@
 
 * [getMs](#getms): Function to retrieve the bot's ping (MS).
 * [setBool](#setbool): Function to enable or disable a feature for the bot
+* [getBool](#getbool): Function to retrieve the bool status of the bot
 * [connect](#connect): Function to connect a bot to server with optional SOCKS5 proxy settings
 * [addGuest](#addguest):Function to add a guest bot with optional SOCKS5 proxy settings
 * [loginGuest](#loginguest):Function to log in a guest bot with optional SOCKS5 proxy settings
@@ -93,6 +94,7 @@
 * [rotation_removeWorld](#rotation_removeworld): Function to Remove a World From the Rotation List.
 * [rotation_addWorld](#rotation_addworld): Function to Add a World to the Rotation List.
 * [geiger_setWorld](#geiger_setworld): Function to set Search World for the bot
+* [geiger_getWorld](#geiger_getworld): Function to retrieve the Search World 
 * [createUbi](#createubi): Function to create a UbiSoft account.
 * [getIndex](#getindex): Function that returns the index of the bot in the bot list.
 * [getID](#getid): Function to retrieve the ID of the bot
@@ -821,6 +823,25 @@ setBool("ignoreGem", false)
 setBool("rotation", true)
 ```
 
+## getBool
+`getBool(string featureName)`
+
+Function to retrieve the bool status of the bot
+
+Example : 
+```lua
+-- Check if AutoCollect is enabled
+local isAutoCollectEnabled = getBool("autoCollect")
+
+-- Check if skipTutorial is enabled
+local isSkipTutorialEnabled = getBool("skipTutorial")
+
+-- Check if rotation is enabled
+local isRotationEnabled = getBool("rotation")
+
+-- Check if ignoreGem is enabled
+local isIgnoreGemEnabled = getBool("ignoreGem")
+```
 
 ## connect
 `connect(string growid,string password,table Socks5 Information)`
@@ -967,13 +988,22 @@ rotation_removeWorld("worldName")
 ## geiger_setWorld
 `geiger_setWorld(string worldname)`
 
-Function to set Seach World for the bot
+Function to set Search World for the bot
 
 Example:
 ```lua
 geiger_setWorld("worldName")
 ```
 
+## geiger_getWorld
+`geiger_getWorld()`
+
+Function to retrieve the Search World 
+
+Example:
+```lua
+local searchWorld = geiger_getWorld()
+```
 
 ## createUbi
 `createUbi(mail,username,password,proxy)`
