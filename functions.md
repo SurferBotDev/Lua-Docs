@@ -23,6 +23,8 @@
 
 * [hasAccessToTile](#hasaccesstotile): Function to check if the bot has access to a specific tile.
 
+* [getItems](#getitems): Function to retrieve items' information
+
 * [getItemInfo](#getiteminfo): Function to retrieve information about a specific item using its item ID.
 
 * [isSolid](#issolid): Function to check if a specific tile is solid.
@@ -91,21 +93,18 @@
 * [updateBot](#updatebot): Function to update the GrowID and Password of a bot account
 * [updateProxy](#updateproxy): Function to update the SOCKS5 proxy settings for bot
 * [setMac](#setmac): Function to set the MAC address for the bot
-* [rotation_removeWorld](#rotation_removeworld): Function to Remove a World From the Rotation List.
-* [rotation_addWorld](#rotation_addworld): Function to Add a World to the Rotation List.
-* [geiger_setWorld](#geiger_setworld): Function to set Search World for the bot
-* [geiger_getWorld](#geiger_getworld): Function to retrieve the Search World 
-* [createUbi](#createubi): Function to create a UbiSoft account.
 * [getIndex](#getindex): Function that returns the index of the bot in the bot list.
 * [getID](#getid): Function to retrieve the ID of the bot
 * [httpReq](#httpreq): Function to send an HTTP request and receive an HTTP response
 * [addProxy](#addproxy): Function to Add SOCKS5 Proxy
 * [hwid](#hwid): Function to retrieve hardware ID
 * [msgBox](#msgbox): Displays a message box with the specified header text and body text
-* [scan](#scan)
-* [readFile](#readfile)
-* [moveFile](#movefile)
-* [writeFile](#writefile)
+* [proxyManager](#proxymanager)
+* [switchManager](#switchmanager)
+* [App](#app)
+* [setValue](#setvalue)  - Sets global variables with corresponding keys. Useful for sharing data across scripts
+* [getValue](#getvalue)  - Retrieves the value of a global variable based on the provided key. Allows access to shared data across scripts
+
 
 
 ## getBot
@@ -325,6 +324,25 @@ end
 
 ```
 
+## getItems
+`getItems()`
+
+Function to retrieve items' information
+Returns Table [ItemInfo](Structs.md#iteminfo)
+
+Example:
+```lua
+for _, item in ipairs(getItems()) do
+    log("name: ", item.name)
+    log("id: ", item.id)
+    log("rarity: ", item.rarity)
+    log("growTime: ", item.growTime)
+    log("breakHits: ", item.breakHits)
+    log("dropChance: ", item.dropChance)
+    log("itemCategory: ", item.itemCategory)
+    log("untradeable: ", item.untradeable)
+end
+```
 
 ## getItemInfo
 `getItemInfo(number itemid)`
@@ -793,8 +811,6 @@ Function to enable or disable a feature for the bot
 
 Feature List : 
 ```
-rotation
-geiger
 autoCollect
 skipTutorial
 autoReconnect
@@ -818,9 +834,6 @@ setBool("skipTutorial", false)
 
 -- Disable ignoreGem for AutoCollect
 setBool("ignoreGem", false)
-
--- Enable rotation
-setBool("rotation", true)
 ```
 
 ## getBool
@@ -835,9 +848,6 @@ local isAutoCollectEnabled = getBool("autoCollect")
 
 -- Check if skipTutorial is enabled
 local isSkipTutorialEnabled = getBool("skipTutorial")
-
--- Check if rotation is enabled
-local isRotationEnabled = getBool("rotation")
 
 -- Check if ignoreGem is enabled
 local isIgnoreGemEnabled = getBool("ignoreGem")
@@ -967,68 +977,6 @@ bot:setMac("42:d4:a6:0b:5f:c3")
 ```
 
 
-## rotation_addWorld
-`rotation_addWorld(number blockID,string worldname)`
-
-Example:
-```lua
---4584 = Pepper Tree
-rotation_addWorld(4584,"worldName")
-rotation_addWorld(4584,"worldName|doorID")
-```
-
-## rotation_removeWorld
-`rotation_removeWorld(string worldname)`
-
-Example:
-```lua
-rotation_removeWorld("worldName")
-```
-
-## geiger_setWorld
-`geiger_setWorld(string worldname)`
-
-Function to set Search World for the bot
-
-Example:
-```lua
-geiger_setWorld("worldName")
-```
-
-## geiger_getWorld
-`geiger_getWorld()`
-
-Function to retrieve the Search World 
-
-Example:
-```lua
-local searchWorld = geiger_getWorld()
-```
-
-## createUbi
-`createUbi(mail,username,password,proxy)`
-
-Function to create a UbiSoft account.
-
-Example:
-```lua
-l-- Define variables
-local mail = "surferbot@gmail.com"
-local username = "surferbot"
-local password = "surferBOT123@"
-local proxy = "socks5://username:password@ip:port"
-
--- Create a UbiSoft account
-local success, message = createUbi(mail, username, password, proxy)
-log("Success:", success, "\nMessage:", message)
-
--- If account creation was successful, add a bot
-if success then
-    addBot(mail, password)
-end
-```
-
-
 ## getIndex
 `getIndex()`
 
@@ -1061,6 +1009,35 @@ local botID = getBot("mygrowid0"):getID()
 local bot = getBot(botID)
 log("GrowID:", bot:getLocal().name)
 ```
+
+## autoManager
+`autoManager()`
+
+Spammer
+```lua
+local spamManager = getBot():autoManager().spam
+spamManager.enabled = false
+spamManager.randomColor = false
+spamManager.worldName = "target world name"
+spamManager.delay = 5000 -- Milliseconds
+spamManager.clearText()
+spamManager.pushText("Your text goes here")
+```
+
+Fishing
+```lua
+local fishManager = getBot():autoManager().fish
+fishManager.enabled = false
+fishManager.worldName = "target world name"
+fishManager.waterPos_x = 0
+fishManager.waterPos_y = 0
+
+fishManager.detonator = false
+fishManager.drill = false
+fishManager.trawler = false
+fishManager.gemonade = false
+```
+...
 
 ## addProxy
 `addProxy(table proxy)`
@@ -1102,7 +1079,7 @@ Example Post Request:
 local requestInfo = {
     url = "https://httpbin.org/post",
     method = POST,
-    postData = "name=heysurfer&surname=gay"
+    postData = "name=hey&surname=surfer"
 }
 local response = httpReq(requestInfo)
 
@@ -1159,42 +1136,117 @@ msgBox("Error","xxxx")
 ![ss](https://cdn.upload.systems/uploads/Iiu3HDcC.png)
 
 
-## scan
-`scan(string data)`
+## proxyManager
+`proxyManager()`
+
+return proxyManager Class
+
 ```lua
--- Define the data to be scanned
-local data = "spawn|avatar\nnetID|2\nuserID|id"
+local proxyManager = ProxyManager()
 
--- Create a parser object using the 'scan' function
-local parser = scan(data)
+-- Add proxies with ProxyManager
 
--- Access and log the values using the 'get' method
-log("Spawn:", parser:get("spawn"))
-log("netID:", parser:get("netID"))
-log("userID:", parser:get("userID"))
+proxyManager.add("127.0.0.1:5556:user:pass")
+proxyManager.add("127.0.0.1:5555")
+
+-- Remove proxies with ProxyManager
+
+proxyManager.remove("127.0.0.1:5556")
+proxyManager.remove("127.0.0.1:5555")
+
+-- Check proxies with ProxyManager
+
+proxyManager.check("127.0.0.1:5556", proxy) -- Check if the proxy is not working
+proxyManager.check("127.0.0.1:5555", growtopia) -- Check if the proxy can connect to Growtopia
+
+local proxy_1_status = proxyManager.status("127.0.0.1:5556", proxy)
+local proxy_2_status = proxyManager.status("127.0.0.1:5555", growtopia)
+
+if proxy_2_status == not_working then
+    proxyManager.remove("127.0.0.1:5555")
+end
+
+-- Possible statuses:
+-- processing
+-- not_working
+-- working
+-- pending
+
+-- Enable/disable auto-select
+proxyManager.autoSelect = false;
+
+-- Set the limit (Number of accounts you will use with a proxy (BOTS/PROXY) (Recommended 1/PROXY))
+proxyManager.limit = 3;
 ```
-## readFile
-`readFile(path)`
 
-Reads the contents of a file specified by the path parameter and returns the content as a string.
+## switchManager
+`switchManager()`
+
+return switchManager Class
+
 ```lua
-local content = readFile("myfile.txt")
-log(content) -- Output: Contents of the file
+local switchManager = switchManager()
+
+-- Add Accounts with switchManager
+
+switchManager.addAccount("growid","password")
+switchManager.addGuest("e8:6f:bc:14:9f:35")
+
+-- Remove Accounts with switchManager
+
+switchManager.remove("growid")
+switchManager.remove("e8:6f:bc:14:9f:35")
+
+-- Enable/disable auto-switch
+
+switchManager.enable = true
 ```
-## moveFile
 
-`moveFile(src, dest)`
+## App
+`App()`
 
-Moves the file specified by the src parameter to the destination specified by the dest parameter. If the file is successfully moved, it returns true; otherwise, if the source file doesn't exist, it returns false.
+return App(Settings) Class
+
+
 ```lua
-local success = moveFile("oldfile.txt", "newfile.txt")
-log(success) -- Output: true if the file was successfully moved, false otherwise
+local app = App()
+app.optimizeUI = true
+app.fps = 60
+app.captchaEnable = false
+app.captchaKey = "key"
+app.selectAll=false
 ```
-## writeFile
-`writeFile(src, text)`
 
-Writes the provided text to the file specified by the src parameter. If the write operation is successful, it returns true.
+
+
+
+Lua's setValue and getValue functions provide a structured way to manage global variables accessible across different scripts (threads) within surferbot. This enables seamless data sharing and communication between various parts of your code
+
+## setValue
+`setValue(string key,value)`
+
+Sets the value of a global variable
+
 ```lua
-local success = writeFile("myfile.txt", "Hello, world!")
-log(success) -- Output: true if the write operation was successful, false otherwise
+setValue("myBool", true)
+setValue("myNumber", 42)
+setValue("myFloat", 3.14)
+setValue("myString", "Hello, Lua!")
+setValue("myInteger", 123)
+```
+
+
+## getValue
+`setValue(string key)`
+
+Retrieves the value of a global variable
+
+Returns: The value of the variable, or nil if it doesn't exist.
+
+```lua
+print(getValue("myBool"))      --> true
+print(getValue("myNumber"))    --> 42
+print(getValue("myFloat"))     --> 3.14
+print(getValue("myString"))    --> Hello, Lua!
+print(getValue("myInteger"))   --> 123
 ```
