@@ -740,7 +740,9 @@ enum Bot_Status
     Unable_to_create_new_account,
     InvalidEmail,
     guestCaptcha,
-    temporaryBan
+    temporaryBan,
+    fetchingMeta
+    failedToFetchMeta
 };
 ```
 
@@ -873,7 +875,6 @@ local botID = connect("mygrowid", "mypassword") -- Without SOCKS5
 
 connect("mygrowid", "mypassword", Proxy) -- With SOCKS5
 
-connect("surferbot@gmail.com", "surfer@", Proxy) -- Ubisoft Connect Account
 ```
 
 
@@ -1123,8 +1124,6 @@ log("Your HWID :",hwid())
 Example auth system:
 
 
-![eg](https://cdn.upload.systems/uploads/T3l9ZWzG.gif)
-
 ## msgBox
 `msgBox(string HeaderText,string BodyText)`
 
@@ -1133,7 +1132,6 @@ Displays a message box with the specified header text and body text
 ```lua
 msgBox("Error","xxxx")
 ```
-![ss](https://cdn.upload.systems/uploads/Iiu3HDcC.png)
 
 
 ## proxyManager
@@ -1142,7 +1140,7 @@ msgBox("Error","xxxx")
 return proxyManager Class
 
 ```lua
-local proxyManager = ProxyManager()
+local proxyManager = proxyManager()
 
 -- Add proxies with ProxyManager
 
@@ -1166,11 +1164,32 @@ if proxy_2_status == not_working then
     proxyManager.remove("127.0.0.1:5555")
 end
 
--- Possible statuses:
+
+-- Proxy statuses:
 -- processing
 -- not_working
 -- working
 -- pending
+
+-- Growtopia statuses:
+-- processing
+-- banned
+-- shadowban
+-- working
+-- pending
+
+-- Http statuses:
+-- processing
+-- blocked
+-- working
+-- pending
+
+
+local proxies = proxyManager.getProxies()
+for _, proxy in ipairs(proxies) do
+    log(proxy) --ip:port:user:pass
+end
+
 
 -- Enable/disable auto-select
 proxyManager.autoSelect = false;
@@ -1250,3 +1269,4 @@ print(getValue("myFloat"))     --> 3.14
 print(getValue("myString"))    --> Hello, Lua!
 print(getValue("myInteger"))   --> 123
 ```
+
