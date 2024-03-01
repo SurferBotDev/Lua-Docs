@@ -79,6 +79,10 @@
 
 * [reConnect](#reconnect): Function to reconnect the bot.
 
+* [reConnect](#reconnect): Function to reconnect the bot.
+
+* [reConnect](#reconnect): Function to reconnect the bot.
+
 * [disconnect](#disconnect): Function to disconnect the bot.
 
 * [remove](#remove): Function to remove the bot from the SurferBot.
@@ -95,6 +99,10 @@
 * [setMac](#setmac): Function to set the MAC address for the bot
 * [getIndex](#getindex): Function that returns the index of the bot in the bot list.
 * [getID](#getid): Function to retrieve the ID of the bot
+* [autoManager](#automanager): Function to retrieve automation
+
+* [setCustomStatus](#setcustomstatus): Function to set custom bot status
+* [setReconnectInterval](#setreconnectinterval): Function to set reconnect delay
 * [httpReq](#httpreq): Function to send an HTTP request and receive an HTTP response
 * [addProxy](#addproxy): Function to Add SOCKS5 Proxy
 * [hwid](#hwid): Function to retrieve hardware ID
@@ -102,10 +110,11 @@
 * [proxyManager](#proxymanager)
 * [switchManager](#switchmanager)
 * [App](#app)
-* [setValue](#setvalue)  - Sets global variables with corresponding keys. Useful for sharing data across scripts
-* [getValue](#getvalue)  - Retrieves the value of a global variable based on the provided key. Allows access to shared data across scripts
-
-
+* [setValue](#setvalue) 
+* [getValue](#getvalue) 
+* [writeFile](#writefile) 
+* [readFile](#readfile) 
+* [execute](#execute) 
 
 ## getBot
 `getBot(string botname)`
@@ -1038,7 +1047,48 @@ fishManager.drill = false
 fishManager.trawler = false
 fishManager.gemonade = false
 ```
-...
+
+
+Mod Detector
+```lua
+local modManager = getBot():autoManager().mod
+modManager.enabled = false
+
+modManager.leaveTheWorld = false
+modManager.unAccess = false 
+modManager.rejoinWorld = false -- rejoin the world with custom intervals
+modManager.interval = 5 -- 5 minutes
+```
+
+Admin Detector
+```lua
+local adminManager = getBot():autoManager().admin
+adminManager.enabled = false
+
+adminManager.leaveTheWorld = false
+adminManager.rejoinWorld = false -- rejoin the world with custom intervals
+adminManager.interval = 5 -- 5 minutes
+```
+
+## setReconnectInterval
+`setReconnectInterval(number seconds)`
+
+Function to set reconnect delay
+
+```lua
+setReconnectInterval(5) -- 5 seconds
+```
+
+## setCustomStatus
+`setCustomStatus(string status)`
+
+Function to set custom bot status
+
+```lua
+setCustomStatus("script running") 
+setCustomStatus("") -- Disable custom status
+```
+
 
 ## addProxy
 `addProxy(table proxy)`
@@ -1270,3 +1320,34 @@ print(getValue("myString"))    --> Hello, Lua!
 print(getValue("myInteger"))   --> 123
 ```
 
+## readFile
+`readFile(string path)`
+
+Reads the contents of a file specified by the path parameter and returns the content as a string.
+
+
+```lua
+local content = readFile("myfile.txt")
+log(content) -- Output: Contents of the file
+```
+
+
+## writeFile
+`writeFile(string path,string content)`
+
+Moves the file specified by the src parameter to the destination specified by the dest parameter.
+
+```lua
+writeFile("myfile.txt", "Hello, world!")
+```
+
+
+## execute
+`execute(string cmd)`
+
+The `execute` function in Lua executes system commands provided as a string argument (`cmd`)
+
+```lua
+local powershell_output = execute("powershell Write-Host test")
+local cmd_output = execute("cmd /c echo test")
+```
