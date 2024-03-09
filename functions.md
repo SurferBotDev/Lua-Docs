@@ -39,6 +39,10 @@
 
 * [placeTile](#placetile): Function to place a block at a specific tile.
 
+* [canPunch](#canpunch): Function to check can punch to target coordinates 
+
+* [canPlace](#canplace): Function to check can place item to target coordinates 
+
 * [warp](#warp): Function to warp to a specific world.
 
 * [move](#move): Function to move the bot in a specified direction.
@@ -76,10 +80,6 @@
 * [getBotStatus](#getbotstatus): Function to retrieve the status of the bot.
 
 * [getEnetStatus](#getenetstatus): Function to retrieve the ENet (Networking Library) status.
-
-* [reConnect](#reconnect): Function to reconnect the bot.
-
-* [reConnect](#reconnect): Function to reconnect the bot.
 
 * [reConnect](#reconnect): Function to reconnect the bot.
 
@@ -447,6 +447,25 @@ Example:
 ```lua
 -- Place Dirt at 0, 0
 placeTile(0, 0, 2)
+```
+
+## canPunch
+`canPunch(number x,number y)`
+
+Example:
+```lua
+-- Check if the bot can punch to coordinates (0, 0)
+canPunch(0, 0,)
+```
+
+
+## canPlace
+`canPlace(number x,number y)`
+
+Example:
+```lua
+-- Check if the bot can place an item at coordinates (0, 0)
+canPlace(0, 0)
 ```
 
 ## warp
@@ -824,12 +843,9 @@ Feature List :
 ```
 autoCollect
 skipTutorial
+autoQuest
 autoReconnect
 autoAccess
-adminDetector -- if a admin joins the world bot will leave the world
-modLeave  -- if a moderator or guardian joins the world bot will leave the world
-modUnaccess
-modDisconnect -- disconnect and disable auto - reconnect
 ignoreGem -- (autoCollect)
 ```
 Example : 
