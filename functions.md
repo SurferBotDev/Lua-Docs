@@ -897,8 +897,18 @@ local Proxy = {
 
 -- Example usage of the connect function with different configurations
 local botID = connect("mygrowid", "mypassword") -- Without SOCKS5
-
 connect("mygrowid", "mypassword", Proxy) -- With SOCKS5
+connect("mygrowid", "mypassword", "auto") -- With Auto-Select Proxy
+
+local botID = connect("mygrowid", "mypassword", "auto") -- With Auto-Select Proxy
+
+if botID  == -1 then
+		log("No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)")
+elseif botID == -2 then
+		log("You have exceeded your limit. You can purchase to increase your limit from SurferWallet")
+else
+		local bot = getBot(botID)
+end
 
 ```
 
@@ -923,6 +933,16 @@ local botID1 = addGuest("") -- Using a random GrowID
 addGuest("GrowID") -- Using a custom GrowID, without SOCKS5
 addGuest("", Proxy) -- Using SOCKS5 and a random GrowID
 addGuest("GrowID", Proxy) -- Using SOCKS5 and a custom GrowID
+addGuest("GrowID","auto") -- Using SOCKS5 (AUTO-SELECT) and a custom GrowID
+
+local botID = addGuest("GrowID","auto")  -- With Auto-Select Proxy
+if botID  == -1 then
+		log("No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)")
+elseif botID == -2 then
+		log("You have exceeded your limit. You can purchase to increase your limit from SurferWallet")
+else
+		local bot = getBot(botID)
+end
 ```
 
 ## loginGuest
@@ -947,6 +967,16 @@ local botID = loginGuest("", guestInfo) -- Using a random GrowID
 loginGuest("GrowID", guestInfo) -- Using a custom GrowID, without SOCKS5
 loginGuest("", Proxy, guestInfo) -- Using SOCKS5 and a random GrowID
 loginGuest("GrowID", Proxy, guestInfo) -- Using SOCKS5 and a custom GrowID
+loginGuest("GrowID", "auto", guestInfo) --Using SOCKS5 (AUTO-SELECT) and a custom GrowID
+
+local botID = loginGuest("GrowID", "auto", guestInfo)
+if botID  == -1 then
+		log("No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)")
+elseif botID == -2 then
+		log("You have exceeded your limit. You can purchase to increase your limit from SurferWallet")
+else
+		local bot = getBot(botID)
+end
 ```
 
 ## updateGuest
