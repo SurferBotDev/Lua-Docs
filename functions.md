@@ -7,6 +7,8 @@
 
 * [findPath](#findpath): Function to find a path to a selected x, y position.
 
+* [getPath](#getpath): Function to return pathfind result.
+
 * [getLocal](#getlocal): Function to retrieve information about the bot.
 
 * [getInventory](#getinventory): Function to retrieve a list of items in the bot's inventory.
@@ -177,6 +179,26 @@ else
 end
 ```
 
+## getPath
+`getPath(number x, number y)`
+
+Function finds a path to a specified x, y position
+
+Example:
+```lua
+local result = getPath(0,0)
+
+if #result > 0 then
+    log("Path found successfully")
+    for _,path in ipairs(result) do
+        setPos(path.x,path.y)
+        sleep(15)
+    end
+else
+    log("Failed to find a path")
+end
+```
+
 ## getLocal
 `getLocal()`
 
@@ -196,8 +218,8 @@ Function to retrieve a list of items in the bot's inventory. Returns a table of 
 Example:
 ```lua
 -- Logs all item IDs in your inventory
-for _,cur in pairs(getInventory()) do
-log(cur.id)
+for _,item in pairs(getInventory()) do
+log(item.id)
 end
 ```
 
@@ -222,7 +244,7 @@ Function to retrieve a list of objects(items) in the current world. Returns a ta
 Example:
 ```lua
 -- Logs current world's object item IDs
-for _,object in pairs(getObjects()) do
+for _,object in ipairs(getObjects()) do
 log(object.id)
 end
 ```
@@ -520,7 +542,7 @@ Function to retrieve a list of all bots.
 
 Example:
 ```lua
-for index,bot in pairs(getBots()) do 
+for index,bot in ipairs(getBots()) do 
   bot:say("hi")
 end
 ```
@@ -553,7 +575,7 @@ Function to collect an object in the world by uid
 Example:
 ```lua
 -- Collecting Objects with UID
-for _, object in pairs(getObjects()) do
+for _, object in ipairs(getObjects()) do
     collectObject(object.uid)
 end
 ```
