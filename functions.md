@@ -374,6 +374,7 @@ for _, item in ipairs(getItems()) do
     log("dropChance: ", item.dropChance)
     log("itemCategory: ", item.itemCategory)
     log("untradeable: ", item.untradeable)
+    log("collisionType: ", item.collisionType)
 end
 ```
 
@@ -396,6 +397,7 @@ log("breakHits: ", ItemInfo.breakHits)
 log("dropChance: ", ItemInfo.dropChance)
 log("itemCategory: ", ItemInfo.itemCategory)
 log("untradeable: ", ItemInfo.untradeable)
+log("collisionType: ", ItemInfo.collisionType)
 ```
 
 ## isSolid
