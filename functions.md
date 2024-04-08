@@ -47,6 +47,8 @@
 
 * [warp](#warp): Function to warp to a specific world.
 
+* [getNukedWorlds](#getnukedworlds): Function to retrieve nuked worlds
+
 * [move](#move): Function to move the bot in a specified direction.
 
 * [setPos](#setpos): Function to set the bot's position to specific coordinates.
@@ -499,6 +501,20 @@ Example:
 ```lua
 warp("BUYGHC")
 ```
+
+## getNukedWorlds
+`getNukedWorlds()`
+
+Function to retrieve nuked worlds
+
+Example:
+```lua
+local bot = getBot()
+for _, world in pairs(bot:getNukedWorlds()) do
+    log(world)
+end
+```
+
 
 ## move
 `move(enum MOVE,number speed)`

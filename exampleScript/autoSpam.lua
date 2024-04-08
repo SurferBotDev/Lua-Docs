@@ -8,7 +8,9 @@ botWork = {
 
 function processBot(botName)
     bot = getBot(botName)
-    bot:say(botWork[botName].text)
+    if bot:inWorld() then
+        bot:say(botWork[botName].text)
+    end
 end
 
 while true do
