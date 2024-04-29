@@ -281,6 +281,7 @@ if tile.extra then
             log(tile.extra.price, " per World Lock")
         end
     end
+
 else
     log("No extra information available for this tile")
 end
@@ -299,6 +300,19 @@ for _, tile in ipairs(tiles) do
     log("Background Block ID:", tile.bg)
     log("X Position:", tile.x)
     log("Y Position:", tile.y)
+end
+```
+
+```lua
+getTiles({r = true}) --Returns only tiles that are ready for harvesting
+getTiles({r = false})-- Returns only tiles that are not ready for harvesting
+getTiles({x = 10})-- Returns only the tile located at position (10, 0-)
+getTiles({y = 10})-- Returns only the tile located at position (0-, 10)
+getTiles({skip = true})-- Returns only tiles that are fg or bg > 0
+
+local tiles = getTiles({r = false})
+for _, tile in ipairs(tiles) do
+    log("(",tile.x,",",tile.y,") tile is readyToHarvest")
 end
 ```
 
@@ -809,8 +823,10 @@ enum Bot_Status
     InvalidEmail,
     guestCaptcha,
     temporaryBan,
-    fetchingMeta
-    failedToFetchMeta
+    fetchingMeta,
+    failedToFetchMeta,
+    accountRestricted,
+    proxyRestricted
 };
 ```
 
@@ -1280,24 +1296,24 @@ local proxyManager = proxyManager()
 
 -- Add proxies with ProxyManager
 
-proxyManager.add("127.0.0.1:5556:user:pass")
-proxyManager.add("127.0.0.1:5555")
+proxyManager:add("127.0.0.1:5556:user:pass")
+proxyManager:add("127.0.0.1:5555")
 
 -- Remove proxies with ProxyManager
 
-proxyManager.remove("127.0.0.1:5556")
-proxyManager.remove("127.0.0.1:5555")
+proxyManager:remove("127.0.0.1:5556")
+proxyManager:remove("127.0.0.1:5555")
 
 -- Check proxies with ProxyManager
 
-proxyManager.check("127.0.0.1:5556", proxy) -- Check if the proxy is not working
-proxyManager.check("127.0.0.1:5555", growtopia) -- Check if the proxy can connect to Growtopia
+proxyManager:check("127.0.0.1:5556", proxy) -- Check if the proxy is not working
+proxyManager:check("127.0.0.1:5555", growtopia) -- Check if the proxy can connect to Growtopia
 
-local proxy_1_status = proxyManager.status("127.0.0.1:5556", proxy)
-local proxy_2_status = proxyManager.status("127.0.0.1:5555", growtopia)
+local proxy_1_status = proxyManager:status("127.0.0.1:5556", proxy)
+local proxy_2_status = proxyManager:status("127.0.0.1:5555", growtopia)
 
 if proxy_2_status == not_working then
-    proxyManager.remove("127.0.0.1:5555")
+    proxyManager:remove("127.0.0.1:5555")
 end
 
 
@@ -1344,13 +1360,13 @@ local switchManager = switchManager()
 
 -- Add Accounts with switchManager
 
-switchManager.addAccount("growid","password")
-switchManager.addGuest("e8:6f:bc:14:9f:35")
+switchManager:addAccount("growid","password")
+switchManager:addGuest("e8:6f:bc:14:9f:35")
 
 -- Remove Accounts with switchManager
 
-switchManager.remove("growid")
-switchManager.remove("e8:6f:bc:14:9f:35")
+switchManager:remove("growid")
+switchManager:remove("e8:6f:bc:14:9f:35")
 
 -- Enable/disable auto-switch
 
