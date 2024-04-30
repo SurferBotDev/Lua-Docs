@@ -1137,6 +1137,29 @@ spamManager.delay = 5000 -- Milliseconds
 spamManager.clearText()
 spamManager.pushText("Your text goes here")
 ```
+Clear World
+```lua
+local clearWorld = getBot():autoManager().clearWorld
+
+clearWorld.enabled = false
+clearWorld.skipBg = false
+clearWorld.autoTrash = false
+clearWorld.placeSignal = false
+clearWorld.saveWorld = "name|id"
+
+clearWorld.addWorld("target world name")
+clearWorld.removeWorld("target world name")
+```
+
+Auto Provider
+```lua
+local autoProvider = getBot():autoManager().provider
+
+autoProvider.enabled = false
+
+autoProvider.addWorld("target world name")
+autoProvider.removeWorld("target world name")
+```
 
 Fishing
 ```lua
@@ -1339,7 +1362,7 @@ end
 -- pending
 
 
-local proxies = proxyManager.getProxies()
+local proxies = proxyManager:getProxies()
 for _, proxy in ipairs(proxies) do
     log(proxy) --ip:port:user:pass
 end
