@@ -114,6 +114,7 @@
 * [proxyManager](#proxymanager)
 * [switchManager](#switchmanager)
 * [App](#app)
+* [rotationManager](#rotationmanager)
 * [setValue](#setvalue) 
 * [getValue](#getvalue) 
 * [writeFile](#writefile) 
@@ -903,6 +904,7 @@ autoQuest
 autoReconnect
 autoAccess
 ignoreGem -- (autoCollect)
+rotation
 ```
 Example : 
 ```lua
@@ -1372,6 +1374,57 @@ switchManager:remove("e8:6f:bc:14:9f:35")
 
 switchManager.enable = true
 ```
+## rotationManager
+`rotationManager()`
+
+return Rotation Manager Class
+
+```lua
+local rotationManager = rotationManager()
+
+-- Add Worlds with rotationManager
+
+rotationManager:addWorld("worldName|id",PNB)
+rotationManager:addWorld("worldName|id",FARM)
+rotationManager:addWorld("worldName|id",SAVE)
+rotationManager:addWorld("worldName|id",PICKAXE)
+
+-- Remove Worlds with rotationManager
+
+rotationManager:removeWorld("worldName")
+
+-- Remove Worlds with rotationManager
+
+local worldStatus = rotationManager:status("worldName")
+
+-- world statuses:
+-- NO_ACTION
+-- NUKED
+-- READY
+-- NOT_READY
+-- STARTED
+-- FAILED
+
+local pnbWorlds = rotationManager:getPnbWorlds()
+local farmWorlds = rotationManager:getFarmWorlds()
+local saveWorlds = rotationManager:getSaveWorlds()
+local pickaxeWorlds = rotationManager:getPickaxeWorlds()
+
+for name,data in pairs(farmWorlds) do
+    local worldName = name
+    local doorId = data.doorId
+    local botId = data.botId 
+    local status = data.status
+end
+
+rotationManager:setStore("World Lock","world_lock",2000) -- Name,Pack id,price
+
+rotationManager.pnbWorld = true --Enable pnb at another world
+rotationManager.rFeatures = true --enable recommended features
+rotationManager.autoBuy = true --enable auto store
+```
+
+
 
 ## App
 `App()`
