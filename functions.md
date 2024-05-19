@@ -120,6 +120,7 @@
 * [writeFile](#writefile) 
 * [readFile](#readfile) 
 * [execute](#execute) 
+* [calculateBackpackCost](#calculatebackpackcost) 
 
 ## getBot
 `getBot(string botname)`
@@ -1145,10 +1146,31 @@ clearWorld.enabled = false
 clearWorld.skipBg = false
 clearWorld.autoTrash = false
 clearWorld.placeSignal = false
+clearWorld.lockId = 242
 clearWorld.saveWorld = "name|id"
 
 clearWorld.addWorld("target world name")
 clearWorld.removeWorld("target world name")
+clearWorld.worlds -> return table [name,id,status]
+for name, data in pairs(clearWorld.worlds) do
+    worldName = name
+    id = data.id
+    status = data.status
+end
+```
+Auto Build
+```lua
+local autoBuild = getBot():autoManager().autoBuild
+
+autoBuild.enabled = false
+autoBuild.placeSignal = false
+autoBuild.placeLock = false
+autoBuild.lockId = 242
+autoBuild.saveWorld = "name|id"
+
+autoBuild.addWorld("target world name")
+autoBuild.removeWorld("target world name")
+autoBuild.worlds -> return table [name,id,status]
 ```
 
 Auto Provider
@@ -1159,6 +1181,7 @@ autoProvider.enabled = false
 
 autoProvider.addWorld("target world name")
 autoProvider.removeWorld("target world name")
+clearWorld.worlds -> return table [name,id,status,readyAt]
 ```
 
 Fishing
@@ -1333,6 +1356,8 @@ proxyManager:remove("127.0.0.1:5555")
 
 proxyManager:check("127.0.0.1:5556", proxy) -- Check if the proxy is not working
 proxyManager:check("127.0.0.1:5555", growtopia) -- Check if the proxy can connect to Growtopia
+proxyManager:check("127.0.0.1:5555", http) -- Check if the proxy can connect to Growtopia
+
 
 local proxy_1_status = proxyManager:status("127.0.0.1:5556", proxy)
 local proxy_2_status = proxyManager:status("127.0.0.1:5555", growtopia)
@@ -1411,6 +1436,7 @@ rotationManager:addWorld("worldName|id",PNB)
 rotationManager:addWorld("worldName|id",FARM)
 rotationManager:addWorld("worldName|id",SAVE)
 rotationManager:addWorld("worldName|id",PICKAXE)
+rotationManager:addWorld("worldName|id",SEED)
 
 -- Remove Worlds with rotationManager
 
@@ -1421,7 +1447,7 @@ rotationManager:removeWorld("worldName")
 local worldStatus = rotationManager:status("worldName")
 
 -- world statuses:
--- NO_ACTION
+-- PENDING
 -- NUKED
 -- READY
 -- NOT_READY
@@ -1432,6 +1458,7 @@ local pnbWorlds = rotationManager:getPnbWorlds()
 local farmWorlds = rotationManager:getFarmWorlds()
 local saveWorlds = rotationManager:getSaveWorlds()
 local pickaxeWorlds = rotationManager:getPickaxeWorlds()
+local seedWorlds = rotationManager:getSeedWorlds()
 
 for name,data in pairs(farmWorlds) do
     local worldName = name
@@ -1528,4 +1555,12 @@ The `execute` function in Lua executes system commands provided as a string argu
 ```lua
 local powershell_output = execute("powershell Write-Host test")
 local cmd_output = execute("cmd /c echo test")
+```
+
+## calculateBackpackCost
+`calculateBackpackCost(number slotCount)`
+```lua
+local bot = getBot()
+local slotCount = bot:getLocal().slot
+local gems = calculateBackpackCost(slotCount + 10)
 ```
