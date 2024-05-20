@@ -1,6 +1,6 @@
 # SurferBot-Docs
 Growtopia Bot Application
 
-HTTP API : https://documenter.getpostman.com/view/15842770/2s93JqR4qC#intro
+[Postman HTTP-API](https://documenter.getpostman.com/view/15842770/2sA3Bn5XnU)
 
-Discord Link : https://surferwallet.net/discord
+[Discord](https://surferwallet.net/discord)
