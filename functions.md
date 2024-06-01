@@ -1135,8 +1135,8 @@ spamManager.enabled = false
 spamManager.randomColor = false
 spamManager.worldName = "target world name"
 spamManager.delay = 5000 -- Milliseconds
-spamManager.clearText()
-spamManager.pushText("Your text goes here")
+spamManager:clearText()
+spamManager:pushText("Your text goes here")
 ```
 Clear World
 ```lua
@@ -1149,8 +1149,8 @@ clearWorld.placeSignal = false
 clearWorld.lockId = 242
 clearWorld.saveWorld = "name|id"
 
-clearWorld.addWorld("target world name")
-clearWorld.removeWorld("target world name")
+clearWorld:addWorld("target world name")
+clearWorld:removeWorld("target world name")
 clearWorld.worlds -> return table [name,id,status]
 for name, data in pairs(clearWorld.worlds) do
     worldName = name
@@ -1168,8 +1168,8 @@ autoBuild.placeLock = false
 autoBuild.lockId = 242
 autoBuild.saveWorld = "name|id"
 
-autoBuild.addWorld("target world name")
-autoBuild.removeWorld("target world name")
+autoBuild:addWorld("target world name")
+autoBuild:removeWorld("target world name")
 autoBuild.worlds -> return table [name,id,status]
 ```
 
@@ -1179,8 +1179,8 @@ local autoProvider = getBot():autoManager().provider
 
 autoProvider.enabled = false
 
-autoProvider.addWorld("target world name")
-autoProvider.removeWorld("target world name")
+autoProvider:addWorld("target world name")
+autoProvider:removeWorld("target world name")
 clearWorld.worlds -> return table [name,id,status,readyAt]
 ```
 
