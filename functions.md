@@ -1160,7 +1160,7 @@ end
 ```
 Auto Build
 ```lua
-local autoBuild = getBot():autoManager().autoBuild
+local autoBuild = getBot():autoManager().build
 
 autoBuild.enabled = false
 autoBuild.placeSignal = false
@@ -1181,7 +1181,33 @@ autoProvider.enabled = false
 
 autoProvider:addWorld("target world name")
 autoProvider:removeWorld("target world name")
-clearWorld.worlds -> return table [name,id,status,readyAt]
+autoProvider.worlds -> return table [name,id,status,readyAt]
+```
+
+Auto Harvest
+```lua
+local autoHarvest = getBot():autoManager().harvest
+
+autoHarvest.enabled = false
+autoHarvest.itemId = 3 -- seed ID
+autoHarvest.saveWorld = "name|id"
+
+autoHarvest:addWorld("target world name")
+autoHarvest:removeWorld("target world name")
+autoHarvest.worlds -> return table [name,id,status,readyAt]
+```
+
+Auto Plant
+```lua
+local autoPlant = getBot():autoManager().plant
+
+autoPlant.enabled = false
+autoPlant.saveWorld = "name|id"
+autoPlant.itemId = 3 -- seed ID
+
+autoPlant:addWorld("target world name")
+autoPlant:removeWorld("target world name")
+autoPlant.worlds -> return table [name,id,status,readyAt]
 ```
 
 Fishing
