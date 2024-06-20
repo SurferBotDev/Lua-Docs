@@ -39,11 +39,12 @@
 | Number | `userid` | Player's userID |
 | Number | `buildRange` | Player's buildRange |
 | Number | `punchRange` | Player's punchRange |
-| Boolean | `Mod` | Indicates whether the player is a mod |
+| Number | `flags` |  Player's flags   |
+| Number | `level` | Player's level |
+| Boolean | `mod` | Indicates whether the player is a mod |
 | Number | `gems` | Gems Amount |
 | Boolean | `guest` | Indicates whether the player is a guest |
 | Number | `slot` | Inventory slot count (backpack) |
-| Number | `level` | Player's level |
 | Boolean | `supporter` |  Indicates whether the player is a supporter |
 | String | `guestInfo` |  guestInfo (session information) |
 | Table | `proxy` |  proxy information { hostname, username, password } |
@@ -102,6 +103,7 @@
 | Number  | `breakHits`   | Item break hits |
 | Number  | `dropChance`  | Item Drop chance|
 | Number  | `itemCategory`| Item category   |
+| Number  | `level `  | Required Level |
 | Bool  | `untradeable `  | Item untradeable|
 
 

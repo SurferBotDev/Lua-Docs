@@ -104,7 +104,6 @@
 * [getIndex](#getindex): Function that returns the index of the bot in the bot list.
 * [getID](#getid): Function to retrieve the ID of the bot
 * [autoManager](#automanager): Function to retrieve automation
-
 * [setCustomStatus](#setcustomstatus): Function to set custom bot status
 * [setReconnectInterval](#setreconnectinterval): Function to set reconnect delay
 * [httpReq](#httpreq): Function to send an HTTP request and receive an HTTP response
