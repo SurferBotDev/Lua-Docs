@@ -53,6 +53,8 @@
 | String | `captchaURL` |  captcha URL  |
 | [captchaStatus](#captchastatus) | `captchaStatus` |  captcha Solver Status    |
 | String | `captchaError` |  Error description   |
+| String | `tokenStatus` |  Token Information   |
+| String | `ticketStatus` |  Ticket(UBI) Information   |
 
 
  ## Tile

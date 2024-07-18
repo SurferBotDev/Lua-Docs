@@ -96,6 +96,8 @@
 * [getBool](#getbool): Function to retrieve the bool status of the bot
 * [connect](#connect): Function to connect a bot to server with optional SOCKS5 proxy settings
 * [addGuest](#addguest):Function to add a guest bot with optional SOCKS5 proxy settings
+* [setSecret](#setsecret):Function to set secret key for 2fa
+
 * [loginGuest](#loginguest):Function to log in a guest bot with optional SOCKS5 proxy settings
 * [updateGuest](#updateguest): Function to update the MAC and RID of bot
 * [updateBot](#updatebot): Function to update the GrowID and Password of a bot account
@@ -970,6 +972,16 @@ end
 
 ```
 
+## setSecret
+`setSecret(string secretKey)`
+
+Function to set secret key for 2fa
+
+Example:
+```lua
+local botID = connect("ubiacc@gmail.com","pass123")
+getBot(botID):setSecret("key")
+```
 
 ## addGuest
 `addGuest(string GrowID,table Socks5 Information)`
