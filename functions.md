@@ -94,13 +94,10 @@
 * [getMs](#getms): Function to retrieve the bot's ping (MS).
 * [setBool](#setbool): Function to enable or disable a feature for the bot
 * [getBool](#getbool): Function to retrieve the bool status of the bot
-* [connect](#connect): Function to connect a bot to server with optional SOCKS5 proxy settings
-* [addGuest](#addguest):Function to add a guest bot with optional SOCKS5 proxy settings
+* [addBot](#addBot): Function to add a bot optional SOCKS5 proxy settings
 * [setSecret](#setsecret):Function to set secret key for 2fa
 
-* [loginGuest](#loginguest):Function to log in a guest bot with optional SOCKS5 proxy settings
-* [updateGuest](#updateguest): Function to update the MAC and RID of bot
-* [updateBot](#updatebot): Function to update the GrowID and Password of a bot account
+* [updateAccount](#updateAccount): Function to update the account information
 * [updateProxy](#updateproxy): Function to update the SOCKS5 proxy settings for bot
 * [setMac](#setmac): Function to set the MAC address for the bot
 * [getIndex](#getindex): Function that returns the index of the bot in the bot list.
@@ -829,7 +826,13 @@ enum Bot_Status
     fetchingMeta,
     failedToFetchMeta,
     accountRestricted,
-    proxyRestricted
+    proxyRestricted,
+    guestDisabled,
+	invalidName,
+	failedToFetchToken,
+	failedToFetchTicket,
+	required_2FA,
+	fetchingToken
 };
 ```
 
@@ -940,35 +943,57 @@ local isSkipTutorialEnabled = getBool("skipTutorial")
 local isIgnoreGemEnabled = getBool("ignoreGem")
 ```
 
-## connect
-`connect(string growid,string password,table Socks5 Information)`
-
-Function to connect a bot to server with optional SOCKS5 proxy settings
-
+## addBot
+`addBot(table AccountInformation)`
 Example:
 ```lua
--- Define the SOCKS5 proxy settings in a table
-local Proxy = {
-    HostName = "ipaddress:port",
-    Username = "MyUsername",
-    Password = "MyPassword",
-    Type = SOCKS5
+LEGACY,GOOGLE,UBICONNECT,TOKEN
+
+local account = {
+    type = LEGACY,
+    growid = "",
+    password = "",
+    proxy = "user:pass:ip:port", -- / auto
+    connect = true, --default true
+    mac = "02:00:00:00:00"
 }
 
--- Example usage of the connect function with different configurations
-local botID = connect("mygrowid", "mypassword") -- Without SOCKS5
-connect("mygrowid", "mypassword", Proxy) -- With SOCKS5
-connect("mygrowid", "mypassword", "auto") -- With Auto-Select Proxy
+local google_account = {
+    type = GOOGLE,
+    mail = "",
+    password = "",
+    recovery = "",
+    proxy = "user:pass:ip:port",
+    connect = true --default true
+}
 
-local botID = connect("mygrowid", "mypassword", "auto") -- With Auto-Select Proxy
+local ubiconnect_account = {
+    type = UBICONNECT,
+    mail = "",
+    password = "",
+    secretKey = "",
+    proxy = "user:pass:ip:port",
+    connect = true --default true
+}
 
-if botID  == -1 then
-		log("No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)")
-elseif botID == -2 then
-		log("You have exceeded your limit. You can purchase to increase your limit from SurferWallet")
-else
-		local bot = getBot(botID)
-end
+local token_account = {
+    type = TOKEN,
+    token = "000",
+    growid = "",
+    proxy = "user:pass:ip:port",
+    connect = true --default true
+}
+
+local botID = addBot(account)
+local old_botID = addBot("growid","password","user:pas:ip:port") --only legacy
+
+-- -1 = This account is already logged in
+-- -2 = You have exceeded your limit. You can purchase to increase your limit from SurferWallet
+-- -3 = No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)
+-- -4 = ID | TOKEN | Password Or Mail is Empty
+
+
+local bot = getBot(botID)
 
 ```
 
@@ -979,99 +1004,41 @@ Function to set secret key for 2fa
 
 Example:
 ```lua
-local botID = connect("ubiacc@gmail.com","pass123")
-getBot(botID):setSecret("key")
+getBot):setSecret("key")
 ```
 
-## addGuest
-`addGuest(string GrowID,table Socks5 Information)`
+## updateAccount
+`updateAccount(table AccountInformation)`
 
-Function to add a guest bot with optional SOCKS5 proxy settings
-
-Example:
+Function to update the account information
 ```lua
--- Define the proxy settings in a table
-local Proxy = {
-    HostName = "127.0.0.1:5555",
-    Username = "MyUsername",
-    Password = "MyPassword",
-    Type = SOCKS5
+local account = {
+    type = LEGACY,
+    growid = "",
+    password = ""
 }
 
--- Example usage of the addGuest function with different configurations
-local botID1 = addGuest("") -- Using a random GrowID
-addGuest("GrowID") -- Using a custom GrowID, without SOCKS5
-addGuest("", Proxy) -- Using SOCKS5 and a random GrowID
-addGuest("GrowID", Proxy) -- Using SOCKS5 and a custom GrowID
-addGuest("GrowID","auto") -- Using SOCKS5 (AUTO-SELECT) and a custom GrowID
-
-local botID = addGuest("GrowID","auto")  -- With Auto-Select Proxy
-if botID  == -1 then
-		log("No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)")
-elseif botID == -2 then
-		log("You have exceeded your limit. You can purchase to increase your limit from SurferWallet")
-else
-		local bot = getBot(botID)
-end
-```
-
-## loginGuest
-`loginGuest(string GrowID,table Socks5 Information,string guestInfo )`
-
-Function to log in a guest bot with optional SOCKS5 proxy settings
-
-Example:
-```lua
--- Define the proxy settings in a table
-local Proxy = {
-    HostName = "127.0.0.1:5555",
-    Username = "MyUsername",
-    Password = "MyPassword",
-    Type = SOCKS5
+local google_account = {
+    type = GOOGLE,
+    mail = "",
+    password = "",
+    recovery = ""
 }
 
--- You can obtain the guestInfo from getLocal().guestInfo
+local ubiconnect_account = {
+    type = UBICONNECT,
+    mail = "",
+    password = "",
+    secretKey = ""
+}
 
--- Example usage of loginGuest function with different configurations
-local botID = loginGuest("", guestInfo) -- Using a random GrowID
-loginGuest("GrowID", guestInfo) -- Using a custom GrowID, without SOCKS5
-loginGuest("", Proxy, guestInfo) -- Using SOCKS5 and a random GrowID
-loginGuest("GrowID", Proxy, guestInfo) -- Using SOCKS5 and a custom GrowID
-loginGuest("GrowID", "auto", guestInfo) --Using SOCKS5 (AUTO-SELECT) and a custom GrowID
+local token_account = {
+    type = TOKEN,
+    token = "000",
+    growid = ""
+}
 
-local botID = loginGuest("GrowID", "auto", guestInfo)
-if botID  == -1 then
-		log("No available proxies. The limit has been exceeded (You can adjust the limit on the proxy page)")
-elseif botID == -2 then
-		log("You have exceeded your limit. You can purchase to increase your limit from SurferWallet")
-else
-		local bot = getBot(botID)
-end
-```
-
-## updateGuest
-`updateGuest(string guestInfo ,string GuestName)`
-
-Function to update the MAC and RID of bot
-
-Example:
-```lua
-updateGuest("mac+rid","GrowID")
-updateGuest("02:38:d7:77:9d:d3+3B948C923D122E03CE88C0342AE1ED4B")
-updateGuest("02:38:d7:77:9d:d3+3B948C923D122E03CE88C0342AE1ED4B","surferBot")
-```
-
-
-## updateBot
-`updateBot(string GrowID,string Password )`
-
-Function to update the GrowID and Password of a bot account
-
-
-Example:
-```lua
--- This function will change the bot's MAC and RID to bypass suspensions, bans, etc.
-updateBot("newGrowID", "newPassword") 
+bot:updateAccount(account)
 ```
 
 ## updateProxy
@@ -1100,6 +1067,28 @@ Example:
 ```lua
 bot = getBot()
 bot:setMac("42:d4:a6:0b:5f:c3")
+```
+
+## setToken
+`setToken(string newToken)`
+
+Function to set the Token for the bot
+
+Example:
+```lua
+bot = getBot()
+bot:setToken("0000000")
+```
+
+## setRecovery
+`setRecovery(string newRecoveryMail)`
+
+Function to set the Recovery Mail for the bot
+
+Example:
+```lua
+bot = getBot()
+bot:setRecovery("test@gmail.com")
 ```
 
 
@@ -1278,15 +1267,9 @@ setCustomStatus("") -- Disable custom status
 
 
 ## addProxy
-`addProxy(table proxy)`
+`addProxy(string proxy)`
 ```lua
-local Proxy = {
-    HostName = "ipaddress:port",
-    Username = "MyUsername",
-    Password = "MyPassword",
-    Type = SOCKS5
-}
-addProxy(Proxy)
+addProxy("user:pass:ip:port")
 ```
 
 ## httpReq
@@ -1447,8 +1430,29 @@ local switchManager = switchManager()
 
 -- Add Accounts with switchManager
 
-switchManager:addAccount("growid","password")
-switchManager:addGuest("e8:6f:bc:14:9f:35")
+local account = {
+    type = LEGACY,
+    growid = "",
+    password = "",
+    mac = "02:00:00:00:00"
+}
+
+local google_account = {
+    type = GOOGLE,
+    mail = "",
+    password = "",
+    recovery = ""
+}
+
+local ubiconnect_account = {
+    type = UBICONNECT,
+    mail = "",
+    password = "",
+    secretKey = ""
+}
+
+switchManager:addAccount(account)
+
 
 -- Remove Accounts with switchManager
 

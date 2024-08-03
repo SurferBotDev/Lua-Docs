@@ -17,16 +17,16 @@
 ## Vector2
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `x` | X position |
-| Number | `y` | Y position |
+| Number | `x` | X coordinate |
+| Number | `y` | Y coordinate |
 
 ## WorldObject
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `id` | Item ID of the object |
-| Number | `uid` | Index of the object |
+| Number | `id` | Unique identifier of the item |
+| Number | `uid` | Unique index of the object |
 | [Vector2](#vector2) | `pos` | Position of the object |
-| Number | `count` | Item count of the object |
+| Number | `count` | Quantity of the item |
 | Number | `flags` | Flags of the object |
  
  ## NetAvatar
@@ -42,30 +42,33 @@
 | Number | `flags` |  Player's flags   |
 | Number | `level` | Player's level |
 | Boolean | `mod` | Indicates whether the player is a mod |
-| Number | `gems` | Gems Amount |
-| Boolean | `guest` | Indicates whether the player is a guest |
-| Number | `slot` | Inventory slot count (backpack) |
-| Boolean | `supporter` |  Indicates whether the player is a supporter |
-| String | `guestInfo` |  guestInfo (session information) |
-| Table | `proxy` |  proxy information { hostname, username, password } |
-| String | `mac` |  mac information  |
-| String | `ubiMail` |  ubi Mail  |
-| String | `captchaURL` |  captcha URL  |
-| [captchaStatus](#captchastatus) | `captchaStatus` |  captcha Solver Status    |
-| String | `captchaError` |  Error description   |
+-- Local| ----- | ------
+| Number | `gems` | Gem count |
+| Number | `slot` | Inventory slot count (backpack size) |
+| Number | `playTime` | Total playtime |
+| Number | `createDate` | Account creation date (Unix timestamp) |
+| Boolean | `supporter` |  Indicates if the bot is a supporter |
+| String | `proxy` |  proxy information (user:pass:ip:port) |
+| String | `mac` |  MAC address  |
+| String | `growid` | growid |
 | String | `tokenStatus` |  Token Information   |
 | String | `ticketStatus` |  Ticket(UBI) Information   |
+| String | `googleStatus` |  Google Status Information   |
+| String | `token` |  Token   |
+| String | `recoveryMail` |  Recovery email for Google   |
+| String | `accountCreateUrl` |  Account creation URL |
+| String | `accountCreateCookie` |  Required cookie for account creation (growtopia_game_session) |
 
 
  ## Tile
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `fg` | Foreground ID of the Tile |
-| Number | `bg` | Background ID of the Tile |
-| Number | `x`  | x position of the Tile |
-| Number | `y`  | y position of the Tile |
-| [flagType](#flagtype) | `flags` | Flags of the Tile  |
-| [tile Extra](#tileextra) | `extra` | Extra Information of the Tile  |
+| Number | `fg` |Foreground item ID |
+| Number | `bg` | Background item ID |
+| Number | `x`  | Tile's X position |
+| Number | `y`  |Tile's Y positione |
+| [flagType](#flagtype) | `flags` | 	Tile flags  |
+| [tile Extra](#tileextra) | `extra` |	Extra tile information |
 
 
  ## InventoryItem
@@ -103,10 +106,10 @@
 | Number  | `rarity`      | Item rarity     |
 | Number  | `growTime`    | Item grow time  |
 | Number  | `breakHits`   | Item break hits |
-| Number  | `dropChance`  | Item Drop chance|
+| Number  | `dropChance`  | Item drop chance|
 | Number  | `itemCategory`| Item category   |
 | Number  | `level `  | Required Level |
-| Bool  | `untradeable `  | Item untradeable|
+| Bool  | `untradeable `  | Indicates if the item is untradeable
 
 
 ## VariantList
@@ -122,13 +125,13 @@
 ## world
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| String | `name` |  World Name |
-| Number | `width` | World Width |
-| Number | `height` | World Height |
+| String | `name` |  World name |
+| Number | `width` | World width |
+| Number | `height` | World height |
 | Number | `timer` | World timer (in minutes) |
-| table [Number] | `access` | World access list (uid) |
-| [Vector2](#vector2) | `maindoor` | Main door position of the world (white door)|
-| [NPC](#npc) | `npcs` | List of NPC in the world (e.g., ghost, etc.) |
+| table | `access` | World access list (user IDs) |
+| [Vector2](#vector2) | `maindoor` | Main door position (white door) |
+| [NPC](#npc) | `npcs` | List of NPCs in the world |
 
 ## httpRequestInfo
 | Type | Name | Description|
@@ -136,17 +139,17 @@
 | String | `url` |  Request URL |
 | String | `userAgent` | User Agent |
 | String | `postData` | Post Data |
-| Boolean | `json` | Json Request |
+| Boolean | `json` | Indicates if the request is JSON |
 | Enum | `method` | Request Method [POST,GET,DELETE,PUT,HEAD,PATCH] |
 | String | `proxy` | Proxy information (e.g., http://user:password@proxy:port) |
 
 ## httpResponseInfo
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| String | `body` |  Response Body |
-| Number | `httpCode` | Response HTTP code |
-| Boolean | `success` | Indicates whether the request was successful or failed|
-| String | `failInfo` | CURL error message |
+| String | `body` |  Response body |
+| Number | `httpCode` | HTTP status code |
+| Boolean | `success` | Indicates if the request was successful |
+| String | `failInfo` | Error information |
 
 ## flagType
 | Name |
@@ -172,14 +175,6 @@
 | moderatorJoined | 
 | gamePacket | 
 | gameMessage | 
-
-## captchaStatus
-| Name |
-|:-----|
-| NoAction |
-| WaitingAnswerFromAPI | 
-| Successful | 
-| Failed | 
 
 ## Npc
 | Type | Name | Description|
@@ -207,15 +202,15 @@
 ## Vending
 | Type | Name | Description|
 |:-----|:----:|:-----------|
-| Number | `itemID` | ItemID On The Vending Machine |
-| Number | `price` | Price On The Vending Machine |
-| Boolean | `each` | Indicates whether the item is sold per unit or each|
+| Number | `itemID` | Item ID on the vending machine |
+| Number | `price` |  Price on the vending machine|
+| Boolean | `each` |  Indicates if the item is sold per unit or each |
 
 ## WorldLock
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | table [Number] | `accessList` |  Access List |
-| Boolean | `public` | Indicates if the World Lock is public |
+| Boolean | `public` | Indicates if the world lock is public |
 | Number | `timer` | Timer value for the lock in miniutes |
 
 ## Lock
