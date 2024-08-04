@@ -82,7 +82,7 @@
 * [autoCollect](#autocollect): Function to enable or disable the AutoCollect feature with a specified collection range and an optional ignore list.
 
 * [getBotStatus](#getbotstatus): Function to retrieve the status of the bot.
-
+* [createAccount](#createaccount): Function to Create New Account
 * [getEnetStatus](#getenetstatus): Function to retrieve the ENet (Networking Library) status.
 
 * [reConnect](#reconnect): Function to reconnect the bot.
@@ -832,10 +832,35 @@ enum Bot_Status
 	failedToFetchToken,
 	failedToFetchTicket,
 	required_2FA,
-	fetchingToken
+	fetchingToken,
+    emailNotAssociated
 };
 ```
 
+
+## createAccount
+`createAccount()`
+
+Function to Create New Account
+
+Example:
+```lua
+if getBotStatus() == emailNotAssociated then
+    local status = createAccount("growid")
+end
+```
+```c++
+-- Enum Information
+enum class AccountCreationStatus
+{
+	NONE,
+	PENDING,
+	SUCCESS,
+	BAD_GATEWAY,
+	NAME_TAKEN,
+	FAILED
+};
+```
 
 ## getEnetStatus
 `getEnetStatus()`
