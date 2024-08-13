@@ -110,6 +110,7 @@
 * [hwid](#hwid): Function to retrieve hardware ID
 * [msgBox](#msgbox): Displays a message box with the specified header text and body text
 * [proxyManager](#proxymanager)
+* [bypassManager](#bypassmanager)
 * [switchManager](#switchmanager)
 * [App](#app)
 * [rotationManager](#rotationmanager)
@@ -1001,6 +1002,15 @@ local ubiconnect_account = {
     connect = true --default true
 }
 
+local steam_account = {
+    type = STEAM,
+    mail = "",
+    password = "",
+    secretKey = "",
+    proxy = "user:pass:ip:port",
+    connect = true --default true
+}
+
 local token_account = {
     type = TOKEN,
     token = "000",
@@ -1259,6 +1269,7 @@ modManager.leaveTheWorld = false
 modManager.unAccess = false 
 modManager.rejoinWorld = false -- rejoin the world with custom intervals
 modManager.interval = 5 -- 5 minutes
+modManager.disconnect = false --Disconnect Bots [GLOBAL]
 ```
 
 Admin Detector
@@ -1445,6 +1456,29 @@ proxyManager.autoSelect = false;
 proxyManager.limit = 3;
 ```
 
+## bypassManager
+`bypassManager()`
+
+return bypassManager Class
+
+```lua
+local bypassManager = bypassManager()
+
+-- Add proxies with bypassManager
+bypassManager:add("127.0.0.1:5556:user:pass")
+bypassManager:add("127.0.0.1:5555")
+
+-- Remove proxies with bypassManager
+bypassManager:remove("127.0.0.1:5556")
+
+bypassManager:status("127.0.0.1:5555")
+
+-- proxy statuses:
+-- available
+-- in_use
+-- resting /delay
+```
+
 ## switchManager
 `switchManager()`
 
@@ -1471,6 +1505,13 @@ local google_account = {
 
 local ubiconnect_account = {
     type = UBICONNECT,
+    mail = "",
+    password = "",
+    secretKey = ""
+}
+
+local steam_account = {
+    type = STEAM,
     mail = "",
     password = "",
     secretKey = ""
