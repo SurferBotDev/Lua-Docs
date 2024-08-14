@@ -834,7 +834,8 @@ enum Bot_Status
 	failedToFetchTicket,
 	required_2FA,
 	fetchingToken,
-    emailNotAssociated
+    emailNotAssociated,
+    steamNotLinked
 };
 ```
 
@@ -936,6 +937,7 @@ autoReconnect
 autoAccess
 ignoreGem -- (autoCollect)
 rotation
+createAccount
 ```
 Example : 
 ```lua
