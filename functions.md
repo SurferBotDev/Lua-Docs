@@ -1009,6 +1009,8 @@ local steam_account = {
     mail = "",
     password = "",
     secretKey = "",
+    steamName = "",
+    steamPassword = "",
     proxy = "user:pass:ip:port",
     connect = true --default true
 }
@@ -1075,6 +1077,12 @@ local token_account = {
     growid = ""
 }
 
+local steam_account = {
+    type = STEAM,
+    mail = "",
+    password = "",
+    secretKey = "",
+    steamName = "",
 bot:updateAccount(account)
 ```
 
@@ -1282,6 +1290,28 @@ adminManager.enabled = false
 adminManager.leaveTheWorld = false
 adminManager.rejoinWorld = false -- rejoin the world with custom intervals
 adminManager.interval = 5 -- 5 minutes
+```
+
+Auto Malady
+```lua
+local autoMalady = getBot():autoManager().malady
+autoMalady.enabled = false
+
+autoMalady.grumbleteeth = false
+autoMalady.chickenFeet = false
+
+autoMalady.autoSurgery = false
+autoMalady.surgeryMaxPrice = 3
+autoMalady.surgeryMaladies = bit.bor(tornPunchingMuscle | gemCuts)
+-- brainworms,chickenFeet,brokenHeart,chaosInfection,ectoBones,fattyLiver,gemCuts,lupus,moldyGuts,grumbleteeth,tornPunchingMuscle
+
+autoMalady.autoVial = false
+autoMalady.vialId = 3
+
+autoMalady:addWorld("worldName|id",autoVial)
+autoMalady:addWorld("worldName",autoSurgery)
+autoMalady:removeWorld("worldName",autoSurgery)
+autoMalady:removeWorld("worldName",autoVial)
 ```
 
 ## setReconnectInterval
@@ -1516,7 +1546,9 @@ local steam_account = {
     type = STEAM,
     mail = "",
     password = "",
-    secretKey = ""
+    secretKey = "",
+    steamName = "",
+    steamPassword = "",
 }
 
 switchManager:addAccount(account)
@@ -1562,6 +1594,7 @@ local worldStatus = rotationManager:status("worldName")
 -- NOT_READY
 -- STARTED
 -- FAILED
+-- FIRE
 
 local pnbWorlds = rotationManager:getPnbWorlds()
 local farmWorlds = rotationManager:getFarmWorlds()

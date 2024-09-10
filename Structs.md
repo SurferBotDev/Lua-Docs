@@ -58,6 +58,7 @@
 | String | `recoveryMail` |  Recovery email for Google   |
 | String | `accountCreateUrl` |  Account creation URL |
 | String | `accountCreateCookie` |  Required cookie for account creation (growtopia_game_session) |
+| String | `malady` |  Malady Status |
 
 
  ## Tile
