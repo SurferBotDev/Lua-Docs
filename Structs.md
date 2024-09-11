@@ -253,3 +253,9 @@
 |:-----|:----:|:-----------|
 | string | `label` | Label of the door |
 
+## SurgeonStation
+| Type | Name | Description|
+|:-----|:----:|:-----------|
+| bool | `enabled` |  |
+| string | `malady` | Malady Type |
+

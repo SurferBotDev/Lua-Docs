@@ -1083,6 +1083,8 @@ local steam_account = {
     password = "",
     secretKey = "",
     steamName = "",
+    steamPassword = ""
+}
 bot:updateAccount(account)
 ```
 
@@ -1117,7 +1119,7 @@ bot:setMac("42:d4:a6:0b:5f:c3")
 ## setToken
 `setToken(string newToken)`
 
-Function to set the Token for the bot
+Function to set the lToken for the bot
 
 Example:
 ```lua
@@ -1295,8 +1297,6 @@ adminManager.interval = 5 -- 5 minutes
 Auto Malady
 ```lua
 local autoMalady = getBot():autoManager().malady
-autoMalady.enabled = false
-
 autoMalady.grumbleteeth = false
 autoMalady.chickenFeet = false
 
