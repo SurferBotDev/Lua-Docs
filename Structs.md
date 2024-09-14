@@ -257,5 +257,5 @@
 | Type | Name | Description|
 |:-----|:----:|:-----------|
 | bool | `enabled` |  |
+| bool | `outOfOrder` |  |
 | string | `malady` | Malady Type |
-
