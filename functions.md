@@ -1302,7 +1302,7 @@ autoMalady.chickenFeet = false
 
 autoMalady.autoSurgery = false
 autoMalady.surgeryMaxPrice = 3
-autoMalady.surgeryMaladies = bit.bor(tornPunchingMuscle | gemCuts)
+autoMalady.surgeryMaladies = bit.bor(tornPunchingMuscle, gemCuts)
 -- brainworms,chickenFeet,brokenHeart,chaosInfection,ectoBones,fattyLiver,gemCuts,lupus,moldyGuts,grumbleteeth,tornPunchingMuscle
 
 autoMalady.autoVial = false
