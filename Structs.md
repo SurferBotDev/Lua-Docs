@@ -54,11 +54,16 @@
 | String | `tokenStatus` |  Token Information   |
 | String | `ticketStatus` |  Ticket(UBI) Information   |
 | String | `googleStatus` |  Google Status Information   |
-| String | `token` |  Token   |
+| String | `token` |  L-Token   |
 | String | `recoveryMail` |  Recovery email for Google   |
 | String | `accountCreateUrl` |  Account creation URL |
 | String | `accountCreateCookie` |  Required cookie for account creation (growtopia_game_session) |
 | String | `malady` |  Malady Status |
+| Number | `earnedGems` |  Total Earned Gems |
+| String | `steamToken` |  Steam Token |
+| String | `ubiTicket` |  Ubi Token |
+| String | `steamName` |  Steam username |
+
 
 
  ## Tile

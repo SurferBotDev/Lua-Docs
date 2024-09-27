@@ -835,13 +835,15 @@ enum Bot_Status
 	required_2FA,
 	fetchingToken,
     emailNotAssociated,
-    steamNotLinked
+    steamNotLinked,
+    linkingSteam,
+    steamLinkFailed
 };
 ```
 
 
 ## createAccount
-`createAccount()`
+`createAccount(string growid)`
 
 Function to Create New Account
 
@@ -1252,8 +1254,10 @@ autoPlant.enabled = false
 autoPlant.saveWorld = "name|id"
 autoPlant.itemId = 3 -- seed ID
 
-autoPlant:addWorld("target world name")
-autoPlant:removeWorld("target world name")
+autoPlant:addWorld("target world name","storage")
+autoPlant:removeWorld("target world name","storage")
+autoPlant:addWorld("target world name","farm")
+autoPlant:removeWorld("target world name","farm")
 autoPlant.worlds -> return table [name,id,status,readyAt]
 ```
 
