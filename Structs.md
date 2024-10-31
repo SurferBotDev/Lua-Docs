@@ -12,6 +12,10 @@
 * [httpResponseInfo](#httpresponseinfo)
 * [flagType](#flagtype)
 * [hookType](#hooktype)
+* [maladyType](#maladytype)
+* [googleStatus](#googlestatus)
+* [loginStatus](#ubiloginstatus)  
+* [ubiLoginStatus](#Loginstatus)
 * [tileExtra](#tileextra)
 
 ## Vector2
@@ -51,9 +55,9 @@
 | String | `proxy` |  proxy information (user:pass:ip:port) |
 | String | `mac` |  MAC address  |
 | String | `growid` | growid |
-| String | `tokenStatus` |  Token Information   |
-| String | `ticketStatus` |  Ticket(UBI) Information   |
-| String | `googleStatus` |  Google Status Information   |
+| [loginStatus](#loginstatus) | `tokenStatus` |  Token Information   |
+| [ubiLoginStatus](#ubiloginstatus)  | `ticketStatus` |  Ticket(UBI) Information   |
+| [googleStatus](#googlestatus) | `googleStatus` |  Google Status Information   |
 | String | `token` |  L-Token   |
 | String | `recoveryMail` |  Recovery email for Google   |
 | String | `accountCreateUrl` |  Account creation URL |
@@ -63,6 +67,7 @@
 | String | `steamToken` |  Steam Token |
 | String | `ubiTicket` |  Ubi Token |
 | String | `steamName` |  Steam username |
+| Number | `onlineTime` | Online time in seconds |
 
 
 
@@ -82,6 +87,7 @@
 |:-----|:----:|:-----------|
 | Number | `id` | Item ID |
 | Number | `count` | Item count |
+| Boolean | `equipped` |  |
 
 
 ## GamePacket
@@ -193,6 +199,73 @@
 | Number | `destX` | Destination X of NPC |
 | Number | `destY` | Destination Y oF NPC |
 
+## maladyType
+```c++
+enum class maladyType {
+    no_value = -1,
+    none = 0,
+    torn_punching_muscle = 1 << 0,
+    ecto_bones = 1 << 1,
+    lupus = 1 << 2,
+    fatty_liver = 1 << 3,
+    chaos_infection = 1 << 4,
+    moldy_guts = 1 << 5,
+    chicken_feet = 1 << 6,
+    brainworms = 1 << 7,
+    grumbleteeth = 1 << 8,
+    broken_heart = 1 << 9,
+    gem_cuts = 1 << 10,
+    recovering = 1 << 11
+};
+```
+
+## googleStatus
+```c++
+enum class googleStatus {
+	not_started,
+	success,
+	processing,
+	wrong_password,
+	two_factor,
+	blocked,
+	error,
+	growtopiaError,
+	path_not_found,
+	timeout,
+	account_not_found,
+	wrong_id,
+	please_try_login_again
+};
+```
+
+## loginStatus
+```c++
+enum class loginStatus  {
+	NONE,
+	SUCCESS,
+	FAILED,
+	BAD_GATEWAY,
+	BLOCKED,
+	WRONG_PASSWORD,
+	REQUIRED_2FA,
+	TICKET_EXPIRED,
+	STEAM_NOT_LINKED,
+	RATE_LIMIT,
+	CAPTCHA
+};
+```
+
+## ubiLoginStatus
+```c++
+enum class ubiLoginStatus {
+	NONE,
+	SUCCESS,
+	FAILED,
+	BLOCKED,
+	WRONG_PASSWORD,
+	WRONG_SECRET_KEY,
+};
+```
 
 # tileExtra
 | Type | Name | Description|
