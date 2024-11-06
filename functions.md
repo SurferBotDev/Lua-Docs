@@ -510,13 +510,15 @@ canPlace(0, 0)
 ```
 
 ## warp
-`warp(string name)`
+`warp(string name,number timeout=0)`
 
 Function to warp to a  specific world
 
 Example:
 ```lua
-warp("BUYGHC")
+local success = warp("BUYGHC")
+local success = warp("BUYGHC",10) 
+-- this waits 10 seconds; if successful(joined target world), it returns true; if unsuccessful, it returns false. The default timeout is 0
 ```
 
 ## getNukedWorlds
