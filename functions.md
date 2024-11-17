@@ -1503,13 +1503,15 @@ return bypassManager Class
 local bypassManager = bypassManager()
 
 -- Add proxies with bypassManager
-bypassManager:add("127.0.0.1:5556:user:pass")
-bypassManager:add("127.0.0.1:5555")
+bypassManager:add("127.0.0.1:5556:user:pass",30,true) -- http proxy + 30 sec delay
+bypassManager:add("127.0.0.1:5556:user:pass",30,false) -- socks5 proxy+ 30 sec delay
+
+bypassManager:add("127.0.0.1:5555",30,false)
 
 -- Remove proxies with bypassManager
-bypassManager:remove("127.0.0.1:5556")
+bypassManager:remove("127.0.0.1:5556:user:pass")
 
-bypassManager:status("127.0.0.1:5555")
+bypassManager:status("127.0.0.1:5556:user:pass")
 
 -- proxy statuses:
 -- available

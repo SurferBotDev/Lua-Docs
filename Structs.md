@@ -234,7 +234,9 @@ enum class googleStatus {
 	timeout,
 	account_not_found,
 	wrong_id,
-	please_try_login_again
+	please_try_login_again,
+	required_phone_verification,
+	disabled
 };
 ```
 
@@ -264,6 +266,7 @@ enum class ubiLoginStatus {
 	BLOCKED,
 	WRONG_PASSWORD,
 	WRONG_SECRET_KEY,
+	LOCKED
 };
 ```
 
