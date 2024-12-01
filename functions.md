@@ -942,6 +942,7 @@ autoAccess
 ignoreGem -- (autoCollect)
 rotation
 createAccount
+deadlyCheck
 ```
 Example : 
 ```lua
@@ -995,6 +996,7 @@ local google_account = {
     mail = "",
     password = "",
     recovery = "",
+    secretKey = "",
     proxy = "user:pass:ip:port",
     connect = true --default true
 }
@@ -1320,6 +1322,42 @@ autoMalady:removeWorld("worldName",autoSurgery)
 autoMalady:removeWorld("worldName",autoVial)
 ```
 
+Auto Trash
+```lua
+local autoTrash = getBot():autoManager().trash
+autoTrash.enabled = true
+autoTrash.minCount = 50
+
+autoTrash:addItem(0)
+autoTrash:removeItem(0)
+```
+Auto Wear
+```lua
+local autoWear = getBot():autoManager().wear
+autoWear.enabled = true
+
+autoWear:addItem(0)
+autoWear:removeItem(0)
+```
+Player Detector
+```lua
+local playerManager = getBot():autoManager().player
+playerManager.enabled = false
+
+playerManager.leaveTheWorld = false
+```
+
+Ban Detector
+```lua
+--If a specified number of account banned within a certain interval, selected bots will be disconnected for a set duration
+local banManager = getBot():autoManager().ban
+banManager.enabled = false
+
+banManager.interval = 5
+banManager.duration = 15
+banManager.banned = 2
+```
+
 ## setReconnectInterval
 `setReconnectInterval(number seconds)`
 
@@ -1586,6 +1624,8 @@ rotationManager:addWorld("worldName|id",FARM)
 rotationManager:addWorld("worldName|id",SAVE)
 rotationManager:addWorld("worldName|id",PICKAXE)
 rotationManager:addWorld("worldName|id",SEED)
+rotationManager:addWorld("worldName|id",FIRE)
+rotationManager:addWorld("worldName|id",FOSSIL)
 
 -- Remove Worlds with rotationManager
 
@@ -1609,6 +1649,7 @@ local farmWorlds = rotationManager:getFarmWorlds()
 local saveWorlds = rotationManager:getSaveWorlds()
 local pickaxeWorlds = rotationManager:getPickaxeWorlds()
 local seedWorlds = rotationManager:getSeedWorlds()
+local fossilWorlds = rotationManager:getFossilWorlds()
 
 for name,data in pairs(farmWorlds) do
     local worldName = name
@@ -1622,6 +1663,16 @@ rotationManager:setStore("World Lock","world_lock",2000) -- Name,Pack id,price
 rotationManager.pnbWorld = true --Enable pnb at another world
 rotationManager.rFeatures = true --enable recommended features
 rotationManager.autoBuy = true --enable auto store
+
+rotationManager.forceQuit = true
+rotationManager.forceLevel = 20
+
+rotationManager.checkCCTV = true
+rotationManager.checkWorld = true
+
+rotationManager.createPnbWorld = true
+rotationManager.createSeedWorld = true
+rotationManager.createSaveWorld = true
 ```
 
 

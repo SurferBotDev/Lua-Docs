@@ -46,6 +46,7 @@
 | Number | `flags` |  Player's flags   |
 | Number | `level` | Player's level |
 | Boolean | `mod` | Indicates whether the player is a mod |
+| String | `eid` | Player's eid |
 -- Local| ----- | ------
 | Number | `gems` | Gem count |
 | Number | `slot` | Inventory slot count (backpack size) |
@@ -68,7 +69,7 @@
 | String | `ubiTicket` |  Ubi Token |
 | String | `steamName` |  Steam username |
 | Number | `onlineTime` | Online time in seconds |
-
+| String | `tapjoyId` | Tapjoy Tag |
 
 
  ## Tile
@@ -120,6 +121,7 @@
 | Number  | `breakHits`   | Item break hits |
 | Number  | `dropChance`  | Item drop chance|
 | Number  | `itemCategory`| Item category   |
+| String  | `itemType`| Item Type   |
 | Number  | `level `  | Required Level |
 | Bool  | `untradeable `  | Indicates if the item is untradeable
 
