@@ -980,7 +980,7 @@ local isIgnoreGemEnabled = getBool("ignoreGem")
 `addBot(table AccountInformation)`
 Example:
 ```lua
-LEGACY,GOOGLE,UBICONNECT,TOKEN
+LEGACY,GOOGLE,UBICONNECT,TOKEN,APPLE
 
 local account = {
     type = LEGACY,
@@ -1025,6 +1025,16 @@ local token_account = {
     type = TOKEN,
     token = "000",
     growid = "",
+    proxy = "user:pass:ip:port",
+    connect = true --default true
+}
+
+local apple_account = {
+    type = APPLE,
+    mail = "",
+    password = "",
+    cookies = "<cookie-name>=<cookie-value>", 
+    smsLink = "",
     proxy = "user:pass:ip:port",
     connect = true --default true
 }
@@ -1091,6 +1101,17 @@ local steam_account = {
     steamName = "",
     steamPassword = ""
 }
+
+local apple_account = {
+    type = APPLE,
+    mail = "",
+    password = "",
+    cookies = "<cookie-name>=<cookie-value>;<cookie-name>=<cookie-value>", 
+    smsLink = "",
+    proxy = "user:pass:ip:port",
+    connect = true --default true
+}
+
 bot:updateAccount(account)
 ```
 

@@ -182,13 +182,6 @@
 | FIRE | 
 | BLUE |
 
-## hookType
-| Name |
-|:-----|
-| varlist |
-| moderatorJoined | 
-| gamePacket | 
-| gameMessage | 
 
 ## Npc
 | Type | Name | Description|
