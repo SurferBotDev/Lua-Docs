@@ -14,6 +14,7 @@
 * [hookType](#hooktype)
 * [maladyType](#maladytype)
 * [googleStatus](#googlestatus)
+* [appleStatus](#applestatus)
 * [loginStatus](#ubiloginstatus)  
 * [ubiLoginStatus](#Loginstatus)
 * [tileExtra](#tileextra)
@@ -59,6 +60,7 @@
 | [loginStatus](#loginstatus) | `tokenStatus` |  Token Information   |
 | [ubiLoginStatus](#ubiloginstatus)  | `ticketStatus` |  Ticket(UBI) Information   |
 | [googleStatus](#googlestatus) | `googleStatus` |  Google Status Information   |
+| [appleStatus](#applestatus) | `appleStatus` |  Apple Status Information   |
 | String | `token` |  L-Token   |
 | String | `recoveryMail` |  Recovery email for Google   |
 | String | `accountCreateUrl` |  Account creation URL |
@@ -232,6 +234,18 @@ enum class googleStatus {
 	please_try_login_again,
 	required_phone_verification,
 	disabled
+};
+```
+
+## appleStatus
+```c++
+enum class appleStatus {
+	NONE,
+	SUCCESS,
+	DISABLED,
+	WRONG_PASSWORD,
+	REQUIRED_2FA,
+	FAILED
 };
 ```
 
