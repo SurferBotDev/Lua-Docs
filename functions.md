@@ -1026,7 +1026,11 @@ local token_account = {
     token = "000",
     growid = "",
     proxy = "user:pass:ip:port",
-    connect = true --default true
+    connect = true, --default true
+    mac = "",
+    rid = "",
+    wk = "",
+    platform = "",
 }
 
 local apple_account = {
@@ -1090,7 +1094,11 @@ local ubiconnect_account = {
 local token_account = {
     type = TOKEN,
     token = "000",
-    growid = ""
+    growid = "",
+    mac = "",
+    rid = "",
+    wk = "",
+    platform = "",
 }
 
 local steam_account = {
