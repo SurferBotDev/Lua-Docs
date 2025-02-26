@@ -79,6 +79,8 @@
 
 * [getSignal](#getsignal): Function to retrieve the current signal color of the Geiger counter.
 
+* [checkAutoMalady](#checkautomalady): Function to check if the bot is processing auto malady(Surgery-Vial-Trigger).
+
 * [autoCollect](#autocollect): Function to enable or disable the AutoCollect feature with a specified collection range and an optional ignore list.
 
 * [getBotStatus](#getbotstatus): Function to retrieve the status of the bot.
@@ -770,6 +772,24 @@ else
 end
 ```
 
+## checkAutoMalady
+`checkAutoMalady()`
+
+Function to check if the bot is processing auto malady(Surgery-Vial-Trigger).
+
+Example:
+```lua
+--If the bot is processing auto malady(Surgery-Vial-Trigger), it will return true (meaning stop auto farm and wait). If it returns false (meaning continue auto farm)
+local bot = getBot()
+if bot:checkAutoMalady() then
+    log("Auto Malady is running, stopping auto farm and waiting...")
+else
+    log("Auto Malady is not running, continuing auto farm...")
+end
+```
+
+
+
 ## autoCollect
 `autoCollect(number collectrange,bool autocollect,table ignoreList)`
 
@@ -839,7 +859,9 @@ enum Bot_Status
     emailNotAssociated,
     steamNotLinked,
     linkingSteam,
-    steamLinkFailed
+    steamLinkFailed,
+    requiredParent,
+    invalidToken
 };
 ```
 
@@ -1074,21 +1096,30 @@ Function to update the account information
 local account = {
     type = LEGACY,
     growid = "",
-    password = ""
+    password = "",
+    mac = "",
+    rid = "",
+    wk = "",
 }
 
 local google_account = {
     type = GOOGLE,
     mail = "",
     password = "",
-    recovery = ""
+    recovery = "",
+    mac = "",
+    rid = "",
+    wk = "",
 }
 
 local ubiconnect_account = {
     type = UBICONNECT,
     mail = "",
     password = "",
-    secretKey = ""
+    secretKey = "",
+    mac = "",
+    rid = "",
+    wk = "",
 }
 
 local token_account = {
@@ -1107,7 +1138,10 @@ local steam_account = {
     password = "",
     secretKey = "",
     steamName = "",
-    steamPassword = ""
+    steamPassword = "",
+    mac = "",
+    rid = "",
+    wk = "",
 }
 
 local apple_account = {
@@ -1117,7 +1151,10 @@ local apple_account = {
     cookies = "<cookie-name>=<cookie-value>;<cookie-name>=<cookie-value>", 
     smsLink = "",
     proxy = "user:pass:ip:port",
-    connect = true --default true
+    connect = true, --default true
+    mac = "",
+    rid = "",
+    wk = "",
 }
 
 bot:updateAccount(account)
@@ -1138,17 +1175,6 @@ local newProxy = {
     Type = SOCKS5
 }
 updateProxy(newProxy)
-```
-
-## setMac
-`setMac(string newMac)`
-
-Function to set the MAC address for the bot
-
-Example:
-```lua
-bot = getBot()
-bot:setMac("42:d4:a6:0b:5f:c3")
 ```
 
 ## setToken
@@ -1336,6 +1362,7 @@ Auto Malady
 local autoMalady = getBot():autoManager().malady
 autoMalady.grumbleteeth = false
 autoMalady.chickenFeet = false
+autoMalady.triggerTimeout = 25 -- 25 minutes (default 25)
 
 autoMalady.autoSurgery = false
 autoMalady.surgeryMaxPrice = 3
