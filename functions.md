@@ -861,7 +861,8 @@ enum Bot_Status
     linkingSteam,
     steamLinkFailed,
     requiredParent,
-    invalidToken
+    invalidToken,
+    reachedLimit
 };
 ```
 
