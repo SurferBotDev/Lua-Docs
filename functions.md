@@ -1054,6 +1054,7 @@ local token_account = {
     rid = "",
     wk = "",
     platform = "",
+    tokenUrl = "..../player/social/login?social_login=eyJpdiI6IkNnSEJUa.....",--token url for refresh
 }
 
 local apple_account = {
